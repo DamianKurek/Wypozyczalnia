@@ -15,12 +15,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 /**
  *
  * @author damian
  */
 public class FXMLDocumentController implements Initializable {
+  
+    
+    
     GregorianCalendar data = new GregorianCalendar();
     @FXML
     private Label data1;
@@ -35,6 +43,23 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     //##############daty##############
+        test x = new test();
+        x.setX(1);
+        x.setY(2);
+        x.setZ(3);
+        x.setV(4);
+        
+        SessionFactory sesia = new Configuration().configure().buildSessionFactory();
+        Session session = sesia.openSession();
+        session.beginTransaction();
+        session.save(x);
+        session.getTransaction().commit();
+        
+          //EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("BazaDanych");
+        //EntityManager entityManager=entityManagerFactory.createEntityManager();
+        
+       //entityManager.close();
+        //entityManagerFactory.close();
     SimpleDateFormat fmt = new SimpleDateFormat("dd-MMM-yyyy");
     fmt.setCalendar(data);
     String dateFormatted = fmt.format(data.getTime());
