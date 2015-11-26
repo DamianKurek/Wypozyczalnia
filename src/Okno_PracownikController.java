@@ -17,9 +17,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
 import tabele.pracownik_dk_2015;
 
 /**
@@ -49,6 +52,7 @@ public class Okno_PracownikController implements Initializable {
         pracownik.setImie_dk_2015(text_imie.getText());
         pracownik.setNazwisko_dk_2015(text_nazwisko.getText());
         pracownik.setData_zatrudnienia_dk_2015(Date.valueOf(data.getValue()));
+
         SessionFactory sesia = new Configuration().configure().buildSessionFactory();
         Session session = sesia.openSession();
         //zapisane do bazy
@@ -65,29 +69,27 @@ public class Okno_PracownikController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         data.setValue(LocalDate.now());
-        pracownik_dk_2015 p1 = new pracownik_dk_2015();
-        p1.setId_dk_2015(1);
-        p1.setImie_dk_2015("a");
-        p1.setNazwisko_dk_2015("dsadsa");
-        Lista.add(p1);
+        pracownik_dk_2015 pracownik = new pracownik_dk_2015();
+
+        SessionFactory sesia = new Configuration().configure().buildSessionFactory();
+        Session session = sesia.openSession();
+        ///////wykaszanie po id
+        session.beginTransaction();
+        //pracownik = session.get(pracownik_dk_2015.class, 1);// odszukanie po Id
+        pracownik = session.get(pracownik_dk_2015.class, 1);
+
+        System.out.println(pracownik.getImie_dk_2015());
+        ////////////////////////////////////
+        List<pracownik_dk_2015> wynik = session.createQuery("from pracownik_dk_2015 where imie_dk_2015='Jan'").list();
+        //
         
-        p1.setId_dk_2015(1);
-        p1.setImie_dk_2015("a");
-        p1.setNazwisko_dk_2015("dsadsa");
-        Lista.add(p1);
-        
-        
-        
-        
-        pracownik_dk_2015 pp =new pracownik_dk_2015();
-        for(int s=0;s<Lista.size();s++){
-            pp.setId_dk_2015(Lista.get(s).getId_dk_2015());
-            pp.setImie_dk_2015(Lista.get(s).getImie_dk_2015());
-            pp.setNazwisko_dk_2015(Lista.get(s).getNazwisko_dk_2015());
-            dane.add(pp);
+        for (int x = 0; x < wynik.size(); x++) {
+            System.out.println(wynik.get(x).getImie_dk_2015() + " " + wynik.get(x).getNazwisko_dk_2015());
         }
-            
+
+        session.close();
         tabela.setItems(dane);
+
     }
 
 }

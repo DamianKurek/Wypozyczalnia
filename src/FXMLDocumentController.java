@@ -59,6 +59,17 @@ public class FXMLDocumentController implements Initializable {
         stage.show();
     }
 
+    @FXML
+    private void OknoAuta(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Auta.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Klienci");
+        Scene scenaWykres = new Scene(root1);
+        stage.setScene(scenaWykres);
+        stage.show();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     //##############daty##############
