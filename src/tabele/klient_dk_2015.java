@@ -9,19 +9,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SecondaryTable;
+import javax.persistence.Table;
 /**
  *
  * @author damian
  */
 @Entity
+@Table(name="klient_dk_2015")
+@SecondaryTable(name="adres_klient_dk_2015")
 public class klient_dk_2015 {
      @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
      private int id_dk_2015;
      private String imie_dk_2015;
      private String nazwisko_dk_2015;
+     //druga tabela
+     @Column(table="adres_klient_dk_2015")
      private int nr_tel_dk_2015;
+     @Column(table="adres_klient_dk_2015")
      private String adres_miasto_dk_2015;
+     @Column(table="adres_klient_dk_2015")
      private String adres_ulica_dk_2015;
+     @Column(table="adres_klient_dk_2015")
      int adres_nr_dom_dk_2015;
 
     public int getId_dk_2015() {
