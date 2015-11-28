@@ -55,7 +55,7 @@ public class FXMLDocumentController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Pracownik.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Klienci");
+        stage.setTitle("Pracownicy");
         Scene scenaWykres = new Scene(root1);
         stage.setScene(scenaWykres);
         stage.show();
@@ -66,7 +66,7 @@ public class FXMLDocumentController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Auta.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Klienci");
+        stage.setTitle("Auta");
         Scene scenaWykres = new Scene(root1);
         stage.setScene(scenaWykres);
         stage.show();

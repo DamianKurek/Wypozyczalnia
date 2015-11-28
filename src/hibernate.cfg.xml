@@ -29,6 +29,8 @@
    <mapping class="tabele.test"/>
    <mapping class="tabele.klient_dk_2015"/>
    <mapping class="tabele.pracownik_dk_2015"/>
+   <mapping class="tabele.wypozyczenie_dk_2015"/>
+   <mapping class="tabele.auta_dk_2015"/>
        
 </session-factory>
 </hibernate-configuration>

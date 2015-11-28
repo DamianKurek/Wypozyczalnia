@@ -5,7 +5,6 @@ package aplikacja;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -35,7 +34,9 @@ import org.hibernate.criterion.Restrictions;
 
 import tabele.pracownik_dk_2015;
 import static aplikacja.Wypozyczalnia.*;
-
+import tabele.auta_dk_2015;
+import tabele.klient_dk_2015;
+import tabele.wypozyczenie_dk_2015;
 
 /**
  * FXML Controller class
@@ -74,15 +75,53 @@ public class Okno_PracownikController implements Initializable {
 
     @FXML
     void Zapisz() {
-        pracownik_dk_2015 pracownik = new pracownik_dk_2015();
-        pracownik.setImie_dk_2015(text_imie.getText());
-        pracownik.setNazwisko_dk_2015(text_nazwisko.getText());
-        pracownik.setData_zatrudnienia_dk_2015(Date.valueOf(data.getValue()));
+//        pracownik_dk_2015 pracownik = new pracownik_dk_2015();
+//        pracownik.setImie_dk_2015(text_imie.getText());
+//        pracownik.setNazwisko_dk_2015(text_nazwisko.getText());
+//        pracownik.setData_zatrudnienia_dk_2015(Date.valueOf(data.getValue()));
+//        session = sesia.openSession();
+//        //zapisane do bazy
+//        session.beginTransaction();
+//        session.save(pracownik);
+//        session.getTransaction().commit();
+//        session.close();
+        
+        
+        //testy relacji // dziala
         session = sesia.openSession();
-        //zapisane do bazy
         session.beginTransaction();
-        session.save(pracownik);
-        session.getTransaction().commit();
+        pracownik_dk_2015 p = new pracownik_dk_2015();
+        klient_dk_2015 k = new klient_dk_2015();
+        k.setImie_dk_2015("test relacji");
+        k.setNazwisko_dk_2015("test relacji");
+        k.setAdres_miasto_dk_2015("test relacji");
+        k.setAdres_nr_dom_dk_2015(11);
+        k.setAdres_ulica_dk_2015("test relacji");
+        
+        p.setImie_dk_2015("test relacji");
+        p.setNazwisko_dk_2015("test relacji");
+        p.setData_zatrudnienia_dk_2015(Date.valueOf(data.getValue()));
+       
+        auta_dk_2015 auto = new auta_dk_2015();
+        auto.setMarka_dk_2015("BMW");
+        auto.setModel_dk_2015("i8");
+        auto.setRocznik_dk_2015(2015);
+        auto.setSkrzynia_biegow_dk_2015("automatyczna");
+        auto.setCena_doba_dk_2015(200);
+        
+        
+        wypozyczenie_dk_2015 w = new wypozyczenie_dk_2015();
+        
+        w.setId_pracownik_wypozyczenie_dk_2015(p);
+        w.setId_klient_wypozyczenie_dk_2015(k);
+        w.setId_auta_wypozyczenie_dk_2015(auto);
+        w.setData_wypozyczenia_dk_2015(Date.valueOf(data.getValue()));
+        w.setData_zwrotu_dk_2015(Date.valueOf(data.getValue()));
+        w.setKoszt_dk_2015(auto.getCena_doba_dk_2015()*3);
+        session.save(p);
+        session.save(k);
+        session.save(auto);
+        session.save(w);
         session.close();
     }
 
@@ -180,6 +219,7 @@ public class Okno_PracownikController implements Initializable {
                 new PropertyValueFactory<pracownik_dk_2015, String>("data_zatrudnienia_dk_2015")//nazwa pola w klasie
         );
 
+        
     }
 
 }
