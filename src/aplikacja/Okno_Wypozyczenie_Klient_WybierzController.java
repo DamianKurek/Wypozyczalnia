@@ -22,19 +22,20 @@ import org.hibernate.cfg.Configuration;
 
 import static aplikacja.Wypozyczalnia.*;
 import javafx.scene.control.Alert;
+import javafx.stage.Stage;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Expression;
 import tabele.klient_dk_2015;
 import tabele.klient_dk_2015;
 import tabele.pracownik_dk_2015;
-
+import static aplikacja.Okno_Wypozyczenie_NoweController.id_klient;
 /**
  * FXML Controller class
  *
  * @author damian
  */
-public class Okno_KlientController implements Initializable {
+public class Okno_Wypozyczenie_Klient_WybierzController implements Initializable {
 
     @FXML
     TextField text_id_szukaj;
@@ -76,6 +77,17 @@ public class Okno_KlientController implements Initializable {
     public final ObservableList<klient_dk_2015> dane = FXCollections.observableArrayList();
     //SessionFactory sesia = new Configuration().configure().buildSessionFactory();
     //Session session = sesia.openSession();
+
+    @FXML
+    void Wybierz_z_Tabeli() {
+        klient_dk_2015 k = tabela.getSelectionModel().getSelectedItem();
+        id_klient.setText("la");
+        System.out.println(k.getNazwisko_dk_2015());
+            // get a handle to the stage
+    Stage stage = (Stage)tabela.getScene().getWindow();
+    // do what you have to do
+    stage.close();
+    }
 
     @FXML
     void Czysc() {

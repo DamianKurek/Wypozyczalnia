@@ -5,7 +5,6 @@ package aplikacja;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -67,6 +66,17 @@ public class FXMLDocumentController implements Initializable {
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Auta");
+        Scene scenaWykres = new Scene(root1);
+        stage.setScene(scenaWykres);
+        stage.show();
+    }
+
+    @FXML
+    private void OknoWypozyczenie(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Wypozyczenia.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Wypożyczenie");
         Scene scenaWykres = new Scene(root1);
         stage.setScene(scenaWykres);
         stage.show();
