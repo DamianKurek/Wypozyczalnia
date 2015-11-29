@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplikacja.Okno_Wypozyczenie_Pracownik_WybierzController">
+   <children>
+      <TabPane layoutX="75.0" layoutY="48.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Nowy">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="17.0" prefWidth="438.0" text="Id" />
+                              <Label alignment="CENTER" prefHeight="17.0" prefWidth="435.0" text="Imię:" GridPane.rowIndex="1" />
+                              <Label alignment="CENTER" prefHeight="17.0" prefWidth="425.0" text="Nazwisko" GridPane.rowIndex="2" />
+                              <Label alignment="CENTER" prefHeight="17.0" prefWidth="417.0" text="Data zatrudnienia" GridPane.rowIndex="3" />
+                              <Button mnemonicParsing="false" prefHeight="163.0" prefWidth="467.0" text="Wyczysc" GridPane.rowIndex="4" />
+                              <Button mnemonicParsing="false" onAction="#Zapisz" prefHeight="77.0" prefWidth="434.0" text="Zapisz" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="text_id" GridPane.columnIndex="1" />
+                              <TextField fx:id="text_imie" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="text_nazwisko" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <DatePicker fx:id="data" prefHeight="25.0" prefWidth="452.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Lista">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="371.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="371.0" prefWidth="427.0">
+                                 <children>
+                                    <TableView fx:id="tabela" onMouseClicked="#Wybierz_z_Tabeli" prefHeight="371.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columns>
+                                          <TableColumn fx:id="TableColumn1" prefWidth="29.0" text="Id" />
+                                          <TableColumn fx:id="TableColumn2" prefWidth="119.0" text="Imie" />
+                                          <TableColumn fx:id="TableColumn3" prefWidth="135.0" text="Nazwisko" />
+                                          <TableColumn fx:id="TableColumn4" minWidth="4.0" prefWidth="143.0" text="Data Zatrudnienia" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox prefHeight="371.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#Wczytaj" prefHeight="46.0" prefWidth="207.0" text="Wczytaj" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="54.0" prefWidth="201.0" text="Wyszukiwanie" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="19.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="45.0" prefWidth="201.0" text="Id" AnchorPane.bottomAnchor="-14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0" />
+                                                <Line endX="100.0" layoutX="104.0" startX="-100.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <TextField fx:id="text_id_szukaj" alignment="CENTER" layoutY="10.0" prefHeight="26.0" prefWidth="208.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="45.0" prefWidth="201.0" text="Nazwisko" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <Line endX="100.0" layoutX="107.0" startX="-100.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Line endX="100.0" layoutX="101.0" layoutY="45.0" startX="-100.0" />
+                                                <TextField fx:id="text_nazwisko_szukaj" layoutX="1.0" layoutY="11.0" prefHeight="25.0" prefWidth="201.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="11.0" />
+                                                <Line endX="100.0" layoutX="103.0" startX="-100.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Button layoutX="61.0" layoutY="11.0" mnemonicParsing="false" onAction="#Szukaj" prefHeight="46.0" prefWidth="201.0" text="Szukaj" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

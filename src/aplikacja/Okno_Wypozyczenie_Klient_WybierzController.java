@@ -29,7 +29,9 @@ import org.hibernate.criterion.Expression;
 import tabele.klient_dk_2015;
 import tabele.klient_dk_2015;
 import tabele.pracownik_dk_2015;
-import static aplikacja.Okno_Wypozyczenie_NoweController.id_klient;
+import aplikacja.Okno_Wypozyczenie_NoweController.*;
+
+
 /**
  * FXML Controller class
  *
@@ -80,14 +82,15 @@ public class Okno_Wypozyczenie_Klient_WybierzController implements Initializable
 
     @FXML
     void Wybierz_z_Tabeli() {
-        klient_dk_2015 k = tabela.getSelectionModel().getSelectedItem();
-        id_klient.setText("la");
-        System.out.println(k.getNazwisko_dk_2015());
-            // get a handle to the stage
-    Stage stage = (Stage)tabela.getScene().getWindow();
-    // do what you have to do
-    stage.close();
+        zamowienie_klient = tabela.getSelectionModel().getSelectedItem();
+        //System.out.println(k.getNazwisko_dk_2015());
+        // get a handle to the stage
+        Stage stage = (Stage) tabela.getScene().getWindow();
+        // do what you have to do
+        stage.close();
     }
+
+    
 
     @FXML
     void Czysc() {

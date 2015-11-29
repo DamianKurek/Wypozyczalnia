@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
@@ -26,6 +27,7 @@ public class Okno_WypozyczeniaController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    @FXML Button button_nowe;
     @FXML
     private void OknoWypozyczenieNowe(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Wypozyczenie_Nowe.fxml"));
@@ -35,6 +37,9 @@ public class Okno_WypozyczeniaController implements Initializable {
         Scene scenaWykres = new Scene(root1);
         stage.setScene(scenaWykres);
         stage.show();
+        
+        stage = (Stage) button_nowe.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -46,6 +51,8 @@ public class Okno_WypozyczeniaController implements Initializable {
         Scene scenaWykres = new Scene(root1);
         stage.setScene(scenaWykres);
         stage.show();
+        stage = (Stage) button_nowe.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -57,6 +64,8 @@ public class Okno_WypozyczeniaController implements Initializable {
         Scene scenaWykres = new Scene(root1);
         stage.setScene(scenaWykres);
         stage.show();
+        stage = (Stage) button_nowe.getScene().getWindow();
+        stage.close();
     }
 
     @Override

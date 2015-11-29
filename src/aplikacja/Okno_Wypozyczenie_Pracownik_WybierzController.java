@@ -34,6 +34,7 @@ import org.hibernate.criterion.Restrictions;
 
 import tabele.pracownik_dk_2015;
 import static aplikacja.Wypozyczalnia.*;
+import javafx.stage.Stage;
 import tabele.auta_dk_2015;
 import tabele.klient_dk_2015;
 import tabele.wypozyczenie_dk_2015;
@@ -43,7 +44,7 @@ import tabele.wypozyczenie_dk_2015;
  *
  * @author damian
  */
-public class Okno_PracownikController implements Initializable {
+public class Okno_Wypozyczenie_Pracownik_WybierzController implements Initializable {
 
     //SessionFactory sesia;
     //SessionFactory sesia = new Configuration().configure().buildSessionFactory();
@@ -75,16 +76,16 @@ public class Okno_PracownikController implements Initializable {
 
     @FXML
     void Zapisz() {
-//        pracownik_dk_2015 pracownik = new pracownik_dk_2015();
-//        pracownik.setImie_dk_2015(text_imie.getText());
-//        pracownik.setNazwisko_dk_2015(text_nazwisko.getText());
-//        pracownik.setData_zatrudnienia_dk_2015(Date.valueOf(data.getValue()));
-//        session = sesia.openSession();
-//        //zapisane do bazy
-//        session.beginTransaction();
-//        session.save(pracownik);
-//        session.getTransaction().commit();
-//        session.close();
+        pracownik_dk_2015 pracownik = new pracownik_dk_2015();
+        pracownik.setImie_dk_2015(text_imie.getText());
+        pracownik.setNazwisko_dk_2015(text_nazwisko.getText());
+        pracownik.setData_zatrudnienia_dk_2015(Date.valueOf(data.getValue()));
+        session = sesia.openSession();
+        //zapisane do bazy
+        session.beginTransaction();
+        session.save(pracownik);
+        session.getTransaction().commit();
+        session.close();
         
         
  
@@ -164,7 +165,12 @@ public class Okno_PracownikController implements Initializable {
         }
 
     }
-
+@FXML
+    void Wybierz_z_Tabeli() {
+        zamowienie_pracownik = tabela.getSelectionModel().getSelectedItem();
+        Stage stage = (Stage) tabela.getScene().getWindow();
+        stage.close();
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
