@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package tabele;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,16 +12,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
+
 /**
  *
  * @author damian
  */
 @Entity
-@Table(name="auta_dk_2015")
+@Table(name = "auta_dk_2015")
 public class auta_dk_2015 {
-    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_dk_2015;
     //id naprawy //referencja
+    private int id_naprawy_dk_2015;
     private String model_dk_2015;
     private String marka_dk_2015;
     private int rocznik_dk_2015;
@@ -33,6 +38,14 @@ public class auta_dk_2015 {
 
     public void setId_dk_2015(int id_dk_2015) {
         this.id_dk_2015 = id_dk_2015;
+    }
+
+    public int getId_naprawy_dk_2015() {
+        return id_naprawy_dk_2015;
+    }
+
+    public void setId_naprawy_dk_2015(int id_naprawy_dk_2015) {
+        this.id_naprawy_dk_2015 = id_naprawy_dk_2015;
     }
 
     public String getModel_dk_2015() {
@@ -75,6 +88,4 @@ public class auta_dk_2015 {
         this.cena_doba_dk_2015 = cena_dk_2015;
     }
 
-    
-    
 }

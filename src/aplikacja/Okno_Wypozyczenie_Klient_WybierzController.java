@@ -31,7 +31,6 @@ import tabele.klient_dk_2015;
 import tabele.pracownik_dk_2015;
 import aplikacja.Okno_Wypozyczenie_NoweController.*;
 
-
 /**
  * FXML Controller class
  *
@@ -89,8 +88,6 @@ public class Okno_Wypozyczenie_Klient_WybierzController implements Initializable
         // do what you have to do
         stage.close();
     }
-
-    
 
     @FXML
     void Czysc() {
@@ -276,6 +273,7 @@ public class Okno_Wypozyczenie_Klient_WybierzController implements Initializable
         TableColumn7.setCellValueFactory(
                 new PropertyValueFactory<klient_dk_2015, Integer>("adres_nr_dom_dk_2015")//nazwa pola w klasie
         );
+        Wczytaj();
     }
 
 }

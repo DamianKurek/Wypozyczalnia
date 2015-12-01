@@ -12,48 +12,6 @@
    <children>
       <TabPane layoutX="90.0" layoutY="59.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-          <Tab text="Nowy">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <GridPane layoutX="166.0" layoutY="123.0" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="496.0" text="id" />
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="568.0" text="Imie:" GridPane.rowIndex="1" />
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="579.0" text="Nazwisko" GridPane.rowIndex="2" />
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="448.0" text="Miasto:" GridPane.rowIndex="3" />
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="486.0" text="Ulica" GridPane.rowIndex="4" />
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="406.0" text="nr domu" GridPane.rowIndex="5" />
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="461.0" text="Telefon" GridPane.rowIndex="6" />
-                              <Button mnemonicParsing="false" onAction="#Czysc" prefHeight="55.0" prefWidth="455.0" text="Wyszyść" GridPane.rowIndex="7" />
-                              <Button mnemonicParsing="false" onAction="#Zapisz" prefHeight="53.0" prefWidth="476.0" text="Zapisz" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                              <TextField fx:id="text_id" GridPane.columnIndex="1" />
-                              <TextField fx:id="text_imie" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField fx:id="text_nazwisko" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField fx:id="text_miasto" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <TextField fx:id="text_ulica" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <TextField fx:id="text_nr_domu" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                              <TextField fx:id="text_telefon" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                           </children>
-                        </GridPane>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
           <Tab text="Lista">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -138,6 +96,48 @@
                               </AnchorPane>
                            </children>
                         </HBox>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Nowy">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane layoutX="166.0" layoutY="123.0" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="496.0" text="id" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="568.0" text="Imie:" GridPane.rowIndex="1" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="579.0" text="Nazwisko" GridPane.rowIndex="2" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="448.0" text="Miasto:" GridPane.rowIndex="3" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="486.0" text="Ulica" GridPane.rowIndex="4" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="406.0" text="nr domu" GridPane.rowIndex="5" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="461.0" text="Telefon" GridPane.rowIndex="6" />
+                              <Button mnemonicParsing="false" onAction="#Czysc" prefHeight="55.0" prefWidth="455.0" text="Wyszyść" GridPane.rowIndex="7" />
+                              <Button mnemonicParsing="false" onAction="#Zapisz" prefHeight="53.0" prefWidth="476.0" text="Zapisz" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <TextField fx:id="text_id" GridPane.columnIndex="1" />
+                              <TextField fx:id="text_imie" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="text_nazwisko" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="text_miasto" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="text_ulica" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="text_nr_domu" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="text_telefon" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                           </children>
+                        </GridPane>
                      </children>
                   </AnchorPane>
             </content>

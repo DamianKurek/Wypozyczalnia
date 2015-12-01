@@ -62,6 +62,7 @@ public class Okno_Auta_Controller implements Initializable {
     @FXML
     void Zapisz() {
         auta_dk_2015 auto = new auta_dk_2015();
+        auto.setId_naprawy_dk_2015(0);
         auto.setMarka_dk_2015(text_marka.getText());
         auto.setModel_dk_2015(text_model.getText());
         auto.setRocznik_dk_2015(Integer.parseInt(text_rocznik.getText()));

@@ -75,16 +75,16 @@ public class Okno_PracownikController implements Initializable {
 
     @FXML
     void Zapisz() {
-//        pracownik_dk_2015 pracownik = new pracownik_dk_2015();
-//        pracownik.setImie_dk_2015(text_imie.getText());
-//        pracownik.setNazwisko_dk_2015(text_nazwisko.getText());
-//        pracownik.setData_zatrudnienia_dk_2015(Date.valueOf(data.getValue()));
-//        session = sesia.openSession();
-//        //zapisane do bazy
-//        session.beginTransaction();
-//        session.save(pracownik);
-//        session.getTransaction().commit();
-//        session.close();
+        pracownik_dk_2015 pracownik = new pracownik_dk_2015();
+        pracownik.setImie_dk_2015(text_imie.getText());
+        pracownik.setNazwisko_dk_2015(text_nazwisko.getText());
+        pracownik.setData_zatrudnienia_dk_2015(Date.valueOf(data.getValue()));
+        session = sesia.openSession();
+        //zapisane do bazy
+        session.beginTransaction();
+        session.save(pracownik);
+        session.getTransaction().commit();
+        session.close();
         
         
  

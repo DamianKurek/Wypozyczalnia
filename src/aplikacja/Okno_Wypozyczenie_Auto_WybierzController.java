@@ -20,7 +20,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Expression;
 import tabele.auta_dk_2015;
+import tabele.pracownik_dk_2015;
 
 /**
  * FXML Controller class
@@ -63,6 +67,7 @@ public class Okno_Wypozyczenie_Auto_WybierzController implements Initializable {
     @FXML
     void Zapisz() {
         auta_dk_2015 auto = new auta_dk_2015();
+        auto.setId_naprawy_dk_2015(0);
         auto.setMarka_dk_2015(text_marka.getText());
         auto.setModel_dk_2015(text_model.getText());
         auto.setRocznik_dk_2015(Integer.parseInt(text_rocznik.getText()));
@@ -81,13 +86,14 @@ public class Okno_Wypozyczenie_Auto_WybierzController implements Initializable {
         dane.clear();
         session = sesia.openSession();
         session.beginTransaction();
-        List<auta_dk_2015> wynik = session.createQuery("from auta_dk_2015").list();
+        Criterion imie = Expression.eq("id_naprawy_dk_2015", 0);
+        Criteria crit = session.createCriteria(auta_dk_2015.class);
+        crit.add(imie);
+        
+        List<auta_dk_2015> wynik = crit.list();
         session.close();
         for (int x = 0; x < wynik.size(); x++) {
-//            System.out.println(wynik.get(x).getId_dk_2015() + " "
-//                    + wynik.get(x).getImie_dk_2015() + " "
-//                    + wynik.get(x).getNazwisko_dk_2015()
-//            );
+
             dane.add(wynik.get(x));
         }
     }
@@ -117,6 +123,7 @@ public class Okno_Wypozyczenie_Auto_WybierzController implements Initializable {
         );
         TableColumn7.setCellValueFactory(new PropertyValueFactory<auta_dk_2015, Integer>("cena_doba_dk_2015")//nazwa pola w klasie
         );
+        Wczytaj();
     }
 
 }

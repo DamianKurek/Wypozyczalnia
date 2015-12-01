@@ -372,12 +372,12 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="13">
                            <children>
-                              <TextField fx:id="wypozyczenie_liczba_dni" layoutX="70.0" layoutY="4.0" prefHeight="25.0" prefWidth="82.0" />
+                              <TextField fx:id="wypozyczenie_liczba_dni" editable="false" layoutX="70.0" layoutY="4.0" onMouseClicked="#Policz_dni" prefHeight="25.0" prefWidth="82.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="12">
                            <children>
-                              <DatePicker fx:id="wypozyczenie_end" layoutX="32.0" layoutY="4.0" />
+                              <DatePicker fx:id="wypozyczenie_end" layoutX="32.0" layoutY="4.0" onHiding="#Policz_dni" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -394,7 +394,7 @@
                            </children></AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="250.0">
                            <children>
-                              <Button layoutX="99.0" layoutY="18.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" text="Zapisz" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Button layoutX="99.0" layoutY="18.0" mnemonicParsing="false" onAction="#Zapisz" prefHeight="60.0" prefWidth="250.0" text="Zapisz" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children></AnchorPane>
                      </children>
                   </HBox>

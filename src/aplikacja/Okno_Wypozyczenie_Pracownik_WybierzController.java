@@ -86,9 +86,7 @@ public class Okno_Wypozyczenie_Pracownik_WybierzController implements Initializa
         session.save(pracownik);
         session.getTransaction().commit();
         session.close();
-        
-        
- 
+
     }
 
     @FXML
@@ -165,12 +163,14 @@ public class Okno_Wypozyczenie_Pracownik_WybierzController implements Initializa
         }
 
     }
-@FXML
+
+    @FXML
     void Wybierz_z_Tabeli() {
         zamowienie_pracownik = tabela.getSelectionModel().getSelectedItem();
         Stage stage = (Stage) tabela.getScene().getWindow();
         stage.close();
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -189,8 +189,8 @@ public class Okno_Wypozyczenie_Pracownik_WybierzController implements Initializa
         TableColumn4.setCellValueFactory(
                 new PropertyValueFactory<pracownik_dk_2015, String>("data_zatrudnienia_dk_2015")//nazwa pola w klasie
         );
+        Wczytaj();
 
-        
     }
 
 }
