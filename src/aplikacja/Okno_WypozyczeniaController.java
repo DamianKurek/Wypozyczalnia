@@ -44,7 +44,7 @@ public class Okno_WypozyczeniaController implements Initializable {
 
     @FXML
     private void OknopWypozyczenieZwrot(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Wypozyczenie_Zwrot.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Wypozyczenie_Lista2.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Zwrot auta");

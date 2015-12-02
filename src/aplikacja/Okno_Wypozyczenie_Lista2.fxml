@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplikacja.Okno_Wypozyczenie_Lista2Controller">
+   <children>
+      <HBox prefHeight="400.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="371.0" prefWidth="650.0">
+               <children>
+                  <TableView fx:id="tabela" onMouseClicked="#WczytajzTabeli" prefHeight="371.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="TableColumn1" prefWidth="29.0" text="Id" />
+                        <TableColumn fx:id="TableColumn2" prefWidth="90.0" text="Imie Klienta" />
+                        <TableColumn fx:id="TableColumn3" prefWidth="120.0" text="Nazwisko Klienta" />
+                        <TableColumn fx:id="TableColumn4" minWidth="4.0" prefWidth="107.0" text="Marka Auta" />
+                        <TableColumn fx:id="TableColumn5" prefWidth="85.0" text="Model Auta" />
+                        <TableColumn fx:id="TableColumn6" prefWidth="106.0" text="Wypożyczenie" />
+                        <TableColumn fx:id="TableColumn7" prefWidth="114.0" text="Zwrot" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="371.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#Wczytaj" prefHeight="46.0" prefWidth="207.0" text="Wczytaj" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="54.0" prefWidth="201.0" text="Wyszukiwanie" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="45.0" prefWidth="201.0" text="Id" AnchorPane.bottomAnchor="-14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0" />
+                              <Line endX="100.0" layoutX="104.0" startX="-100.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="text_id_szukaj" alignment="CENTER" layoutY="10.0" prefHeight="26.0" prefWidth="208.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="45.0" prefWidth="201.0" text="Nazwisko" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Line endX="100.0" layoutX="107.0" startX="-100.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Line endX="100.0" layoutX="101.0" layoutY="45.0" startX="-100.0" />
+                              <TextField fx:id="text_nazwisko_szukaj" layoutX="1.0" layoutY="11.0" prefHeight="25.0" prefWidth="201.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="11.0" />
+                              <Line endX="100.0" layoutX="103.0" startX="-100.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Button layoutX="61.0" layoutY="11.0" mnemonicParsing="false" onAction="#Szukaj" prefHeight="46.0" prefWidth="201.0" text="Szukaj" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

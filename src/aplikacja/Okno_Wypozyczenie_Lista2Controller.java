@@ -7,6 +7,8 @@ package aplikacja;
 
 import static aplikacja.Wypozyczalnia.sesia;
 import static aplikacja.Wypozyczalnia.session;
+import static aplikacja.Wypozyczalnia.zamowienie;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -15,11 +17,15 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -34,7 +40,7 @@ import tabele.wypozyczenie_dk_2015;
  *
  * @author damian
  */
-public class Okno_Wypozyczenie_ListaController implements Initializable {
+public class Okno_Wypozyczenie_Lista2Controller implements Initializable {
 
     @FXML
     TableView<zwrotTabela> tabela;
@@ -59,6 +65,26 @@ public class Okno_Wypozyczenie_ListaController implements Initializable {
     public final ObservableList<zwrotTabela> dane = FXCollections.observableArrayList();
 
     @FXML
+    void Odswiez() {
+    }
+
+    @FXML
+    void WczytajzTabeli() throws IOException {
+        zamowienie = tabela.getSelectionModel().getSelectedItem().getId_wypozyczenie_dk_2015();
+
+        System.out.print(zamowienie);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Wypozyczenie_Zwrot.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Zwrot auta");
+        Scene scenaWykres = new Scene(root1);
+        stage.setScene(scenaWykres);
+        stage.show();
+        stage = (Stage) text_id_szukaj.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
     void Wczytaj() {
         dane.clear();
         session = sesia.openSession();
@@ -66,15 +92,15 @@ public class Okno_Wypozyczenie_ListaController implements Initializable {
         List<wypozyczenie_dk_2015> wynik = session.createQuery("from wypozyczenie_dk_2015").list();
         session.close();
         for (int x = 0; x < wynik.size(); x++) {
-          zwrotTabela w = new zwrotTabela();
-                w.setId_wypozyczenie_dk_2015(wynik.get(x).getId_wypozyczenie_dk_2015());
-                w.setImie_dk_2015(wynik.get(x).getId_klient_wypozyczenie_dk_2015().getImie_dk_2015());
-                w.setNazwisko_dk_2015(wynik.get(x).getId_klient_wypozyczenie_dk_2015().getNazwisko_dk_2015());
-                w.setMarka_dk_2015(wynik.get(x).getId_auta_wypozyczenie_dk_2015().getMarka_dk_2015());
-                w.setModel_dk_2015(wynik.get(x).getId_auta_wypozyczenie_dk_2015().getModel_dk_2015());
-                w.setData_wypozyczenia_dk_2015((Date) wynik.get(x).getData_wypozyczenia_dk_2015());
-                w.setData_zwrotu_dk_2015((Date) wynik.get(x).getData_zwrotu_dk_2015());
-                dane.add(w);
+            zwrotTabela w = new zwrotTabela();
+            w.setId_wypozyczenie_dk_2015(wynik.get(x).getId_wypozyczenie_dk_2015());
+            w.setImie_dk_2015(wynik.get(x).getId_klient_wypozyczenie_dk_2015().getImie_dk_2015());
+            w.setNazwisko_dk_2015(wynik.get(x).getId_klient_wypozyczenie_dk_2015().getNazwisko_dk_2015());
+            w.setMarka_dk_2015(wynik.get(x).getId_auta_wypozyczenie_dk_2015().getMarka_dk_2015());
+            w.setModel_dk_2015(wynik.get(x).getId_auta_wypozyczenie_dk_2015().getModel_dk_2015());
+            w.setData_wypozyczenia_dk_2015((Date) wynik.get(x).getData_wypozyczenia_dk_2015());
+            w.setData_zwrotu_dk_2015((Date) wynik.get(x).getData_zwrotu_dk_2015());
+            dane.add(w);
 //            
         }
     }

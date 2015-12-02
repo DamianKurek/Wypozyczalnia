@@ -25,6 +25,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import tabele.auta_dk_2015;
 import tabele.pracownik_dk_2015;
+import tabele.wypozyczenie_dk_2015;
 
 /**
  *
@@ -36,6 +37,7 @@ public class Wypozyczalnia extends Application {
     static public klient_dk_2015 zamowienie_klient;
     static public pracownik_dk_2015 zamowienie_pracownik;
     static public auta_dk_2015 zamowienie_auto;
+    static public int zamowienie;
     @Override
     public void start(Stage stage) throws Exception {
         
