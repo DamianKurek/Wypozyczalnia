@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Expression;
 import tabele.klient_dk_2015;
@@ -31,13 +32,16 @@ public class Okno_Wypozyczenie_ZwrotController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         session = sesia.openSession();
-        klient_dk_2015 klient = new klient_dk_2015();
-        klient.setId_dk_2015(17);
-            Criterion imie = Expression.eq("id_klient_wypozyczenie_dk_2015", klient);
-            Criteria crit = session.createCriteria(wypozyczenie_dk_2015.class);
-            crit.add(imie);
-            wypozyczenie_dk_2015 p = (wypozyczenie_dk_2015)crit.uniqueResult();
-            System.out.print(p.getKoszt_dk_2015());
+//        klient_dk_2015 klient = new klient_dk_2015();
+//        klient.setId_dk_2015(17);
+//            Criterion imie = Expression.eq("id_klient_wypozyczenie_dk_2015", klient);
+//            Criteria crit = session.createCriteria(wypozyczenie_dk_2015.class);
+//            crit.add(imie);
+//            wypozyczenie_dk_2015 p = (wypozyczenie_dk_2015)crit.uniqueResult();
+//            System.out.print(p.getKoszt_dk_2015());
+        Query query = session.createQuery("from wypozyczenie_dk_2015 as w JOIN fetch w.id_auta_wypozyczenie_dk_2015 where w.id_auta_wypozyczenie_dk_2015.model_dk_2015 is 'Insignia'");
+        List<wypozyczenie_dk_2015> list = query.list();
+        System.out.print(list.get(0).getKoszt_dk_2015());
     }    
     
 }

@@ -8,6 +8,7 @@ package aplikacja;
 import static aplikacja.Wypozyczalnia.sesia;
 import static aplikacja.Wypozyczalnia.session;
 import java.net.URL;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -21,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javax.persistence.EntityManager;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Expression;
 import tabele.klient_dk_2015;
@@ -62,27 +64,25 @@ public class Okno_Wypozyczenie_ListaController implements Initializable {
 
     @FXML
     void Szukaj() {
-//        session = sesia.openSession();
-//        klient_dk_2015 klient = new klient_dk_2015();
-//        klient.setImie_dk_2015(text_nazwisko_szukaj.getText());
-//        Criterion imie = Expression.eq("id_klient_wypozyczenie_dk_2015", klient);
-//        Criteria crit = session.createCriteria(wypozyczenie_dk_2015.class);
-//        crit.add(imie);
-//        List <wypozyczenie_dk_2015> wynik = crit.list();
-//        //System.out.print(wynik.get(0).getId_klient_wypozyczenie_dk_2015().getImie_dk_2015());
-//        zwrotTabela wynikTabel = new zwrotTabela();
-//       // for(int x=0;x<wynik.size();x++){
-//            //wynikTabel.setId_wypozyczenie_dk_2015(wynik.get(x).getId_wypozyczenie_dk_2015());
-//            //wynikTabel.setImie_dk_2015(wynik.get(x).getId_klient_wypozyczenie_dk_2015().getImie_dk_2015());
-//            //dane.add(wynikTabel);
-//        //}
-       session = sesia.openSession();
-       String t="Kurek";
-            Criterion imie = Expression.eq("id_klient_wypozyczenie_dk_2015", t);
-            Criteria crit = session.createCriteria(wypozyczenie_dk_2015.class);
-            crit.add(imie);
-            List<wypozyczenie_dk_2015> p = crit.list();
-   
+        if (!text_nazwisko_szukaj.getText().isEmpty()) {
+            dane.clear();
+            session = sesia.openSession();
+            Query query = session.createQuery("from wypozyczenie_dk_2015 as w JOIN fetch w.id_klient_wypozyczenie_dk_2015 where w.id_klient_wypozyczenie_dk_2015.nazwisko_dk_2015 is '"+text_nazwisko_szukaj.getText()+"'");
+            List<wypozyczenie_dk_2015> list = query.list();
+            
+            for(int x=0;x<list.size();x++){
+                zwrotTabela w = new zwrotTabela();
+                w.setId_wypozyczenie_dk_2015(list.get(x).getId_wypozyczenie_dk_2015());
+                w.setImie_dk_2015(list.get(x).getId_klient_wypozyczenie_dk_2015().getImie_dk_2015());
+                w.setNazwisko_dk_2015(list.get(x).getId_klient_wypozyczenie_dk_2015().getNazwisko_dk_2015());
+                w.setMarka_dk_2015(list.get(x).getId_auta_wypozyczenie_dk_2015().getMarka_dk_2015());
+                w.setModel_dk_2015(list.get(x).getId_auta_wypozyczenie_dk_2015().getModel_dk_2015());
+                w.setData_wypozyczenia_dk_2015((Date) list.get(x).getData_wypozyczenia_dk_2015());
+                w.setData_zwrotu_dk_2015((Date) list.get(x).getData_zwrotu_dk_2015());
+                dane.add(w);
+                
+            }
+        }
     }
 
     @Override

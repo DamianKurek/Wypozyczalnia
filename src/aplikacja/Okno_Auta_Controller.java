@@ -14,12 +14,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Expression;
 import tabele.auta_dk_2015;
+import tabele.klient_dk_2015;
 
 /**
  * FXML Controller class
@@ -40,6 +47,18 @@ public class Okno_Auta_Controller implements Initializable {
     TextField text_skrzynia_biegow;
     @FXML
     TextField text_cena;
+    @FXML
+    TextField text_szukaj_marka;
+    @FXML
+    TextField text_szukaj_model;
+    @FXML
+    ChoiceBox szukaj_skrzynia;
+    @FXML
+    TextField text_szukaj_cena_stop;
+    @FXML
+    TextField text_szukaj_cena_start;
+    @FXML
+    CheckBox check_szukaj_dostepne;
     @FXML
     TableView<auta_dk_2015> tabela;
     @FXML
@@ -92,6 +111,64 @@ public class Okno_Auta_Controller implements Initializable {
         }
     }
 
+    @FXML
+    void Szukaj() {
+        if (!text_szukaj_marka.getText().isEmpty()) {
+            dane.clear();
+            session = sesia.openSession();
+            Criterion id = Expression.eq("marka_dk_2015", text_szukaj_marka.getText());
+            Criteria crit = session.createCriteria(auta_dk_2015.class);
+            crit.add(id);
+            List<auta_dk_2015> p2 = crit.list();
+            if (!p2.isEmpty()) {
+                for (int x = 0; x < p2.size(); x++) {
+                    dane.add(p2.get(x));
+                }
+            }
+        }
+        if (!text_szukaj_model.getText().isEmpty()) {
+            dane.clear();
+            session = sesia.openSession();
+            Criterion id = Expression.eq("model_dk_2015", text_szukaj_model.getText());
+            Criteria crit = session.createCriteria(auta_dk_2015.class);
+            crit.add(id);
+            List<auta_dk_2015> p2 = crit.list();
+            if (!p2.isEmpty()) {
+                for (int x = 0; x < p2.size(); x++) {
+                    dane.add(p2.get(x));
+                }
+            }
+        }
+        if (szukaj_skrzynia.getValue()!=null) {
+            dane.clear();
+            session = sesia.openSession();
+            Criterion id = Expression.eq("skrzynia_biegow_dk_2015", szukaj_skrzynia.getValue().toString());
+            Criteria crit = session.createCriteria(auta_dk_2015.class);
+            crit.add(id);
+            List<auta_dk_2015> p2 = crit.list();
+            if (!p2.isEmpty()) {
+                for (int x = 0; x < p2.size(); x++) {
+                    dane.add(p2.get(x));
+                }
+            }
+        }
+        if (!text_szukaj_cena_stop.getText().isEmpty()) {
+            dane.clear();
+            session = sesia.openSession();
+            Criterion id = Expression.between("cena_doba_dk_2015", 
+                    Integer.parseInt(text_szukaj_cena_start.getText()),
+                    Integer.parseInt(text_szukaj_cena_stop.getText()));
+            Criteria crit = session.createCriteria(auta_dk_2015.class);
+            crit.add(id);
+            List<auta_dk_2015> p2 = crit.list();
+            if (!p2.isEmpty()) {
+                for (int x = 0; x < p2.size(); x++) {
+                    dane.add(p2.get(x));
+                }
+            }
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tabela.setItems(dane);
@@ -110,6 +187,8 @@ public class Okno_Auta_Controller implements Initializable {
         );
         TableColumn7.setCellValueFactory(new PropertyValueFactory<auta_dk_2015, Integer>("cena_doba_dk_2015")//nazwa pola w klasie
         );
+        szukaj_skrzynia.setItems(FXCollections.observableArrayList("manualna", "automatyczna"));
+    
     }
 
 }

@@ -66,7 +66,7 @@
                                                       </AnchorPane>
                                                       <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                          <children>
-                                                            <TextField layoutX="-2.0" layoutY="11.0" />
+                                                            <TextField fx:id="text_szukaj_marka" layoutX="-2.0" layoutY="11.0" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -88,7 +88,7 @@
                                                       </AnchorPane>
                                                       <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                          <children>
-                                                            <TextField layoutX="-2.0" layoutY="11.0" />
+                                                            <TextField fx:id="text_szukaj_model" layoutX="-2.0" layoutY="11.0" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -110,7 +110,7 @@
                                                       </AnchorPane>
                                                       <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                          <children>
-                                                            <ChoiceBox layoutX="-2.0" layoutY="11.0" prefWidth="150.0" />
+                                                            <ChoiceBox fx:id="szukaj_skrzynia" layoutX="-2.0" layoutY="11.0" prefWidth="150.0" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -141,7 +141,7 @@
                                                       </AnchorPane>
                                                       <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                          <children>
-                                                            <TextField layoutY="8.0" prefHeight="25.0" prefWidth="56.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0" />
+                                                            <TextField fx:id="text_szukaj_cena_start" layoutY="8.0" prefHeight="25.0" prefWidth="56.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0" />
                                                          </children>
                                                       </AnchorPane>
                                                       <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -155,7 +155,7 @@
                                                       </AnchorPane>
                                                       <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                          <children>
-                                                            <TextField layoutY="9.0" prefHeight="25.0" prefWidth="57.0" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="9.0" />
+                                                            <TextField fx:id="text_szukaj_cena_stop" layoutY="9.0" prefHeight="25.0" prefWidth="57.0" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="9.0" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -177,7 +177,7 @@
                                                       </AnchorPane>
                                                       <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                          <children>
-                                                            <CheckBox layoutX="36.0" layoutY="15.0" mnemonicParsing="false" text="CheckBox" />
+                                                            <CheckBox fx:id="check_szukaj_dostepne" layoutX="36.0" layoutY="15.0" mnemonicParsing="false" text="CheckBox" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -186,7 +186,7 @@
                                           </AnchorPane>
                                           <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                              <children>
-                                                <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="289.0" text="Szukaj" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <Button mnemonicParsing="false" onAction="#Szukaj" prefHeight="53.0" prefWidth="289.0" text="Szukaj" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                              </children>
                                           </AnchorPane>
                                        </children>
