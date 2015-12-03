@@ -12,7 +12,7 @@
    <children>
       <HBox prefHeight="520.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="500.0">
                <children>
                   <GridPane prefHeight="520.0" prefWidth="500.0">
                      <children>
@@ -57,7 +57,6 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="367.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Odswiez" prefHeight="25.0" prefWidth="25.0" style="-fx-graphic: url('aplikacja/refresh.png');" />
                            </children>
                         </AnchorPane>
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
@@ -176,7 +175,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <children>
-                              <Label fx:id="id_auto" alignment="CENTER" layoutX="3.0" layoutY="6.0" prefHeight="33.0" prefWidth="33.0" text="Id" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <Label fx:id="id_auto" alignment="CENTER" layoutX="-20.0" layoutY="6.0" prefHeight="35.0" prefWidth="53.0" text="Id" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -346,7 +345,131 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+            <Line endX="1.0" endY="520.0" stroke="#27a9b5" />
+            <AnchorPane prefHeight="520.0" prefWidth="352.0">
+               <children>
+                  <VBox prefHeight="520.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #e7afaf;">
+                           <children>
+                              <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="300.0" style="-fx-background-color: #27a9b5;" text="Zwrot Auta" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="System Bold" size="29.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="300.0" layoutY="86.0" stroke="#27a9b5" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="300.0" style="-fx-background-color: #e4d7d7;">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="301.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane prefHeight="86.0" prefWidth="359.0">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="101.0" layoutY="9.0" prefHeight="35.0" prefWidth="230.0" text="Id Wypożyczenia" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Line endX="300.0" layoutY="34.0" stroke="#27a9b5" />
+                                          <Label fx:id="text_id_wypozyczenie" layoutX="273.0" layoutY="5.0" text="id">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0">
+                           <children>
+                              <CheckBox fx:id="check_uszkodzony" layoutX="83.0" mnemonicParsing="false" onAction="#AutoUszkodzone" prefHeight="50.0" prefWidth="134.0" text="Auto uszkodzone" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="83.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </CheckBox>
+                              <Line endX="300.0" layoutY="50.0" stroke="#27a9b5" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0">
+                           <children>
+                              <HBox prefHeight="40.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="54.0" layoutY="12.0" prefHeight="40.0" prefWidth="150.0" text="Data zwrotu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <DatePicker fx:id="data_zwrotu" layoutX="22.0" layoutY="8.0" onHiding="#PoliczOpoznienie" prefHeight="25.0" prefWidth="119.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0">
+                           <children>
+                              <HBox layoutX="36.0" layoutY="-30.0" prefHeight="40.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane prefHeight="40.0" prefWidth="193.0">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="60.0" layoutY="12.0" prefHeight="40.0" prefWidth="147.0" text="Kara:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="text_kara" layoutX="29.0" layoutY="8.0" prefHeight="25.0" prefWidth="96.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                              <Line endX="300.0" endY="40.0" startY="40.0" stroke="#27a9b5" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="116.0" prefWidth="300.0">
+                           <children>
+                              <Line endX="300.0" endY="116.0" startY="116.0" stroke="#27a9b5" />
+                              <HBox layoutX="50.0" layoutY="8.0" prefHeight="116.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="61.0" layoutY="50.0" prefHeight="116.0" prefWidth="150.0" text="Do zapłaty" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="System Bold" size="17.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="text_do_zaplaty" layoutX="27.0" layoutY="46.0" prefHeight="25.0" prefWidth="96.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="136.0" prefWidth="300.0">
+                           <children>
+                              <Button layoutX="124.0" layoutY="82.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" text="Button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="82.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
          </children>
       </HBox>
    </children>

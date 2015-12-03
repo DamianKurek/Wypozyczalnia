@@ -72,7 +72,6 @@ public class Okno_Wypozyczenie_Lista2Controller implements Initializable {
     void WczytajzTabeli() throws IOException {
         zamowienie = tabela.getSelectionModel().getSelectedItem().getId_wypozyczenie_dk_2015();
 
-        System.out.print(zamowienie);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Wypozyczenie_Zwrot.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
