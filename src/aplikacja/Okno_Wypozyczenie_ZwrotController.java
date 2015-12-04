@@ -17,11 +17,12 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import static java.time.temporal.TemporalQueries.localDate;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -33,6 +34,7 @@ import org.hibernate.criterion.Expression;
 import tabele.klient_dk_2015;
 import tabele.pracownik_dk_2015;
 import tabele.wypozyczenie_dk_2015;
+import tabele.zwrot_dk_2015;
 
 /**
  * FXML Controller class
@@ -111,25 +113,39 @@ public class Okno_Wypozyczenie_ZwrotController implements Initializable {
         if (!check_uszkodzony.isSelected()) {
             KaraUszkodzenie = 0;
         }
-        doZaplaty=Integer.parseInt(wypozyczenie_calkowity_koszt.getText()+KaraUszkodzenie+KaraOpoznienie);
+        doZaplaty = Integer.parseInt(wypozyczenie_calkowity_koszt.getText()) + KaraUszkodzenie + KaraOpoznienie;
         text_kara.setText(String.valueOf(KaraUszkodzenie + KaraOpoznienie));
         text_do_zaplaty.setText(String.valueOf(doZaplaty));
-        
+
     }
 
     @FXML
     void PoliczOpoznienie() {
-        KaraOpoznienie=0;
-        int dni;
-        dni = data_zwrotu.getValue().getDayOfYear() - wypozyczenie_end.getValue().getDayOfYear();
-        if(dni>0)
-            KaraOpoznienie=dni*200;
-        else
-            KaraOpoznienie=0;
-        text_kara.setText(String.valueOf(KaraUszkodzenie + KaraOpoznienie));
-//        text_do_zaplaty.setText(String.
-//        Integer.parseInt(wypozyczenie_calkowity_koszt.getText())
-//        );
+        if (data_zwrotu.getValue().compareTo(wypozyczenie_end.getValue()) < 0) {
+            data_zwrotu.setValue(LocalDate.now());
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Błąd daty");
+            alert.setContentText("Data zwrotu nie możę być wcześniejsza niż data końca wypozyczenia");
+            alert.showAndWait();
+
+        } else {
+
+            KaraOpoznienie = 0;
+            int dni;
+            dni = data_zwrotu.getValue().getDayOfYear() - wypozyczenie_end.getValue().getDayOfYear();
+            if (dni > 0) {
+                KaraOpoznienie = dni * 200;
+            }
+            if (dni < 0) {
+                KaraOpoznienie = 0;
+
+            }
+            text_kara.setText(String.valueOf(KaraUszkodzenie + KaraOpoznienie));
+            doZaplaty = Integer.parseInt(wypozyczenie_calkowity_koszt.getText()) + KaraUszkodzenie + KaraOpoznienie;
+            text_do_zaplaty.setText(String.valueOf(doZaplaty));
+        }
+
     }
 
     @FXML
@@ -138,6 +154,25 @@ public class Okno_Wypozyczenie_ZwrotController implements Initializable {
         wypozyczenie_calkowity_koszt.setText(String.valueOf(
                 (wypozyczenie_end.getValue().getDayOfYear() - wypozyczenie_start.getValue().getDayOfYear()) * zamowienie_auto.getCena_doba_dk_2015()
         ));
+
+    }
+
+    @FXML
+    void Zapisz() {
+        session = sesia.openSession();
+        session.beginTransaction();
+        Criterion id = Expression.eq("id_wypozyczenie_dk_2015", zamowienie);
+        Criteria crit = session.createCriteria(wypozyczenie_dk_2015.class);
+        crit.add(id);
+        wypozyczenie_dk_2015 wynik = (wypozyczenie_dk_2015) crit.uniqueResult();
+        
+        zwrot_dk_2015 zwrot = new zwrot_dk_2015();
+        zwrot.setId_wypozyczenie_dk_2015(wynik);
+        zwrot.setKara_dk_2015(Integer.parseInt(text_kara.getText()));
+        zwrot.setKoszt_dk_2015(Integer.parseInt(text_do_zaplaty.getText()));
+        zwrot.setData_zwrotu_dk_2015(Date.valueOf(data_zwrotu.getValue()));
+        session.save(zwrot);
+        session.close();
 
     }
 
@@ -170,11 +205,11 @@ public class Okno_Wypozyczenie_ZwrotController implements Initializable {
         nr_domu_klient.setText(String.valueOf(wynik.getId_klient_wypozyczenie_dk_2015().getAdres_nr_dom_dk_2015()));
         miasto_klient.setText(wynik.getId_klient_wypozyczenie_dk_2015().getAdres_miasto_dk_2015());
         telefon_klient.setText(String.valueOf(wynik.getId_klient_wypozyczenie_dk_2015().getNr_tel_dk_2015()));
-        Date date = wynik.getData_wypozyczenia_dk_2015();
+        Date date = (Date) wynik.getData_wypozyczenia_dk_2015();
         Instant instant = Instant.ofEpochMilli(date.getTime());
         LocalDate res = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
         wypozyczenie_start.setValue(res);
-        date = wynik.getData_zwrotu_dk_2015();
+        date = (Date) wynik.getData_zwrotu_dk_2015();
         instant = Instant.ofEpochMilli(date.getTime());
         res = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
         wypozyczenie_end.setValue(res);
@@ -184,8 +219,9 @@ public class Okno_Wypozyczenie_ZwrotController implements Initializable {
         ));
         text_id_wypozyczenie.setText(String.valueOf(wynik.getId_wypozyczenie_dk_2015()));
         data_zwrotu.setValue(LocalDate.now());
-        //PoliczOpoznienie();
+        PoliczOpoznienie();
         //wypozyczenie_calkowity_koszt;
+
     }
 
 }

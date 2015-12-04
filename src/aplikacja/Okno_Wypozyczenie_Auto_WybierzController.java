@@ -86,7 +86,7 @@ public class Okno_Wypozyczenie_Auto_WybierzController implements Initializable {
         dane.clear();
         session = sesia.openSession();
         session.beginTransaction();
-        Criterion imie = Expression.eq("id_naprawy_dk_2015", 0);
+        Criterion imie = Expression.eq("dostepny_dk_2015", true);
         Criteria crit = session.createCriteria(auta_dk_2015.class);
         crit.add(imie);
         
@@ -111,8 +111,8 @@ public class Okno_Wypozyczenie_Auto_WybierzController implements Initializable {
 
         TableColumn1.setCellValueFactory(new PropertyValueFactory<auta_dk_2015, Integer>("id_dk_2015")//nazwa pola w klasie
         );
-        TableColumn2.setCellValueFactory(new PropertyValueFactory<auta_dk_2015, Integer>("id_naprawy_dk_2015")//nazwa pola w klasie
-        );
+//        TableColumn2.setCellValueFactory(new PropertyValueFactory<auta_dk_2015, Integer>("id_naprawy_dk_2015")//nazwa pola w klasie
+//        );
         TableColumn3.setCellValueFactory(new PropertyValueFactory<auta_dk_2015, String>("marka_dk_2015")//nazwa pola w klasie
         );
         TableColumn4.setCellValueFactory(new PropertyValueFactory<auta_dk_2015, String>("model_dk_2015")//nazwa pola w klasie

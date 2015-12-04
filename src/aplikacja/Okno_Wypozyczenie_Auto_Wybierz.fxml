@@ -23,12 +23,11 @@
                                     <TableView fx:id="tabela" layoutX="69.0" layoutY="71.0" onMouseClicked="#Wybierz_z_Tabeli" prefHeight="371.0" prefWidth="622.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <columns>
                                         <TableColumn fx:id="TableColumn1" prefWidth="45.0" text="Id" />
-                                        <TableColumn fx:id="TableColumn2" prefWidth="56.0" text="Naprawa" />
                                           <TableColumn fx:id="TableColumn3" prefWidth="87.0" text="Marka" />
                                           <TableColumn fx:id="TableColumn4" prefWidth="92.0" text="Model" />
-                                          <TableColumn fx:id="TableColumn5" prefWidth="79.0" text="Rocznik" />
-                                          <TableColumn fx:id="TableColumn6" prefWidth="79.0" text="Skrzynia" />
-                                          <TableColumn fx:id="TableColumn7" prefWidth="73.0" text="Cena" />
+                                          <TableColumn fx:id="TableColumn5" prefWidth="96.0" text="Rocznik" />
+                                          <TableColumn fx:id="TableColumn6" prefWidth="97.0" text="Skrzynia" />
+                                          <TableColumn fx:id="TableColumn7" prefWidth="93.0" text="Cena" />
                                       </columns>
                                     </TableView>
                                  </children>

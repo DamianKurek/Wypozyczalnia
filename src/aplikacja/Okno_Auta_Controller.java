@@ -76,12 +76,15 @@ public class Okno_Auta_Controller implements Initializable {
     @FXML
     TableColumn<auta_dk_2015, Integer> TableColumn7;
     @FXML
+    TableColumn<auta_dk_2015, Boolean> TableColumn8;
+    @FXML
     public final ObservableList<auta_dk_2015> dane = FXCollections.observableArrayList();
 
     @FXML
     void Zapisz() {
         auta_dk_2015 auto = new auta_dk_2015();
-        auto.setId_naprawy_dk_2015(0);
+        //auto.setId_naprawy_dk_2015(1);
+        auto.setDostepny_dk_2015(true);
         auto.setMarka_dk_2015(text_marka.getText());
         auto.setModel_dk_2015(text_model.getText());
         auto.setRocznik_dk_2015(Integer.parseInt(text_rocznik.getText()));
@@ -93,6 +96,7 @@ public class Okno_Auta_Controller implements Initializable {
         session.save(auto);
         session.getTransaction().commit();
         session.close();
+        System.out.print(auto.getId_naprawy_dk_2015());
     }
 
     @FXML
@@ -186,6 +190,8 @@ public class Okno_Auta_Controller implements Initializable {
         TableColumn6.setCellValueFactory(new PropertyValueFactory<auta_dk_2015, String>("skrzynia_biegow_dk_2015")//nazwa pola w klasie
         );
         TableColumn7.setCellValueFactory(new PropertyValueFactory<auta_dk_2015, Integer>("cena_doba_dk_2015")//nazwa pola w klasie
+        );
+        TableColumn8.setCellValueFactory(new PropertyValueFactory<auta_dk_2015, Boolean>("dostepny_dk_2015")//nazwa pola w klasie
         );
         szukaj_skrzynia.setItems(FXCollections.observableArrayList("manualna", "automatyczna"));
     

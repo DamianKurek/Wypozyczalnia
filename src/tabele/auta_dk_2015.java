@@ -31,6 +31,7 @@ public class auta_dk_2015 {
     private int rocznik_dk_2015;
     private String skrzynia_biegow_dk_2015;
     private int cena_doba_dk_2015;
+    private boolean dostepny_dk_2015;
 
     public int getId_dk_2015() {
         return id_dk_2015;
@@ -86,6 +87,14 @@ public class auta_dk_2015 {
 
     public void setCena_doba_dk_2015(int cena_dk_2015) {
         this.cena_doba_dk_2015 = cena_dk_2015;
+    }
+
+    public boolean isDostepny_dk_2015() {
+        return dostepny_dk_2015;
+    }
+
+    public void setDostepny_dk_2015(boolean dostepny_dk_2015) {
+        this.dostepny_dk_2015 = dostepny_dk_2015;
     }
 
 }

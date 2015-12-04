@@ -26,7 +26,6 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Expression;
 import tabele.klient_dk_2015;
-import tabele.klient_dk_2015;
 import tabele.pracownik_dk_2015;
 
 /**
@@ -240,26 +239,19 @@ public class Okno_KlientController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         tabela.itemsProperty().setValue(dane);
-        TableColumn1.setCellValueFactory(
-                new PropertyValueFactory<klient_dk_2015, Integer>("id_dk_2015")//nazwa pola w klasie
+        TableColumn1.setCellValueFactory(new PropertyValueFactory<klient_dk_2015, Integer>("id_dk_2015")//nazwa pola w klasie
         );
-        TableColumn2.setCellValueFactory(
-                new PropertyValueFactory<klient_dk_2015, String>("imie_dk_2015")//nazwa pola w klasie
+        TableColumn2.setCellValueFactory(new PropertyValueFactory<klient_dk_2015, String>("imie_dk_2015")//nazwa pola w klasie
         );
-        TableColumn3.setCellValueFactory(
-                new PropertyValueFactory<klient_dk_2015, String>("nazwisko_dk_2015")//nazwa pola w klasie
+        TableColumn3.setCellValueFactory(new PropertyValueFactory<klient_dk_2015, String>("nazwisko_dk_2015")//nazwa pola w klasie
         );
-        TableColumn4.setCellValueFactory(
-                new PropertyValueFactory<klient_dk_2015, Integer>("nr_tel_dk_2015")//nazwa pola w klasie
+        TableColumn4.setCellValueFactory(new PropertyValueFactory<klient_dk_2015, Integer>("nr_tel_dk_2015")//nazwa pola w klasie
         );
-        TableColumn5.setCellValueFactory(
-                new PropertyValueFactory<klient_dk_2015, String>("adres_miasto_dk_2015")//nazwa pola w klasie
+        TableColumn5.setCellValueFactory(new PropertyValueFactory<klient_dk_2015, String>("adres_miasto_dk_2015")//nazwa pola w klasie
         );
-        TableColumn6.setCellValueFactory(
-                new PropertyValueFactory<klient_dk_2015, String>("adres_ulica_dk_2015")//nazwa pola w klasie
+        TableColumn6.setCellValueFactory(new PropertyValueFactory<klient_dk_2015, String>("adres_ulica_dk_2015")//nazwa pola w klasie
         );
-        TableColumn7.setCellValueFactory(
-                new PropertyValueFactory<klient_dk_2015, Integer>("adres_nr_dom_dk_2015")//nazwa pola w klasie
+        TableColumn7.setCellValueFactory(new PropertyValueFactory<klient_dk_2015, Integer>("adres_nr_dom_dk_2015")//nazwa pola w klasie
         );
     }
 
