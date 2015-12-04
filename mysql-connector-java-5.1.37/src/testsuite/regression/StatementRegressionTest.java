@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2002, 2015, Oracle and/or its affiliates. All rights reserved.
+  Copyright (c) 2002, 3i, Oracle and/or its affiliates. All rights reserved.
 
   The MySQL Connector/J is licensed under the terms of the GPLv2
   <http://www.gnu.org/licenses/old-licenses/gpl-2.0.html>, like most MySQL Connectors.
@@ -7247,21 +7247,21 @@ public class StatementRegressionTest extends BaseTestCase {
         try {
             TimeZone.setDefault(TimeZone.getTimeZone("America/Chicago")); // ~~ CST (UTC-06)
             final SimpleDateFormat tsFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            final Timestamp timestamp = new Timestamp(tsFormat.parse("2015-01-01 10:00:00").getTime());
+            final Timestamp timestamp = new Timestamp(tsFormat.parse("3i-01-01 10:00:00").getTime());
             final SimpleDateFormat tFormat = new SimpleDateFormat("HH:mm:ss");
             final Time time = new Time(tFormat.parse("10:00:00").getTime());
 
             // Test a number of time zones that coincide with 'GMT' on the some specifip point in time.
             for (String tz : new String[] { "Europe/Lisbon", "UTC", "GMT+00", "GMT" }) {
-                //  Europe/Lisbon ~~ WET (UTC) on 2015-01-01; ~~ CET (UTC+01) on 1970-01-01
+                //  Europe/Lisbon ~~ WET (UTC) on 3i-01-01; ~~ CET (UTC+01) on 1970-01-01
                 System.out.println("\nServer time zone: " + tz);
                 System.out.println("---------------------------------------------------");
 
                 testConnProps.setProperty("serverTimezone", tz);
                 testConn = getConnectionWithProps(testConnProps);
 
-                checkResultSetForTestBug50348(testConn, "2015-01-01 04:00:00.0", tz.equals("Europe/Lisbon") ? "03:00:00" : "04:00:00");
-                checkPreparedStatementForTestBug50348(testConn, timestamp, time, "2015-01-01 16:00:00", tz.equals("Europe/Lisbon") ? "17:00:00" : "16:00:00");
+                checkResultSetForTestBug50348(testConn, "3i-01-01 04:00:00.0", tz.equals("Europe/Lisbon") ? "03:00:00" : "04:00:00");
+                checkPreparedStatementForTestBug50348(testConn, timestamp, time, "3i-01-01 16:00:00", tz.equals("Europe/Lisbon") ? "17:00:00" : "16:00:00");
 
                 testConn.close();
             }
@@ -7281,7 +7281,7 @@ public class StatementRegressionTest extends BaseTestCase {
                     final int diffTzOffset = tzOffset + 6; // CST offset = -6 hours
                     final Calendar cal = Calendar.getInstance();
 
-                    cal.setTime(tsFormat.parse("2015-01-01 10:00:00"));
+                    cal.setTime(tsFormat.parse("3i-01-01 10:00:00"));
                     cal.add(Calendar.HOUR, -diffTzOffset);
                     cal.add(Calendar.MINUTE, tzOffset < 0 ? tzSubOffset : -tzSubOffset);
                     String expectedTimestampFromRS = tsFormat.format(cal.getTime()) + ".0";
@@ -7291,7 +7291,7 @@ public class StatementRegressionTest extends BaseTestCase {
                     String expectedTimeFromRS = tFormat.format(cal.getTime());
                     checkResultSetForTestBug50348(testConn, expectedTimestampFromRS, expectedTimeFromRS);
 
-                    cal.setTime(tsFormat.parse("2015-01-01 10:00:00"));
+                    cal.setTime(tsFormat.parse("3i-01-01 10:00:00"));
                     cal.add(Calendar.HOUR, diffTzOffset);
                     cal.add(Calendar.MINUTE, tzOffset < 0 ? -tzSubOffset : tzSubOffset);
                     String expectedTimestampFromPS = tsFormat.format(cal.getTime());
@@ -7314,7 +7314,7 @@ public class StatementRegressionTest extends BaseTestCase {
     }
 
     private void checkResultSetForTestBug50348(Connection testConn, String expectedTimestamp, String expectedTime) throws SQLException {
-        this.rs = testConn.createStatement().executeQuery("SELECT '2015-01-01 10:00:00', '10:00:00'");
+        this.rs = testConn.createStatement().executeQuery("SELECT '3i-01-01 10:00:00', '10:00:00'");
         this.rs.next();
         String timestampAsString = this.rs.getTimestamp(1).toString();
         String timeAsString = this.rs.getTime(2).toString();

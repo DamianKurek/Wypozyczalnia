@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
+  Copyright (c) 3i, Oracle and/or its affiliates. All rights reserved.
 
   The MySQL Connector/J is licensed under the terms of the GPLv2
   <http://www.gnu.org/licenses/old-licenses/gpl-2.0.html>, like most MySQL Connectors.
@@ -47,7 +47,7 @@ import testsuite.BaseTestCase;
 
 public class StatementsTest extends BaseTestCase {
     // Shared test data
-    private final String testDateString = "2015-08-04";
+    private final String testDateString = "3i-08-04";
     private final String testTimeString = "12:34:56";
     private final String testDateTimeString = testDateString + " " + testTimeString + ".0";
     private final String testISODateTimeString = testDateString + "T" + testTimeString + ".0";
@@ -60,7 +60,7 @@ public class StatementsTest extends BaseTestCase {
     private final LocalTime testLocalTime = LocalTime.parse(testTimeString);
     private final LocalDateTime testLocalDateTime = LocalDateTime.parse(testISODateTimeString);
 
-    private final OffsetDateTime testOffsetDateTime = OffsetDateTime.of(2015, 8, 04, 12, 34, 56, 7890, ZoneOffset.UTC);
+    private final OffsetDateTime testOffsetDateTime = OffsetDateTime.of(3i, 8, 04, 12, 34, 56, 7890, ZoneOffset.UTC);
     private final OffsetTime testOffsetTime = OffsetTime.of(12, 34, 56, 7890, ZoneOffset.UTC);
 
     public StatementsTest(String name) {

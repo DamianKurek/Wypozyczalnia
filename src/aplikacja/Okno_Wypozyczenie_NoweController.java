@@ -23,10 +23,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.hibernate.criterion.Projections;
-import tabele.auta_dk_2015;
-import tabele.klient_dk_2015;
-import tabele.pracownik_dk_2015;
-import tabele.wypozyczenie_dk_2015;
+import tabele.auta_dk_3i;
+import tabele.klient_dk_3i;
+import tabele.pracownik_dk_3i;
+import tabele.wypozyczenie_dk_3i;
 
 /**
  * FXML Controller class
@@ -91,13 +91,13 @@ public class Okno_Wypozyczenie_NoweController implements Initializable {
     
     @FXML
     void Odswiez_Klient() {
-        id_klient.setText(String.valueOf(zamowienie_klient.getId_dk_2015()));
-        imie_klient.setText(zamowienie_klient.getImie_dk_2015());
-        nazwisko_klient.setText(zamowienie_klient.getNazwisko_dk_2015());
-        ulica_klient.setText(zamowienie_klient.getAdres_ulica_dk_2015());
-        nr_domu_klient.setText(String.valueOf(zamowienie_klient.getAdres_nr_dom_dk_2015()));
-        miasto_klient.setText(zamowienie_klient.getAdres_miasto_dk_2015());
-        telefon_klient.setText(String.valueOf(zamowienie_klient.getNr_tel_dk_2015()));
+        id_klient.setText(String.valueOf(zamowienie_klient.getId_dk_3i()));
+        imie_klient.setText(zamowienie_klient.getImie_dk_3i());
+        nazwisko_klient.setText(zamowienie_klient.getNazwisko_dk_3i());
+        ulica_klient.setText(zamowienie_klient.getAdres_ulica_dk_3i());
+        nr_domu_klient.setText(String.valueOf(zamowienie_klient.getAdres_nr_dom_dk_3i()));
+        miasto_klient.setText(zamowienie_klient.getAdres_miasto_dk_3i());
+        telefon_klient.setText(String.valueOf(zamowienie_klient.getNr_tel_dk_3i()));
     }
     
     @FXML
@@ -113,9 +113,9 @@ public class Okno_Wypozyczenie_NoweController implements Initializable {
     
     @FXML
     void Odswiez_Pracownik() {
-        id_pracownik.setText(String.valueOf(zamowienie_pracownik.getId_dk_2015()));
-        imie_pracownik.setText(zamowienie_pracownik.getImie_dk_2015());
-        nazwisko_pracownik.setText(zamowienie_pracownik.getNazwisko_dk_2015());
+        id_pracownik.setText(String.valueOf(zamowienie_pracownik.getId_dk_3i()));
+        imie_pracownik.setText(zamowienie_pracownik.getImie_dk_3i());
+        nazwisko_pracownik.setText(zamowienie_pracownik.getNazwisko_dk_3i());
     }
     
     @FXML
@@ -131,12 +131,12 @@ public class Okno_Wypozyczenie_NoweController implements Initializable {
     
     @FXML
     public void Odswiez_Auto() {
-        id_auto.setText(String.valueOf(zamowienie_auto.getId_dk_2015()));
-        auto_marka.setText(zamowienie_auto.getMarka_dk_2015());
-        auto_model.setText(zamowienie_auto.getModel_dk_2015());
-        auto_rocznik.setText(String.valueOf(zamowienie_auto.getRocznik_dk_2015()));
-        auto_skrzynia.setText(zamowienie_auto.getSkrzynia_biegow_dk_2015());
-        auto_cena_doba.setText(String.valueOf(zamowienie_auto.getCena_doba_dk_2015()));
+        id_auto.setText(String.valueOf(zamowienie_auto.getId_dk_3i()));
+        auto_marka.setText(zamowienie_auto.getMarka_dk_3i());
+        auto_model.setText(zamowienie_auto.getModel_dk_3i());
+        auto_rocznik.setText(String.valueOf(zamowienie_auto.getRocznik_dk_3i()));
+        auto_skrzynia.setText(zamowienie_auto.getSkrzynia_biegow_dk_3i());
+        auto_cena_doba.setText(String.valueOf(zamowienie_auto.getCena_doba_dk_3i()));
         
     }
     
@@ -177,14 +177,14 @@ public class Okno_Wypozyczenie_NoweController implements Initializable {
     void Zapisz() {
         session = sesia.openSession();
         session.beginTransaction();
-        wypozyczenie_dk_2015 w = new wypozyczenie_dk_2015();
+        wypozyczenie_dk_3i w = new wypozyczenie_dk_3i();
         
-        w.setId_pracownik_wypozyczenie_dk_2015(zamowienie_pracownik);
-        w.setId_klient_wypozyczenie_dk_2015(zamowienie_klient);
-        w.setId_auta_wypozyczenie_dk_2015(zamowienie_auto);
-        w.setData_wypozyczenia_dk_2015(Date.valueOf(wypozyczenie_start.getValue()));
-        w.setData_zwrotu_dk_2015(Date.valueOf(wypozyczenie_end.getValue()));
-        w.setKoszt_dk_2015(zamowienie_auto.getCena_doba_dk_2015() * (wypozyczenie_end.getValue().getDayOfYear() - wypozyczenie_start.getValue().getDayOfYear()));
+        w.setId_pracownik_wypozyczenie_dk_3i(zamowienie_pracownik);
+        w.setId_klient_wypozyczenie_dk_3i(zamowienie_klient);
+        w.setId_auta_wypozyczenie_dk_3i(zamowienie_auto);
+        w.setData_wypozyczenia_dk_3i(Date.valueOf(wypozyczenie_start.getValue()));
+        w.setData_zwrotu_dk_3i(Date.valueOf(wypozyczenie_end.getValue()));
+        w.setKoszt_dk_3i(zamowienie_auto.getCena_doba_dk_3i() * (wypozyczenie_end.getValue().getDayOfYear() - wypozyczenie_start.getValue().getDayOfYear()));
         session.save(w);
         session.close();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -199,7 +199,7 @@ public class Okno_Wypozyczenie_NoweController implements Initializable {
     void Policz_dni() {
         wypozyczenie_liczba_dni.setText(String.valueOf(wypozyczenie_end.getValue().getDayOfYear() - wypozyczenie_start.getValue().getDayOfYear()));
         wypozyczenie_calkowity_koszt.setText(String.valueOf(
-                (wypozyczenie_end.getValue().getDayOfYear() - wypozyczenie_start.getValue().getDayOfYear()) * zamowienie_auto.getCena_doba_dk_2015()
+                (wypozyczenie_end.getValue().getDayOfYear() - wypozyczenie_start.getValue().getDayOfYear()) * zamowienie_auto.getCena_doba_dk_3i()
         ));
         
     }
@@ -209,7 +209,7 @@ public class Okno_Wypozyczenie_NoweController implements Initializable {
         wypozyczenie_start.setValue(LocalDate.now());
         session = sesia.openSession();
         session.beginTransaction();
-        Long f=(Long) session.createCriteria("tabele.wypozyczenie_dk_2015").setProjection(Projections.rowCount()).uniqueResult();
+        Long f=(Long) session.createCriteria("tabele.wypozyczenie_dk_3i").setProjection(Projections.rowCount()).uniqueResult();
         id_wypozyczenie.setText(String.valueOf(f+1));
         session.close();
     }

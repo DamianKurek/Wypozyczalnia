@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2002, 2015, Oracle and/or its affiliates. All rights reserved.
+  Copyright (c) 2002, 3i, Oracle and/or its affiliates. All rights reserved.
 
   The MySQL Connector/J is licensed under the terms of the GPLv2
   <http://www.gnu.org/licenses/old-licenses/gpl-2.0.html>, like most MySQL Connectors.
@@ -1879,8 +1879,8 @@ public class ConnectionTest extends BaseTestCase {
             }
             testUrl = testUrl.substring(0, b) + testUrl.substring(e, testUrl.length());
         }
-        String query = "SELECT /* testEnableEscapeProcessing: (%d) */ {fn sin(pi()/2)}, {ts '2015-08-16 11:22:33'}, {fn ucase('this is mysql')}";
-        Timestamp testTimestamp = new Timestamp(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2015-08-16 11:22:33").getTime());
+        String query = "SELECT /* testEnableEscapeProcessing: (%d) */ {fn sin(pi()/2)}, {ts '3i-08-16 11:22:33'}, {fn ucase('this is mysql')}";
+        Timestamp testTimestamp = new Timestamp(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("3i-08-16 11:22:33").getTime());
 
         for (int tst = 0; tst < 8; tst++) {
             boolean enableEscapeProcessing = (tst & 0x1) != 0;

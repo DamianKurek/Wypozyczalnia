@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2002, 2015, Oracle and/or its affiliates. All rights reserved.
+  Copyright (c) 2002, 3i, Oracle and/or its affiliates. All rights reserved.
 
   The MySQL Connector/J is licensed under the terms of the GPLv2
   <http://www.gnu.org/licenses/old-licenses/gpl-2.0.html>, like most MySQL Connectors.
@@ -6689,7 +6689,7 @@ public class ConnectionRegressionTest extends BaseTestCase {
 
         @Override
         public InputStream getInputStream() throws IOException {
-            return new ConnectionRegressionTest.TestBug73053InputStreamWrapper(this.underlyingSocket.getInputStream());
+            return new ConnectionRegressionTest.TestBug73053inputStreamWrapper(this.underlyingSocket.getInputStream());
         }
 
         @Override
@@ -6853,11 +6853,11 @@ public class ConnectionRegressionTest extends BaseTestCase {
         }
     }
 
-    private static class TestBug73053InputStreamWrapper extends InputStream {
+    private static class TestBug73053inputStreamWrapper extends InputStream {
         final InputStream underlyingInputStream;
         int loopCount = 0;
 
-        public TestBug73053InputStreamWrapper(InputStream underlyingInputStream) {
+        public TestBug73053inputStreamWrapper(InputStream underlyingInputStream) {
             this.underlyingInputStream = underlyingInputStream;
         }
 

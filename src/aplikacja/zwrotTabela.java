@@ -13,68 +13,68 @@ import java.sql.Date;
  */
 public class zwrotTabela {
 
-    private int id_wypozyczenie_dk_2015;
-    private String imie_dk_2015;
-    private String nazwisko_dk_2015;
-    private String model_dk_2015;
-    private String marka_dk_2015;
-    private Date data_wypozyczenia_dk_2015;
-    private Date data_zwrotu_dk_2015;
+    private int id_wypozyczenie_dk_3i;
+    private String imie_dk_3i;
+    private String nazwisko_dk_3i;
+    private String model_dk_3i;
+    private String marka_dk_3i;
+    private Date data_wypozyczenia_dk_3i;
+    private Date data_zwrotu_dk_3i;
 
-    public int getId_wypozyczenie_dk_2015() {
-        return id_wypozyczenie_dk_2015;
+    public int getId_wypozyczenie_dk_3i() {
+        return id_wypozyczenie_dk_3i;
     }
 
-    public void setId_wypozyczenie_dk_2015(int id_wypozyczenie_dk_2015) {
-        this.id_wypozyczenie_dk_2015 = id_wypozyczenie_dk_2015;
+    public void setId_wypozyczenie_dk_3i(int id_wypozyczenie_dk_3i) {
+        this.id_wypozyczenie_dk_3i = id_wypozyczenie_dk_3i;
     }
 
-    public String getImie_dk_2015() {
-        return imie_dk_2015;
+    public String getImie_dk_3i() {
+        return imie_dk_3i;
     }
 
-    public void setImie_dk_2015(String imie_dk_2015) {
-        this.imie_dk_2015 = imie_dk_2015;
+    public void setImie_dk_3i(String imie_dk_3i) {
+        this.imie_dk_3i = imie_dk_3i;
     }
 
-    public String getNazwisko_dk_2015() {
-        return nazwisko_dk_2015;
+    public String getNazwisko_dk_3i() {
+        return nazwisko_dk_3i;
     }
 
-    public void setNazwisko_dk_2015(String nazwisko_dk_2015) {
-        this.nazwisko_dk_2015 = nazwisko_dk_2015;
+    public void setNazwisko_dk_3i(String nazwisko_dk_3i) {
+        this.nazwisko_dk_3i = nazwisko_dk_3i;
     }
 
-    public String getModel_dk_2015() {
-        return model_dk_2015;
+    public String getModel_dk_3i() {
+        return model_dk_3i;
     }
 
-    public void setModel_dk_2015(String model_dk_2015) {
-        this.model_dk_2015 = model_dk_2015;
+    public void setModel_dk_3i(String model_dk_3i) {
+        this.model_dk_3i = model_dk_3i;
     }
 
-    public String getMarka_dk_2015() {
-        return marka_dk_2015;
+    public String getMarka_dk_3i() {
+        return marka_dk_3i;
     }
 
-    public void setMarka_dk_2015(String marka_dk_2015) {
-        this.marka_dk_2015 = marka_dk_2015;
+    public void setMarka_dk_3i(String marka_dk_3i) {
+        this.marka_dk_3i = marka_dk_3i;
     }
 
-    public Date getData_wypozyczenia_dk_2015() {
-        return data_wypozyczenia_dk_2015;
+    public Date getData_wypozyczenia_dk_3i() {
+        return data_wypozyczenia_dk_3i;
     }
 
-    public void setData_wypozyczenia_dk_2015(Date data_wypozyczenia_dk_2015) {
-        this.data_wypozyczenia_dk_2015 = data_wypozyczenia_dk_2015;
+    public void setData_wypozyczenia_dk_3i(Date data_wypozyczenia_dk_3i) {
+        this.data_wypozyczenia_dk_3i = data_wypozyczenia_dk_3i;
     }
 
-    public Date getData_zwrotu_dk_2015() {
-        return data_zwrotu_dk_2015;
+    public Date getData_zwrotu_dk_3i() {
+        return data_zwrotu_dk_3i;
     }
 
-    public void setData_zwrotu_dk_2015(Date data_zwrotu_dk_2015) {
-        this.data_zwrotu_dk_2015 = data_zwrotu_dk_2015;
+    public void setData_zwrotu_dk_3i(Date data_zwrotu_dk_3i) {
+        this.data_zwrotu_dk_3i = data_zwrotu_dk_3i;
     }
     
 }

@@ -10,7 +10,7 @@ MySQL Connector/J Developer Guide
    Connector/J, see MySQL Connector/J Release Notes
    (http://dev.mysql.com/doc/relnotes/connector-j/en/).
 
-   Document generated on: 2015-10-05 (revision: 44740)
+   Document generated on: 3i-10-05 (revision: 44740)
      ________________________________________________________
 
 Preface and Legal Notices
@@ -21,7 +21,7 @@ Preface and Legal Notices
 
 Legal Notices
 
-   Copyright (c) 1998, 2015, Oracle and/or its affiliates. All
+   Copyright (c) 1998, 3i, Oracle and/or its affiliates. All
    rights reserved.
 
    This software and related documentation are provided under a

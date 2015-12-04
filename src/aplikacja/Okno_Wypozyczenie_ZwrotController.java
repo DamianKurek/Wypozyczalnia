@@ -5,6 +5,7 @@
  */
 package aplikacja;
 
+import static aplikacja.Wypozyczalnia.auto_naprawa;
 import static aplikacja.Wypozyczalnia.sesia;
 import static aplikacja.Wypozyczalnia.session;
 import static aplikacja.Wypozyczalnia.zamowienie;
@@ -27,14 +28,16 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Expression;
-import tabele.klient_dk_2015;
-import tabele.pracownik_dk_2015;
-import tabele.wypozyczenie_dk_2015;
-import tabele.zwrot_dk_2015;
+import tabele.auta_dk_3i;
+import tabele.klient_dk_3i;
+import tabele.pracownik_dk_3i;
+import tabele.wypozyczenie_dk_3i;
+import tabele.zwrot_dk_3i;
 
 /**
  * FXML Controller class
@@ -152,7 +155,7 @@ public class Okno_Wypozyczenie_ZwrotController implements Initializable {
     void Policz_dni() {
         wypozyczenie_liczba_dni.setText(String.valueOf(wypozyczenie_end.getValue().getDayOfYear() - wypozyczenie_start.getValue().getDayOfYear()));
         wypozyczenie_calkowity_koszt.setText(String.valueOf(
-                (wypozyczenie_end.getValue().getDayOfYear() - wypozyczenie_start.getValue().getDayOfYear()) * zamowienie_auto.getCena_doba_dk_2015()
+                (wypozyczenie_end.getValue().getDayOfYear() - wypozyczenie_start.getValue().getDayOfYear()) * zamowienie_auto.getCena_doba_dk_3i()
         ));
 
     }
@@ -161,18 +164,38 @@ public class Okno_Wypozyczenie_ZwrotController implements Initializable {
     void Zapisz() {
         session = sesia.openSession();
         session.beginTransaction();
-        Criterion id = Expression.eq("id_wypozyczenie_dk_2015", zamowienie);
-        Criteria crit = session.createCriteria(wypozyczenie_dk_2015.class);
+        Criterion id = Expression.eq("id_wypozyczenie_dk_3i", zamowienie);
+        Criteria crit = session.createCriteria(wypozyczenie_dk_3i.class);
         crit.add(id);
-        wypozyczenie_dk_2015 wynik = (wypozyczenie_dk_2015) crit.uniqueResult();
-        
-        zwrot_dk_2015 zwrot = new zwrot_dk_2015();
-        zwrot.setId_wypozyczenie_dk_2015(wynik);
-        zwrot.setKara_dk_2015(Integer.parseInt(text_kara.getText()));
-        zwrot.setKoszt_dk_2015(Integer.parseInt(text_do_zaplaty.getText()));
-        zwrot.setData_zwrotu_dk_2015(Date.valueOf(data_zwrotu.getValue()));
+        wypozyczenie_dk_3i wynik = (wypozyczenie_dk_3i) crit.uniqueResult();
+
+        zwrot_dk_3i zwrot = new zwrot_dk_3i();
+        zwrot.setId_wypozyczenie_dk_3i(wynik);
+        zwrot.setKara_dk_3i(Integer.parseInt(text_kara.getText()));
+        zwrot.setKoszt_dk_3i(Integer.parseInt(text_do_zaplaty.getText()));
+        zwrot.setData_zwrotu_dk_3i(Date.valueOf(data_zwrotu.getValue()));
+        if (check_uszkodzony.isSelected()) {
+
+            id = Expression.eq("id_dk_3i", Integer.parseInt(id_auto.getText()));
+            //Criterion id = Expression.eq("id_dk_3i", 9);
+            crit = session.createCriteria(auta_dk_3i.class);
+            crit.add(id);
+            auta_dk_3i auto = (auta_dk_3i) crit.uniqueResult();
+            auto.setUszkodzony_dk_3i(true);
+            session.update(auto);
+        }
         session.save(zwrot);
+        session.getTransaction().commit();
         session.close();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Informacja");
+        alert.setHeaderText("Aktualizacja Bazy");
+        alert.setContentText("Auto pomyślnie zwróone");
+        alert.showAndWait();
+        Stage stage = new Stage();
+        stage = (Stage) check_uszkodzony.getScene().getWindow();
+        stage.close();
 
     }
 
@@ -180,44 +203,44 @@ public class Okno_Wypozyczenie_ZwrotController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         session = sesia.openSession();
         session.beginTransaction();
-        Criterion id = Expression.eq("id_wypozyczenie_dk_2015", zamowienie);
-        Criteria crit = session.createCriteria(wypozyczenie_dk_2015.class);
+        Criterion id = Expression.eq("id_wypozyczenie_dk_3i", zamowienie);
+        Criteria crit = session.createCriteria(wypozyczenie_dk_3i.class);
         crit.add(id);
-        wypozyczenie_dk_2015 wynik = (wypozyczenie_dk_2015) crit.uniqueResult();
+        wypozyczenie_dk_3i wynik = (wypozyczenie_dk_3i) crit.uniqueResult();
         session.close();
 
-        id_klient.setText(String.valueOf(wynik.getId_wypozyczenie_dk_2015()));
-        id_auto.setText(String.valueOf(wynik.getId_auta_wypozyczenie_dk_2015().getId_dk_2015()));
-        auto_marka.setText(wynik.getId_auta_wypozyczenie_dk_2015().getMarka_dk_2015());
-        auto_model.setText(wynik.getId_auta_wypozyczenie_dk_2015().getModel_dk_2015());
-        auto_rocznik.setText(String.valueOf(wynik.getId_auta_wypozyczenie_dk_2015().getRocznik_dk_2015()));
-        auto_skrzynia.setText(wynik.getId_auta_wypozyczenie_dk_2015().getSkrzynia_biegow_dk_2015());
-        auto_cena_doba.setText(String.valueOf(wynik.getId_auta_wypozyczenie_dk_2015().getCena_doba_dk_2015()));
+        id_klient.setText(String.valueOf(wynik.getId_wypozyczenie_dk_3i()));
+        id_auto.setText(String.valueOf(wynik.getId_auta_wypozyczenie_dk_3i().getId_dk_3i()));
+        auto_marka.setText(wynik.getId_auta_wypozyczenie_dk_3i().getMarka_dk_3i());
+        auto_model.setText(wynik.getId_auta_wypozyczenie_dk_3i().getModel_dk_3i());
+        auto_rocznik.setText(String.valueOf(wynik.getId_auta_wypozyczenie_dk_3i().getRocznik_dk_3i()));
+        auto_skrzynia.setText(wynik.getId_auta_wypozyczenie_dk_3i().getSkrzynia_biegow_dk_3i());
+        auto_cena_doba.setText(String.valueOf(wynik.getId_auta_wypozyczenie_dk_3i().getCena_doba_dk_3i()));
 
-        id_pracownik.setText(String.valueOf(wynik.getId_pracownik_wypozyczenie_dk_2015().getId_dk_2015()));
-        imie_pracownik.setText(wynik.getId_pracownik_wypozyczenie_dk_2015().getImie_dk_2015());
-        nazwisko_pracownik.setText(wynik.getId_pracownik_wypozyczenie_dk_2015().getNazwisko_dk_2015());
+        id_pracownik.setText(String.valueOf(wynik.getId_pracownik_wypozyczenie_dk_3i().getId_dk_3i()));
+        imie_pracownik.setText(wynik.getId_pracownik_wypozyczenie_dk_3i().getImie_dk_3i());
+        nazwisko_pracownik.setText(wynik.getId_pracownik_wypozyczenie_dk_3i().getNazwisko_dk_3i());
 
-        id_klient.setText(String.valueOf(wynik.getId_klient_wypozyczenie_dk_2015().getId_dk_2015()));
-        imie_klient.setText(wynik.getId_klient_wypozyczenie_dk_2015().getImie_dk_2015());
-        nazwisko_klient.setText(wynik.getId_klient_wypozyczenie_dk_2015().getNazwisko_dk_2015());
-        ulica_klient.setText(wynik.getId_klient_wypozyczenie_dk_2015().getAdres_ulica_dk_2015());
-        nr_domu_klient.setText(String.valueOf(wynik.getId_klient_wypozyczenie_dk_2015().getAdres_nr_dom_dk_2015()));
-        miasto_klient.setText(wynik.getId_klient_wypozyczenie_dk_2015().getAdres_miasto_dk_2015());
-        telefon_klient.setText(String.valueOf(wynik.getId_klient_wypozyczenie_dk_2015().getNr_tel_dk_2015()));
-        Date date = (Date) wynik.getData_wypozyczenia_dk_2015();
+        id_klient.setText(String.valueOf(wynik.getId_klient_wypozyczenie_dk_3i().getId_dk_3i()));
+        imie_klient.setText(wynik.getId_klient_wypozyczenie_dk_3i().getImie_dk_3i());
+        nazwisko_klient.setText(wynik.getId_klient_wypozyczenie_dk_3i().getNazwisko_dk_3i());
+        ulica_klient.setText(wynik.getId_klient_wypozyczenie_dk_3i().getAdres_ulica_dk_3i());
+        nr_domu_klient.setText(String.valueOf(wynik.getId_klient_wypozyczenie_dk_3i().getAdres_nr_dom_dk_3i()));
+        miasto_klient.setText(wynik.getId_klient_wypozyczenie_dk_3i().getAdres_miasto_dk_3i());
+        telefon_klient.setText(String.valueOf(wynik.getId_klient_wypozyczenie_dk_3i().getNr_tel_dk_3i()));
+        Date date = (Date) wynik.getData_wypozyczenia_dk_3i();
         Instant instant = Instant.ofEpochMilli(date.getTime());
         LocalDate res = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
         wypozyczenie_start.setValue(res);
-        date = (Date) wynik.getData_zwrotu_dk_2015();
+        date = (Date) wynik.getData_zwrotu_dk_3i();
         instant = Instant.ofEpochMilli(date.getTime());
         res = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
         wypozyczenie_end.setValue(res);
         wypozyczenie_liczba_dni.setText(String.valueOf(wypozyczenie_end.getValue().getDayOfYear() - wypozyczenie_start.getValue().getDayOfYear()));
         wypozyczenie_calkowity_koszt.setText(String.valueOf(
-                (wypozyczenie_end.getValue().getDayOfYear() - wypozyczenie_start.getValue().getDayOfYear()) * wynik.getId_auta_wypozyczenie_dk_2015().getCena_doba_dk_2015()
+                (wypozyczenie_end.getValue().getDayOfYear() - wypozyczenie_start.getValue().getDayOfYear()) * wynik.getId_auta_wypozyczenie_dk_3i().getCena_doba_dk_3i()
         ));
-        text_id_wypozyczenie.setText(String.valueOf(wynik.getId_wypozyczenie_dk_2015()));
+        text_id_wypozyczenie.setText(String.valueOf(wynik.getId_wypozyczenie_dk_3i()));
         data_zwrotu.setValue(LocalDate.now());
         PoliczOpoznienie();
         //wypozyczenie_calkowity_koszt;

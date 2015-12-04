@@ -8,7 +8,7 @@ package aplikacja;
 import java.util.Calendar;
 import java.util.Date;
 import tabele.test;
-import tabele.klient_dk_2015;
+import tabele.klient_dk_3i;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -24,9 +24,9 @@ import javax.persistence.Persistence;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import tabele.auta_dk_2015;
-import tabele.pracownik_dk_2015;
-import tabele.wypozyczenie_dk_2015;
+import tabele.auta_dk_3i;
+import tabele.pracownik_dk_3i;
+import tabele.wypozyczenie_dk_3i;
 
 /**
  *
@@ -36,10 +36,11 @@ public class Wypozyczalnia extends Application {
 
     static public SessionFactory sesia = new Configuration().configure().buildSessionFactory();
     static public Session session;
-    static public klient_dk_2015 zamowienie_klient;
-    static public pracownik_dk_2015 zamowienie_pracownik;
-    static public auta_dk_2015 zamowienie_auto;
+    static public klient_dk_3i zamowienie_klient;
+    static public pracownik_dk_3i zamowienie_pracownik;
+    static public auta_dk_3i zamowienie_auto;
     static public int zamowienie;
+    static public autoLista auto_naprawa;
 
     @Override
     public void start(Stage stage) throws Exception {

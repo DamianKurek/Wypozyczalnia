@@ -25,8 +25,8 @@ import javafx.scene.control.Alert;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Expression;
-import tabele.klient_dk_2015;
-import tabele.pracownik_dk_2015;
+import tabele.klient_dk_3i;
+import tabele.pracownik_dk_3i;
 
 /**
  * FXML Controller class
@@ -56,23 +56,23 @@ public class Okno_KlientController implements Initializable {
     @FXML
     TextField text_telefon;
     @FXML
-    TableView<klient_dk_2015> tabela;
+    TableView<klient_dk_3i> tabela;
     @FXML
-    TableColumn<klient_dk_2015, Integer> TableColumn1;
+    TableColumn<klient_dk_3i, Integer> TableColumn1;
     @FXML
-    TableColumn<klient_dk_2015, String> TableColumn2;
+    TableColumn<klient_dk_3i, String> TableColumn2;
     @FXML
-    TableColumn<klient_dk_2015, String> TableColumn3;
+    TableColumn<klient_dk_3i, String> TableColumn3;
     @FXML
-    TableColumn<klient_dk_2015, Integer> TableColumn4;
+    TableColumn<klient_dk_3i, Integer> TableColumn4;
     @FXML
-    TableColumn<klient_dk_2015, String> TableColumn5;
+    TableColumn<klient_dk_3i, String> TableColumn5;
     @FXML
-    TableColumn<klient_dk_2015, String> TableColumn6;
+    TableColumn<klient_dk_3i, String> TableColumn6;
     @FXML
-    TableColumn<klient_dk_2015, Integer> TableColumn7;
+    TableColumn<klient_dk_3i, Integer> TableColumn7;
     @FXML
-    public final ObservableList<klient_dk_2015> dane = FXCollections.observableArrayList();
+    public final ObservableList<klient_dk_3i> dane = FXCollections.observableArrayList();
     //SessionFactory sesia = new Configuration().configure().buildSessionFactory();
     //Session session = sesia.openSession();
 
@@ -89,14 +89,14 @@ public class Okno_KlientController implements Initializable {
 
     @FXML
     void Zapisz() {
-        klient_dk_2015 klient = new klient_dk_2015();
-        klient.setImie_dk_2015(text_imie.getText());
-        klient.setNazwisko_dk_2015(text_nazwisko.getText());
-        klient.setAdres_miasto_dk_2015(text_miasto.getText());
-        klient.setAdres_ulica_dk_2015(text_ulica.getText());
-        klient.setAdres_nr_dom_dk_2015(Integer.parseInt(text_nr_domu.getText()));
+        klient_dk_3i klient = new klient_dk_3i();
+        klient.setImie_dk_3i(text_imie.getText());
+        klient.setNazwisko_dk_3i(text_nazwisko.getText());
+        klient.setAdres_miasto_dk_3i(text_miasto.getText());
+        klient.setAdres_ulica_dk_3i(text_ulica.getText());
+        klient.setAdres_nr_dom_dk_3i(Integer.parseInt(text_nr_domu.getText()));
         if (!text_telefon.getText().isEmpty()) {
-            klient.setNr_tel_dk_2015(Integer.parseInt(text_telefon.getText()));
+            klient.setNr_tel_dk_3i(Integer.parseInt(text_telefon.getText()));
         }
 
         SessionFactory sesia = new Configuration().configure().buildSessionFactory();
@@ -114,7 +114,7 @@ public class Okno_KlientController implements Initializable {
         dane.clear();
         session = sesia.openSession();
         session.beginTransaction();
-        List<klient_dk_2015> wynik = session.createQuery("from klient_dk_2015").list();
+        List<klient_dk_3i> wynik = session.createQuery("from klient_dk_3i").list();
         session.close();
         for (int x = 0; x < wynik.size(); x++) {
             dane.add(wynik.get(x));
@@ -127,10 +127,10 @@ public class Okno_KlientController implements Initializable {
         if (!text_id_szukaj.getText().isEmpty() && text_nazwisko_szukaj.getText().isEmpty() && text_miasto_szukaj.getText().isEmpty()) {
             dane.clear();
             session = sesia.openSession();
-            Criterion id = Expression.eq("id_dk_2015", Integer.parseInt(text_id_szukaj.getText()));
-            Criteria crit = session.createCriteria(klient_dk_2015.class);
+            Criterion id = Expression.eq("id_dk_3i", Integer.parseInt(text_id_szukaj.getText()));
+            Criteria crit = session.createCriteria(klient_dk_3i.class);
             crit.add(id);
-            klient_dk_2015 p2 = (klient_dk_2015) crit.uniqueResult();
+            klient_dk_3i p2 = (klient_dk_3i) crit.uniqueResult();
             if (p2 != null) {
                 dane.add(p2);
             } else {
@@ -147,14 +147,14 @@ public class Okno_KlientController implements Initializable {
         if (text_id_szukaj.getText().isEmpty() && !text_nazwisko_szukaj.getText().isEmpty() && text_miasto_szukaj.getText().isEmpty()) {
             dane.clear();
             session = sesia.openSession();
-            Criterion id = Expression.eq("nazwisko_dk_2015", text_nazwisko_szukaj.getText());
-            Criteria crit = session.createCriteria(klient_dk_2015.class);
+            Criterion id = Expression.eq("nazwisko_dk_3i", text_nazwisko_szukaj.getText());
+            Criteria crit = session.createCriteria(klient_dk_3i.class);
             crit.add(id);
-            List<klient_dk_2015> p2 = crit.list();
+            List<klient_dk_3i> p2 = crit.list();
             if (!p2.isEmpty()) {
                 for (int x = 0; x < p2.size(); x++) {
-//            System.out.println(p.get(x).getImie_dk_2015() + " "
-//                    + p.get(x).getNazwisko_dk_2015());
+//            System.out.println(p.get(x).getImie_dk_3i() + " "
+//                    + p.get(x).getNazwisko_dk_3i());
                     dane.add(p2.get(x));
                 }
             } else {
@@ -171,14 +171,14 @@ public class Okno_KlientController implements Initializable {
         if (text_id_szukaj.getText().isEmpty() && text_nazwisko_szukaj.getText().isEmpty() && !text_miasto_szukaj.getText().isEmpty()) {
             dane.clear();
             session = sesia.openSession();
-            Criterion id = Expression.eq("adres_miasto_dk_2015", text_miasto_szukaj.getText());
-            Criteria crit = session.createCriteria(klient_dk_2015.class);
+            Criterion id = Expression.eq("adres_miasto_dk_3i", text_miasto_szukaj.getText());
+            Criteria crit = session.createCriteria(klient_dk_3i.class);
             crit.add(id);
-            List<klient_dk_2015> p3 = crit.list();
+            List<klient_dk_3i> p3 = crit.list();
             if (!p3.isEmpty()) {
                 for (int x = 0; x < p3.size(); x++) {
-//            System.out.println(p.get(x).getImie_dk_2015() + " "
-//                    + p.get(x).getNazwisko_dk_2015());
+//            System.out.println(p.get(x).getImie_dk_3i() + " "
+//                    + p.get(x).getNazwisko_dk_3i());
                     dane.add(p3.get(x));
                 }
             } else {
@@ -239,19 +239,19 @@ public class Okno_KlientController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         tabela.itemsProperty().setValue(dane);
-        TableColumn1.setCellValueFactory(new PropertyValueFactory<klient_dk_2015, Integer>("id_dk_2015")//nazwa pola w klasie
+        TableColumn1.setCellValueFactory(new PropertyValueFactory<klient_dk_3i, Integer>("id_dk_3i")//nazwa pola w klasie
         );
-        TableColumn2.setCellValueFactory(new PropertyValueFactory<klient_dk_2015, String>("imie_dk_2015")//nazwa pola w klasie
+        TableColumn2.setCellValueFactory(new PropertyValueFactory<klient_dk_3i, String>("imie_dk_3i")//nazwa pola w klasie
         );
-        TableColumn3.setCellValueFactory(new PropertyValueFactory<klient_dk_2015, String>("nazwisko_dk_2015")//nazwa pola w klasie
+        TableColumn3.setCellValueFactory(new PropertyValueFactory<klient_dk_3i, String>("nazwisko_dk_3i")//nazwa pola w klasie
         );
-        TableColumn4.setCellValueFactory(new PropertyValueFactory<klient_dk_2015, Integer>("nr_tel_dk_2015")//nazwa pola w klasie
+        TableColumn4.setCellValueFactory(new PropertyValueFactory<klient_dk_3i, Integer>("nr_tel_dk_3i")//nazwa pola w klasie
         );
-        TableColumn5.setCellValueFactory(new PropertyValueFactory<klient_dk_2015, String>("adres_miasto_dk_2015")//nazwa pola w klasie
+        TableColumn5.setCellValueFactory(new PropertyValueFactory<klient_dk_3i, String>("adres_miasto_dk_3i")//nazwa pola w klasie
         );
-        TableColumn6.setCellValueFactory(new PropertyValueFactory<klient_dk_2015, String>("adres_ulica_dk_2015")//nazwa pola w klasie
+        TableColumn6.setCellValueFactory(new PropertyValueFactory<klient_dk_3i, String>("adres_ulica_dk_3i")//nazwa pola w klasie
         );
-        TableColumn7.setCellValueFactory(new PropertyValueFactory<klient_dk_2015, Integer>("adres_nr_dom_dk_2015")//nazwa pola w klasie
+        TableColumn7.setCellValueFactory(new PropertyValueFactory<klient_dk_3i, Integer>("adres_nr_dom_dk_3i")//nazwa pola w klasie
         );
     }
 

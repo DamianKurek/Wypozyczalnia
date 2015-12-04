@@ -65,7 +65,7 @@ public class UtilsRegressionTest extends BaseTestCase {
     public void testTimeZones() throws Exception {
         /*
          * Time Zones can be identified by many different ways according to Unicode CLDR database. The following map contain the correspondence between
-         * alternative Time Zone designations to Standard Time Zones ID (IANA/Olson database). This data was generated from IANA Time Zone database v. 2015f
+         * alternative Time Zone designations to Standard Time Zones ID (IANA/Olson database). This data was generated from IANA Time Zone database v. 3if
          * (http://www.iana.org/time-zones) and Unicode CLDR v.28 (http://cldr.unicode.org/)
          * 
          * Both the file com/mysql/jdbc/TimeZoneMapping.properties and the following data are generated from a MySQL Connector/J internal utility.

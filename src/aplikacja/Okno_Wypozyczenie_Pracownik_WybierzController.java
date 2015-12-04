@@ -32,12 +32,12 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Restrictions;
 
-import tabele.pracownik_dk_2015;
+import tabele.pracownik_dk_3i;
 import static aplikacja.Wypozyczalnia.*;
 import javafx.stage.Stage;
-import tabele.auta_dk_2015;
-import tabele.klient_dk_2015;
-import tabele.wypozyczenie_dk_2015;
+import tabele.auta_dk_3i;
+import tabele.klient_dk_3i;
+import tabele.wypozyczenie_dk_3i;
 
 /**
  * FXML Controller class
@@ -62,24 +62,24 @@ public class Okno_Wypozyczenie_Pracownik_WybierzController implements Initializa
     @FXML
     DatePicker data;
     @FXML
-    TableView<pracownik_dk_2015> tabela;
+    TableView<pracownik_dk_3i> tabela;
     @FXML
-    TableColumn<pracownik_dk_2015, Integer> TableColumn1;
+    TableColumn<pracownik_dk_3i, Integer> TableColumn1;
     @FXML
-    TableColumn<pracownik_dk_2015, String> TableColumn2;
+    TableColumn<pracownik_dk_3i, String> TableColumn2;
     @FXML
-    TableColumn<pracownik_dk_2015, String> TableColumn3;
+    TableColumn<pracownik_dk_3i, String> TableColumn3;
     @FXML
-    TableColumn<pracownik_dk_2015, String> TableColumn4;
+    TableColumn<pracownik_dk_3i, String> TableColumn4;
     @FXML
-    public final ObservableList<pracownik_dk_2015> dane = FXCollections.observableArrayList();
+    public final ObservableList<pracownik_dk_3i> dane = FXCollections.observableArrayList();
 
     @FXML
     void Zapisz() {
-        pracownik_dk_2015 pracownik = new pracownik_dk_2015();
-        pracownik.setImie_dk_2015(text_imie.getText());
-        pracownik.setNazwisko_dk_2015(text_nazwisko.getText());
-        pracownik.setData_zatrudnienia_dk_2015(Date.valueOf(data.getValue()));
+        pracownik_dk_3i pracownik = new pracownik_dk_3i();
+        pracownik.setImie_dk_3i(text_imie.getText());
+        pracownik.setNazwisko_dk_3i(text_nazwisko.getText());
+        pracownik.setData_zatrudnienia_dk_3i(Date.valueOf(data.getValue()));
         session = sesia.openSession();
         //zapisane do bazy
         session.beginTransaction();
@@ -95,14 +95,14 @@ public class Okno_Wypozyczenie_Pracownik_WybierzController implements Initializa
         if (!text_nazwisko_szukaj.getText().isEmpty() && text_id_szukaj.getText().isEmpty()) {
             dane.clear();
             session = sesia.openSession();
-            Criterion imie = Expression.eq("nazwisko_dk_2015", text_nazwisko_szukaj.getText());
-            Criteria crit = session.createCriteria(pracownik_dk_2015.class);
+            Criterion imie = Expression.eq("nazwisko_dk_3i", text_nazwisko_szukaj.getText());
+            Criteria crit = session.createCriteria(pracownik_dk_3i.class);
             crit.add(imie);
-            List<pracownik_dk_2015> p = crit.list();
+            List<pracownik_dk_3i> p = crit.list();
             if (!p.isEmpty()) {
                 for (int x = 0; x < p.size(); x++) {
-//            System.out.println(p.get(x).getImie_dk_2015() + " "
-//                    + p.get(x).getNazwisko_dk_2015());
+//            System.out.println(p.get(x).getImie_dk_3i() + " "
+//                    + p.get(x).getNazwisko_dk_3i());
                     dane.add(p.get(x));
                 }
             } else {
@@ -119,10 +119,10 @@ public class Okno_Wypozyczenie_Pracownik_WybierzController implements Initializa
         if (text_nazwisko_szukaj.getText().isEmpty() && !text_id_szukaj.getText().isEmpty()) {
             dane.clear();
             session = sesia.openSession();
-            Criterion id = Expression.eq("id_dk_2015", Integer.parseInt(text_id_szukaj.getText()));
-            Criteria crit = session.createCriteria(pracownik_dk_2015.class);
+            Criterion id = Expression.eq("id_dk_3i", Integer.parseInt(text_id_szukaj.getText()));
+            Criteria crit = session.createCriteria(pracownik_dk_3i.class);
             crit.add(id);
-            pracownik_dk_2015 p2 = (pracownik_dk_2015) crit.uniqueResult();
+            pracownik_dk_3i p2 = (pracownik_dk_3i) crit.uniqueResult();
             if (p2 != null) {
                 dane.add(p2);
             } else {
@@ -152,12 +152,12 @@ public class Okno_Wypozyczenie_Pracownik_WybierzController implements Initializa
         dane.clear();
         session = sesia.openSession();
         session.beginTransaction();
-        List<pracownik_dk_2015> wynik = session.createQuery("from pracownik_dk_2015").list();
+        List<pracownik_dk_3i> wynik = session.createQuery("from pracownik_dk_3i").list();
         session.close();
         for (int x = 0; x < wynik.size(); x++) {
-//            System.out.println(wynik.get(x).getId_dk_2015() + " "
-//                    + wynik.get(x).getImie_dk_2015() + " "
-//                    + wynik.get(x).getNazwisko_dk_2015()
+//            System.out.println(wynik.get(x).getId_dk_3i() + " "
+//                    + wynik.get(x).getImie_dk_3i() + " "
+//                    + wynik.get(x).getNazwisko_dk_3i()
 //            );
             dane.add(wynik.get(x));
         }
@@ -178,16 +178,16 @@ public class Okno_Wypozyczenie_Pracownik_WybierzController implements Initializa
         tabela.setItems(dane);
 
         TableColumn1.setCellValueFactory(
-                new PropertyValueFactory<pracownik_dk_2015, Integer>("id_dk_2015")//nazwa pola w klasie
+                new PropertyValueFactory<pracownik_dk_3i, Integer>("id_dk_3i")//nazwa pola w klasie
         );
         TableColumn2.setCellValueFactory(
-                new PropertyValueFactory<pracownik_dk_2015, String>("imie_dk_2015")//nazwa pola w klasie
+                new PropertyValueFactory<pracownik_dk_3i, String>("imie_dk_3i")//nazwa pola w klasie
         );
         TableColumn3.setCellValueFactory(
-                new PropertyValueFactory<pracownik_dk_2015, String>("nazwisko_dk_2015")//nazwa pola w klasie
+                new PropertyValueFactory<pracownik_dk_3i, String>("nazwisko_dk_3i")//nazwa pola w klasie
         );
         TableColumn4.setCellValueFactory(
-                new PropertyValueFactory<pracownik_dk_2015, String>("data_zatrudnienia_dk_2015")//nazwa pola w klasie
+                new PropertyValueFactory<pracownik_dk_3i, String>("data_zatrudnienia_dk_3i")//nazwa pola w klasie
         );
         Wczytaj();
 

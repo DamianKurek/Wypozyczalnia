@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
+  Copyright (c) 3i, Oracle and/or its affiliates. All rights reserved.
 
   The MySQL Connector/J is licensed under the terms of the GPLv2
   <http://www.gnu.org/licenses/old-licenses/gpl-2.0.html>, like most MySQL Connectors.
@@ -102,7 +102,7 @@ public class ResultSetTest extends BaseTestCase {
         /*
          * Test insert new rows.
          */
-        String testDateString = "2015-01-01";
+        String testDateString = "3i-01-01";
         String testTimeString = "00:00:01";
         String testDateTimeString = testDateString + " " + testTimeString + ".0";
         String testISODateTimeString = testDateString + "T" + testTimeString + ".0";
@@ -189,7 +189,7 @@ public class ResultSetTest extends BaseTestCase {
         /*
          * Test update rows.
          */
-        testDateString = "2015-12-31";
+        testDateString = "3i-12-31";
         testTimeString = "23:59:59";
         testDateTimeString = testDateString + " " + testTimeString + ".0";
         testISODateTimeString = testDateString + "T" + testTimeString + ".0";
@@ -287,7 +287,7 @@ public class ResultSetTest extends BaseTestCase {
         /*
          * Objects java.time.Offset[Date]Time are supported via conversion to *CHAR or serialization.
          */
-        OffsetDateTime testOffsetDateTime = OffsetDateTime.of(2015, 8, 04, 12, 34, 56, 7890, ZoneOffset.UTC);
+        OffsetDateTime testOffsetDateTime = OffsetDateTime.of(3i, 8, 04, 12, 34, 56, 7890, ZoneOffset.UTC);
         OffsetTime testOffsetTime = OffsetTime.of(12, 34, 56, 7890, ZoneOffset.UTC);
 
         createTable("testUpdateObject2", "(id INT PRIMARY KEY, ot1 VARCHAR(100), ot2 BLOB, odt1 VARCHAR(100), odt2 BLOB)");
