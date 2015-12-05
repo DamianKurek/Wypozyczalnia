@@ -34,6 +34,9 @@ import org.hibernate.criterion.Restrictions;
 
 import tabele.pracownik_dk_3i;
 import static aplikacja.Wypozyczalnia.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import org.hibernate.criterion.Projections;
 import tabele.auta_dk_3i;
 import tabele.klient_dk_3i;
 import tabele.wypozyczenie_dk_3i;
@@ -75,19 +78,30 @@ public class Okno_PracownikController implements Initializable {
 
     @FXML
     void Zapisz() {
-        pracownik_dk_3i pracownik = new pracownik_dk_3i();
-        pracownik.setImie_dk_3i(text_imie.getText());
-        pracownik.setNazwisko_dk_3i(text_nazwisko.getText());
-        pracownik.setData_zatrudnienia_dk_3i(Date.valueOf(data.getValue()));
-        session = sesia.openSession();
-        //zapisane do bazy
-        session.beginTransaction();
-        session.save(pracownik);
-        session.getTransaction().commit();
-        session.close();
-        
-        
- 
+        if (text_imie.getText().toString().isEmpty()) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Błąd danych");
+            alert.setContentText("Brak imienia");
+            alert.showAndWait();
+        } else if (text_nazwisko.getText().toString().isEmpty()) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Błąd danych");
+            alert.setContentText("Brak nazwiska");
+            alert.showAndWait();
+        } else {
+            pracownik_dk_3i pracownik = new pracownik_dk_3i();
+            pracownik.setImie_dk_3i(text_imie.getText());
+            pracownik.setNazwisko_dk_3i(text_nazwisko.getText());
+            pracownik.setData_zatrudnienia_dk_3i(Date.valueOf(data.getValue()));
+            session = sesia.openSession();
+            //zapisane do bazy
+            session.beginTransaction();
+            session.save(pracownik);
+            session.getTransaction().commit();
+            session.close();
+        }
     }
 
     @FXML
@@ -183,8 +197,36 @@ public class Okno_PracownikController implements Initializable {
         TableColumn4.setCellValueFactory(
                 new PropertyValueFactory<pracownik_dk_3i, String>("data_zatrudnienia_dk_3i")//nazwa pola w klasie
         );
+        text_imie.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 
-        
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_imie.getText().charAt(oldValue.intValue());
+                    if ((ch >= '0' && ch <= '9')) {
+                        text_imie.setText(text_imie.getText().substring(0, text_imie.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        text_nazwisko.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_nazwisko.getText().charAt(oldValue.intValue());
+                    if ((ch >= '0' && ch <= '9')) {
+                        text_nazwisko.setText(text_nazwisko.getText().substring(0, text_nazwisko.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        session = sesia.openSession();
+        Long f = (Long) session.createCriteria("tabele.pracownik_dk_3i").setProjection(Projections.rowCount()).uniqueResult();
+        text_id.setText(String.valueOf(f + 1));
+        session.close();
     }
 
 }

@@ -212,6 +212,7 @@ public class Okno_Wypozyczenie_NoweController implements Initializable {
         Long f=(Long) session.createCriteria("tabele.wypozyczenie_dk_3i").setProjection(Projections.rowCount()).uniqueResult();
         id_wypozyczenie.setText(String.valueOf(f+1));
         session.close();
+        Odswiez_Pracownik();
     }
     
 }

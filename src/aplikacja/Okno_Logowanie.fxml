@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplikacja.Okno_LogowanieController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #174557;">
+               <children>
+                  <Label fx:id="data1" layoutX="14.0" layoutY="6.0" text="Data 1" textFill="#05fffe" />
+                  <Label fx:id="data2" layoutX="221.0" layoutY="8.0" text="Data 2" textFill="#05fffe" />
+               </children>
+               <effect>
+                  <Reflection />
+               </effect>
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="300.0" style="-fx-background-color: #46cdff;">
+               <children>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane prefHeight="26.0" prefWidth="300.0">
+                           <children>
+                              <TextField fx:id="text_login" alignment="CENTER" layoutX="76.0" layoutY="20.0" promptText="login">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </TextField>
+                           </children></AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="300.0">
+                           <children>
+                              <TextField fx:id="text_haslo" alignment="CENTER" layoutX="76.0" layoutY="14.0" promptText="haslo">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </TextField>
+                           </children></AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="300.0">
+                           <children>
+                              <Button fx:id="zaloguj" layoutX="77.0" layoutY="1.0" mnemonicParsing="false" onAction="#Login" onKeyPressed="#Login" opacity="0.78" prefHeight="33.0" prefWidth="146.0" text="Zaloguj" textFill="#3300bf" textOverrun="CENTER_ELLIPSIS">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #174557;">
+               <children>
+                  <Label fx:id="text_stopka" layoutX="8.0" layoutY="6.0" prefHeight="30.0" prefWidth="292.0" text="Label" textFill="#05fffe" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

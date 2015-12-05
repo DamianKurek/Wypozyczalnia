@@ -21,10 +21,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import static aplikacja.Wypozyczalnia.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Alert;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Expression;
+import org.hibernate.criterion.Projections;
 import tabele.klient_dk_3i;
 import tabele.pracownik_dk_3i;
 
@@ -253,6 +256,89 @@ public class Okno_KlientController implements Initializable {
         );
         TableColumn7.setCellValueFactory(new PropertyValueFactory<klient_dk_3i, Integer>("adres_nr_dom_dk_3i")//nazwa pola w klasie
         );
+        session = sesia.openSession();
+        Long f = (Long) session.createCriteria("tabele.klient_dk_3i").setProjection(Projections.rowCount()).uniqueResult();
+        text_id.setText(String.valueOf(f + 1));
+        session.close();
+        text_imie.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_imie.getText().charAt(oldValue.intValue());
+                    if ((ch >= '0' && ch <= '9')) {
+                        text_imie.setText(text_imie.getText().substring(0, text_imie.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        text_nazwisko.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_nazwisko.getText().charAt(oldValue.intValue());
+                    if ((ch >= '0' && ch <= '9')) {
+                        text_nazwisko.setText(text_nazwisko.getText().substring(0, text_nazwisko.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        text_miasto.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_miasto.getText().charAt(oldValue.intValue());
+                    if ((ch >= '0' && ch <= '9')) {
+                        text_miasto.setText(text_miasto.getText().substring(0, text_miasto.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        text_ulica.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_ulica.getText().charAt(oldValue.intValue());
+                    if ((ch >= '0' && ch <= '9')) {
+                        text_ulica.setText(text_ulica.getText().substring(0, text_ulica.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        text_nr_domu.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_nr_domu.getText().charAt(oldValue.intValue());
+                    if (!(ch >= '0' && ch <= '9')) {
+                        text_nr_domu.setText(text_nr_domu.getText().substring(0, text_nr_domu.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        text_telefon.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_telefon.getText().charAt(oldValue.intValue());
+                    if (!(ch >= '0' && ch <= '9')) {
+                        text_telefon.setText(text_telefon.getText().substring(0, text_telefon.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        
     }
 
 }

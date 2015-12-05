@@ -41,7 +41,7 @@
                               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="461.0" text="Telefon" GridPane.rowIndex="6" />
                               <Button mnemonicParsing="false" onAction="#Czysc" prefHeight="55.0" prefWidth="455.0" text="Wyszyść" GridPane.rowIndex="7" />
                               <Button mnemonicParsing="false" onAction="#Zapisz" prefHeight="53.0" prefWidth="476.0" text="Zapisz" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                              <TextField fx:id="text_id" GridPane.columnIndex="1" />
+                              <TextField fx:id="text_id" editable="false" GridPane.columnIndex="1" />
                               <TextField fx:id="text_imie" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <TextField fx:id="text_nazwisko" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <TextField fx:id="text_miasto" GridPane.columnIndex="1" GridPane.rowIndex="3" />

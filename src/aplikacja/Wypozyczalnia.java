@@ -41,14 +41,18 @@ public class Wypozyczalnia extends Application {
     static public auta_dk_3i zamowienie_auto;
     static public int zamowienie;
     static public autoLista auto_naprawa;
+    static public pracownik_dk_3i zalogowany_pracownik;
 
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Okno_Logowanie.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+       
+
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent t) {

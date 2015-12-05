@@ -189,8 +189,8 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                            <children>
-                              <Button layoutX="136.0" layoutY="2.0" mnemonicParsing="false" onAction="#Okno_Wybierz_pracownik" prefHeight="25.0" prefWidth="95.0" text="Wybierz" />
-                              <Button layoutX="106.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Odswiez_Pracownik" prefHeight="25.0" prefWidth="25.0" style="-fx-graphic: url('aplikacja/refresh.png');" />
+                              <Button disable="true" layoutX="136.0" layoutY="2.0" mnemonicParsing="false" onAction="#Okno_Wybierz_pracownik" prefHeight="25.0" prefWidth="95.0" text="Wybierz" visible="false" />
+                              <Button disable="true" layoutX="106.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Odswiez_Pracownik" prefHeight="25.0" prefWidth="25.0" style="-fx-graphic: url('aplikacja/refresh.png');" visible="false" />
                            </children>
                         </AnchorPane>
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">

@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Expression;
@@ -43,25 +44,25 @@ public class Okno_Naprawa_WyslijController implements Initializable {
         Criteria crit = session.createCriteria(auta_dk_3i.class);
         crit.add(id);
         auta_dk_3i auto = (auta_dk_3i) crit.uniqueResult();
-        
-        
-        
+
         session.beginTransaction();
         naprawa_dk_3i naprawa = new naprawa_dk_3i();
         naprawa.setOpis_naprawa_3i(text_opis_naprawy.getText());
         naprawa.setCena_naprawa_dk_3i(Integer.parseInt(text_cena_naprawy.getText()));
         naprawa.setId_auto_dk_3i(auto);
 
-        
         auto.setId_naprawy_dk_3i(naprawa);
         session.save(naprawa);
         session.update(auto);
         session.getTransaction().commit();
         session.close();
-        
-        
-
-        System.out.print(auto.getCena_doba_dk_3i());
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informacja");
+        alert.setHeaderText("Aktualizacja auta");
+        alert.setContentText("Auto zostało wysłane do naprawy");
+        alert.showAndWait();
+         Stage  stage = (Stage) text_opis_naprawy.getScene().getWindow();
+         stage.close();
     }
 
     @Override
