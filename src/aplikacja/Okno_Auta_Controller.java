@@ -31,9 +31,12 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Separator;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 //import jimport javafx.stage.Stage;
 //avafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -77,8 +80,8 @@ public class Okno_Auta_Controller implements Initializable {
     @FXML
     TextField text_szukaj_cena_start;
     @FXML
-    CheckBox check_szukaj_dostepne;
-    @FXML
+    CheckBox check_szukaj_uszkodzone;
+    @FXML//tabela aut
     TableView<autoLista> tabela;
     @FXML
     TableColumn<autoLista, Integer> TableColumn1;
@@ -97,7 +100,25 @@ public class Okno_Auta_Controller implements Initializable {
     @FXML
     TableColumn<autoLista, Boolean> TableColumn8;
     @FXML
+    TableView<naprawa> tabela2;//tabela napraw
+    @FXML //columny do tabeli napraw
+    TableColumn<autoLista, Integer> TableColumn11;
+    @FXML
+    TableColumn<autoLista, Integer> TableColumn21;
+    @FXML
+    TableColumn<autoLista, String> TableColumn31;
+    @FXML
+    TableColumn<autoLista, String> TableColumn41;
+    @FXML
+    TableColumn<autoLista, Integer> TableColumn51;
+    @FXML
+    TableColumn<autoLista, Integer> TableColumn61;
+    @FXML
+    TableColumn<autoLista, String> TableColumn71;
+    @FXML
     public final ObservableList<autoLista> dane = FXCollections.observableArrayList();
+    @FXML
+    public final ObservableList<naprawa> dane2 = FXCollections.observableArrayList();
 
     @FXML
     void Zapisz() {
@@ -303,6 +324,202 @@ public class Okno_Auta_Controller implements Initializable {
                 }
             }
         }
+        if (check_szukaj_uszkodzone.isSelected()) {
+            dane.clear();
+            session = sesia.openSession();
+            Criterion id = Expression.eq("uszkodzony_dk_3i", true);
+            Criteria crit = session.createCriteria(auta_dk_3i.class);
+            crit.add(id);
+            List<auta_dk_3i> wynik = crit.list();
+            if (!wynik.isEmpty()) {
+                for (int x = 0; x < wynik.size(); x++) {
+                    autoLista auto = new autoLista();
+                    auto.setId_auto_dk_3i(wynik.get(x).getId_dk_3i());
+                    auto.setMarka_dk_3i(wynik.get(x).getMarka_dk_3i());
+                    auto.setModel_dk_3i(wynik.get(x).getModel_dk_3i());
+                    auto.setRocznik_dk_3i(wynik.get(x).getRocznik_dk_3i());
+                    auto.setSkrzynia_biegow_dk_3i(wynik.get(x).getSkrzynia_biegow_dk_3i());
+                    if (wynik.get(x).getId_naprawy_dk_3i() != null) {
+                        auto.setId_naprawy_dk_3i(wynik.get(x).getId_naprawy_dk_3i().getId_naprawa_dk_3i());
+                    }
+                    auto.setUszkodzony_dk_3i(wynik.get(x).isUszkodzony_dk_3i());
+                    auto.setCena_doba_dk_3i(wynik.get(x).getCena_doba_dk_3i());
+                    dane.add(auto);
+                }
+            }
+        }
+    }
+    private Tooltip tooltip2 = new Tooltip();
+
+    @FXML
+    void Wczytaj_Naprawy() {
+        dane2.clear();
+        session = sesia.openSession();
+        session.beginTransaction();
+        List<naprawa_dk_3i> wynik = session.createQuery("from naprawa_dk_3i").list();
+        session.close();
+        for (int x = 0; x < wynik.size(); x++) {
+            naprawa napr = new naprawa();
+            napr.setId_naprawa(wynik.get(x).getId_naprawa_dk_3i());
+            napr.setId_auta(wynik.get(x).getId_auto_dk_3i().getId_dk_3i());
+            napr.setAuto_marka(wynik.get(x).getId_auto_dk_3i().getMarka_dk_3i());
+            napr.setAuto_model(wynik.get(x).getId_auto_dk_3i().getModel_dk_3i());
+            napr.setAuto_rocznik(wynik.get(x).getId_auto_dk_3i().getRocznik_dk_3i());
+            napr.setCena_naprawa(wynik.get(x).getCena_naprawa_dk_3i());
+            napr.setOpis_naprawal(wynik.get(x).getOpis_naprawa_3i());
+
+            dane2.add(napr);
+
+        }
+
+        tabela2.setRowFactory(tv -> new TableRow<naprawa>() {
+
+            @Override
+            public void updateItem(naprawa person, boolean empty) {
+                super.updateItem(person, empty);
+                if (person == null) {
+                    setTooltip(null);
+                } else {
+                    //tooltip.setText("buuu");
+                    setTooltip(tooltip2);
+                }
+            }
+        });
+
+    }
+
+    @FXML
+    void Pokaz_opis() {
+        
+        if (tabela2.getFocusModel().getFocusedCell().getColumn()==6) {
+            tooltip2.setText(tabela2.getFocusModel().getFocusedItem().getOpis_naprawal());
+        }
+    }
+
+    @FXML
+    void Szukaj_Naprawy() {
+        if (!text_szukaj_marka.getText().isEmpty()) {
+            dane.clear();
+            session = sesia.openSession();
+            Criterion id = Expression.eq("marka_dk_3i", text_szukaj_marka.getText());
+            Criteria crit = session.createCriteria(auta_dk_3i.class);
+            crit.add(id);
+            List<auta_dk_3i> wynik = crit.list();
+            if (!wynik.isEmpty()) {
+                for (int x = 0; x < wynik.size(); x++) {
+                    autoLista auto = new autoLista();
+                    auto.setId_auto_dk_3i(wynik.get(x).getId_dk_3i());
+                    auto.setMarka_dk_3i(wynik.get(x).getMarka_dk_3i());
+                    auto.setModel_dk_3i(wynik.get(x).getModel_dk_3i());
+                    auto.setRocznik_dk_3i(wynik.get(x).getRocznik_dk_3i());
+                    auto.setSkrzynia_biegow_dk_3i(wynik.get(x).getSkrzynia_biegow_dk_3i());
+                    if (wynik.get(x).getId_naprawy_dk_3i() != null) {
+                        auto.setId_naprawy_dk_3i(wynik.get(x).getId_naprawy_dk_3i().getId_naprawa_dk_3i());
+                    }
+                    auto.setUszkodzony_dk_3i(wynik.get(x).isUszkodzony_dk_3i());
+                    auto.setCena_doba_dk_3i(wynik.get(x).getCena_doba_dk_3i());
+                    dane.add(auto);
+                }
+            }
+        }
+        if (!text_szukaj_model.getText().isEmpty()) {
+            dane.clear();
+            session = sesia.openSession();
+            Criterion id = Expression.eq("model_dk_3i", text_szukaj_model.getText());
+            Criteria crit = session.createCriteria(auta_dk_3i.class);
+            crit.add(id);
+            List<auta_dk_3i> wynik = crit.list();
+            if (!wynik.isEmpty()) {
+                for (int x = 0; x < wynik.size(); x++) {
+                    autoLista auto = new autoLista();
+                    auto.setId_auto_dk_3i(wynik.get(x).getId_dk_3i());
+                    auto.setMarka_dk_3i(wynik.get(x).getMarka_dk_3i());
+                    auto.setModel_dk_3i(wynik.get(x).getModel_dk_3i());
+                    auto.setRocznik_dk_3i(wynik.get(x).getRocznik_dk_3i());
+                    auto.setSkrzynia_biegow_dk_3i(wynik.get(x).getSkrzynia_biegow_dk_3i());
+                    if (wynik.get(x).getId_naprawy_dk_3i() != null) {
+                        auto.setId_naprawy_dk_3i(wynik.get(x).getId_naprawy_dk_3i().getId_naprawa_dk_3i());
+                    }
+                    auto.setUszkodzony_dk_3i(wynik.get(x).isUszkodzony_dk_3i());
+                    auto.setCena_doba_dk_3i(wynik.get(x).getCena_doba_dk_3i());
+                    dane.add(auto);
+                }
+            }
+        }
+        if (szukaj_skrzynia.getValue() != null) {
+            dane.clear();
+            session = sesia.openSession();
+            Criterion id = Expression.eq("skrzynia_biegow_dk_3i", szukaj_skrzynia.getValue().toString());
+            Criteria crit = session.createCriteria(auta_dk_3i.class);
+            crit.add(id);
+            List<auta_dk_3i> wynik = crit.list();
+            if (!wynik.isEmpty()) {
+                for (int x = 0; x < wynik.size(); x++) {
+                    autoLista auto = new autoLista();
+                    auto.setId_auto_dk_3i(wynik.get(x).getId_dk_3i());
+                    auto.setMarka_dk_3i(wynik.get(x).getMarka_dk_3i());
+                    auto.setModel_dk_3i(wynik.get(x).getModel_dk_3i());
+                    auto.setRocznik_dk_3i(wynik.get(x).getRocznik_dk_3i());
+                    auto.setSkrzynia_biegow_dk_3i(wynik.get(x).getSkrzynia_biegow_dk_3i());
+                    if (wynik.get(x).getId_naprawy_dk_3i() != null) {
+                        auto.setId_naprawy_dk_3i(wynik.get(x).getId_naprawy_dk_3i().getId_naprawa_dk_3i());
+                    }
+                    auto.setUszkodzony_dk_3i(wynik.get(x).isUszkodzony_dk_3i());
+                    auto.setCena_doba_dk_3i(wynik.get(x).getCena_doba_dk_3i());
+                    dane.add(auto);
+                }
+            }
+        }
+        if (!text_szukaj_cena_stop.getText().isEmpty()) {
+            dane.clear();
+            session = sesia.openSession();
+            Criterion id = Expression.between("cena_doba_dk_3i",
+                    Integer.parseInt(text_szukaj_cena_start.getText()),
+                    Integer.parseInt(text_szukaj_cena_stop.getText()));
+            Criteria crit = session.createCriteria(auta_dk_3i.class);
+            crit.add(id);
+            List<auta_dk_3i> wynik = crit.list();
+            if (!wynik.isEmpty()) {
+                for (int x = 0; x < wynik.size(); x++) {
+                    autoLista auto = new autoLista();
+                    auto.setId_auto_dk_3i(wynik.get(x).getId_dk_3i());
+                    auto.setMarka_dk_3i(wynik.get(x).getMarka_dk_3i());
+                    auto.setModel_dk_3i(wynik.get(x).getModel_dk_3i());
+                    auto.setRocznik_dk_3i(wynik.get(x).getRocznik_dk_3i());
+                    auto.setSkrzynia_biegow_dk_3i(wynik.get(x).getSkrzynia_biegow_dk_3i());
+                    if (wynik.get(x).getId_naprawy_dk_3i() != null) {
+                        auto.setId_naprawy_dk_3i(wynik.get(x).getId_naprawy_dk_3i().getId_naprawa_dk_3i());
+                    }
+                    auto.setUszkodzony_dk_3i(wynik.get(x).isUszkodzony_dk_3i());
+                    auto.setCena_doba_dk_3i(wynik.get(x).getCena_doba_dk_3i());
+                    dane.add(auto);
+                }
+            }
+        }
+        if (check_szukaj_uszkodzone.isSelected()) {
+            dane.clear();
+            session = sesia.openSession();
+            Criterion id = Expression.eq("uszkodzony_dk_3i", true);
+            Criteria crit = session.createCriteria(auta_dk_3i.class);
+            crit.add(id);
+            List<auta_dk_3i> wynik = crit.list();
+            if (!wynik.isEmpty()) {
+                for (int x = 0; x < wynik.size(); x++) {
+                    autoLista auto = new autoLista();
+                    auto.setId_auto_dk_3i(wynik.get(x).getId_dk_3i());
+                    auto.setMarka_dk_3i(wynik.get(x).getMarka_dk_3i());
+                    auto.setModel_dk_3i(wynik.get(x).getModel_dk_3i());
+                    auto.setRocznik_dk_3i(wynik.get(x).getRocznik_dk_3i());
+                    auto.setSkrzynia_biegow_dk_3i(wynik.get(x).getSkrzynia_biegow_dk_3i());
+                    if (wynik.get(x).getId_naprawy_dk_3i() != null) {
+                        auto.setId_naprawy_dk_3i(wynik.get(x).getId_naprawy_dk_3i().getId_naprawa_dk_3i());
+                    }
+                    auto.setUszkodzony_dk_3i(wynik.get(x).isUszkodzony_dk_3i());
+                    auto.setCena_doba_dk_3i(wynik.get(x).getCena_doba_dk_3i());
+                    dane.add(auto);
+                }
+            }
+        }
     }
 
     @FXML
@@ -409,6 +626,7 @@ public class Okno_Auta_Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tabela.setItems(dane);
+        tabela2.setItems(dane2);
 
         TableColumn1.setCellValueFactory(new PropertyValueFactory<autoLista, Integer>("id_auto_dk_3i")//nazwa pola w klasie
         );
@@ -426,7 +644,22 @@ public class Okno_Auta_Controller implements Initializable {
         );
         TableColumn8.setCellValueFactory(new PropertyValueFactory<autoLista, Boolean>("uszkodzony_dk_3i")//nazwa pola w klasie
         );
-        szukaj_skrzynia.setItems(FXCollections.observableArrayList("manualna", "automatyczna"));
+        //kolumny tabeli napraw
+        TableColumn11.setCellValueFactory(new PropertyValueFactory<autoLista, Integer>("id_naprawa")//nazwa pola w klasie
+        );
+        TableColumn21.setCellValueFactory(new PropertyValueFactory<autoLista, Integer>("id_auta")//nazwa pola w klasie
+        );
+        TableColumn31.setCellValueFactory(new PropertyValueFactory<autoLista, String>("auto_marka")//nazwa pola w klasie
+        );
+        TableColumn41.setCellValueFactory(new PropertyValueFactory<autoLista, String>("auto_model")//nazwa pola w klasie
+        );
+        TableColumn51.setCellValueFactory(new PropertyValueFactory<autoLista, Integer>("auto_rocznik")//nazwa pola w klasie
+        );
+        TableColumn61.setCellValueFactory(new PropertyValueFactory<autoLista, Integer>("cena_naprawa")//nazwa pola w klasie
+        );
+        TableColumn71.setCellValueFactory(new PropertyValueFactory<autoLista, String>("opis_naprawal")//nazwa pola w klasie
+        );
+        szukaj_skrzynia.setItems(FXCollections.observableArrayList("", "manualna", "automatyczna"));
         session = sesia.openSession();
         Long f = (Long) session.createCriteria("tabele.auta_dk_3i").setProjection(Projections.rowCount()).uniqueResult();
         text_id.setText(String.valueOf(f + 1));

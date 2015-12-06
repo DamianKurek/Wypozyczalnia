@@ -10,6 +10,8 @@ import static aplikacja.Wypozyczalnia.sesia;
 import static aplikacja.Wypozyczalnia.session;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -52,6 +54,7 @@ public class Okno_Naprawa_WyslijController implements Initializable {
         naprawa.setId_auto_dk_3i(auto);
 
         auto.setId_naprawy_dk_3i(naprawa);
+        auto.setUszkodzony_dk_3i(true);
         session.save(naprawa);
         session.update(auto);
         session.getTransaction().commit();
@@ -67,7 +70,32 @@ public class Okno_Naprawa_WyslijController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        text_opis_naprawy.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_opis_naprawy.getText().charAt(oldValue.intValue());
+                    if ((ch >= '0' && ch <= '9')) {
+                        text_opis_naprawy.setText(text_opis_naprawy.getText().substring(0, text_opis_naprawy.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        text_cena_naprawy.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_cena_naprawy.getText().charAt(oldValue.intValue());
+                    if (!(ch >= '0' && ch <= '9')) {
+                        text_cena_naprawy.setText(text_cena_naprawy.getText().substring(0, text_cena_naprawy.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
     }
 
 }
