@@ -21,9 +21,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import static aplikacja.Wypozyczalnia.*;
+import java.io.IOException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
+import javafx.stage.Stage;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Expression;
@@ -78,6 +85,42 @@ public class Okno_KlientController implements Initializable {
     public final ObservableList<klient_dk_3i> dane = FXCollections.observableArrayList();
     //SessionFactory sesia = new Configuration().configure().buildSessionFactory();
     //Session session = sesia.openSession();
+
+    @FXML
+    void RightClick() throws IOException {
+        //Group root = new Group();
+        //field == tabela
+        //txtNode == tabela
+        ContextMenu menu = new ContextMenu();
+        MenuItem item1 = new MenuItem("Edytuj");
+        menu.getItems().addAll(item1);
+
+        tabela.setContextMenu(menu);
+        item1.setOnAction(event -> {
+            edycja_klient = tabela.getSelectionModel().getSelectedItem();
+            if (edycja_klient.getId_dk_3i()==0) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Błąd");
+                //alert.setHeaderText("Błąd");
+                alert.setContentText("Zaznacz klienta");
+                alert.showAndWait();
+            } else {
+                try {
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Klient_Edycja.fxml"));
+                    Parent root1 = (Parent) fxmlLoader.load();
+                    Stage stage = new Stage();
+                    stage.setTitle("Edycja");
+                    Scene scenaWykres = new Scene(root1);
+                    stage.setScene(scenaWykres);
+                    stage.show();
+
+                } catch (IOException e) {
+
+                }
+            }
+         });
+    }
 
     @FXML
     void Czysc() {
@@ -338,7 +381,7 @@ public class Okno_KlientController implements Initializable {
             }
 
         });
-        
+
     }
 
 }

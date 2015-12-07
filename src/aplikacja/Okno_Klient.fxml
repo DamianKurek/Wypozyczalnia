@@ -62,7 +62,7 @@
                            <children>
                               <AnchorPane prefHeight="371.0" prefWidth="601.0">
                                  <children>
-                                    <TableView fx:id="tabela" prefHeight="371.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <TableView fx:id="tabela" onContextMenuRequested="#RightClick" prefHeight="371.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <columns>
                                           <TableColumn fx:id="TableColumn1" prefWidth="29.0" text="Id" />
                                         <TableColumn fx:id="TableColumn2" prefWidth="87.0" text="Imie" />

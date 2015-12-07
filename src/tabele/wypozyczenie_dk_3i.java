@@ -28,7 +28,8 @@ public class wypozyczenie_dk_3i {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_wypozyczenie_dk_3i;
+   
+    private  int id_wypozyczenie_dk_3i;
     @OneToOne
     @JoinColumn(name = "id_klient_wypozyczenie_dk_3i")
     private klient_dk_3i id_klient_wypozyczenie_dk_3i;

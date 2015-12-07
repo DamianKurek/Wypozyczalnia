@@ -63,8 +63,8 @@ public class Okno_Wypozyczenie_ListaController implements Initializable {
         dane.clear();
         session = sesia.openSession();
         session.beginTransaction();
-        List<wypozyczenie_dk_3i> wynik = session.createQuery("from wypozyczenie_dk_3i").list();
-        session.close();
+         List<wypozyczenie_dk_3i> wynik = session.createQuery("from wypozyczenie_dk_3i").list();
+         session.close();
         for (int x = 0; x < wynik.size(); x++) {
           zwrotTabela w = new zwrotTabela();
                 w.setId_wypozyczenie_dk_3i(wynik.get(x).getId_wypozyczenie_dk_3i());

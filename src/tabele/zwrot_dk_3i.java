@@ -5,6 +5,7 @@
  */
 package tabele;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,10 +21,11 @@ import javax.persistence.TemporalType;
  * @author damian
  */
 @Entity
-public class zwrot_dk_3i {
+public class zwrot_dk_3i implements Serializable{
+    //
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    //private int id_zwrot_dk_3i;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_zwrot_dk_3i;
     @OneToOne
     @JoinColumn(name = "id_wypozyczenie_dk_3i")
     private wypozyczenie_dk_3i id_wypozyczenie_dk_3i;
@@ -32,13 +34,13 @@ public class zwrot_dk_3i {
     private int kara_dk_3i;
     private int koszt_dk_3i;
 
-    public int getId_zwrot_dk_3i() {
-        return id_zwrot_dk_3i;
-    }
-
-    public void setId_zwrot_dk_3i(int id_zwrot_dk_3i) {
-        this.id_zwrot_dk_3i = id_zwrot_dk_3i;
-    }
+//    public int getId_zwrot_dk_3i() {
+//        return id_zwrot_dk_3i;
+//    }
+//
+//    public void setId_zwrot_dk_3i(int id_zwrot_dk_3i) {
+//        this.id_zwrot_dk_3i = id_zwrot_dk_3i;
+//    }
 
     public wypozyczenie_dk_3i getId_wypozyczenie_dk_3i() {
         return id_wypozyczenie_dk_3i;

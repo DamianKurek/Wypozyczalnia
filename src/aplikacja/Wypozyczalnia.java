@@ -37,6 +37,7 @@ public class Wypozyczalnia extends Application {
     static public SessionFactory sesia = new Configuration().configure().buildSessionFactory();
     static public Session session;
     static public klient_dk_3i zamowienie_klient;
+    static public klient_dk_3i edycja_klient;
     static public pracownik_dk_3i zamowienie_pracownik;
     static public auta_dk_3i zamowienie_auto;
     static public int zamowienie;
