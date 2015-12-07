@@ -21,11 +21,11 @@ import javax.persistence.TemporalType;
  * @author damian
  */
 @Entity
-public class zwrot_dk_3i implements Serializable{
-    //
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    //private int id_zwrot_dk_3i;
-    @Id
+public class zwrot_dk_3i {
+   @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id_zwrot_dk_3i;
+    
     @OneToOne
     @JoinColumn(name = "id_wypozyczenie_dk_3i")
     private wypozyczenie_dk_3i id_wypozyczenie_dk_3i;

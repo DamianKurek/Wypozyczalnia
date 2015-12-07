@@ -28,8 +28,10 @@ public class wypozyczenie_dk_3i {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   
-    private  int id_wypozyczenie_dk_3i;
+    private int id_wypozyczenie_dk_3i;
+    @OneToOne
+    @JoinColumn(name = "id_zwrot_dk_3i")
+    private zwrot_dk_3i id_zwrot_dk_3i;
     @OneToOne
     @JoinColumn(name = "id_klient_wypozyczenie_dk_3i")
     private klient_dk_3i id_klient_wypozyczenie_dk_3i;
@@ -76,9 +78,9 @@ public class wypozyczenie_dk_3i {
         return id_wypozyczenie_dk_3i;
     }
 
-    public void setId_wypozyczenie_dk_3i(int id_wypozyczenie_dk_3i) {
-        this.id_wypozyczenie_dk_3i = id_wypozyczenie_dk_3i;
-    }
+//    public void setId_wypozyczenie_dk_3i(int id_wypozyczenie_dk_3i) {
+//        this.id_wypozyczenie_dk_3i = id_wypozyczenie_dk_3i;
+//    }
 
     public Date getData_wypozyczenia_dk_3i() {
         return data_wypozyczenia_dk_3i;
