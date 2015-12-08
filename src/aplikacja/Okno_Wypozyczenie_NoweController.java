@@ -193,6 +193,9 @@ public class Okno_Wypozyczenie_NoweController implements Initializable {
                 alert.setContentText("Poprawnia dodano nowe zamówienie");
                 alert.showAndWait();
                 Wyczysc();
+                Stage stage = new Stage();
+                stage = (Stage) id_klient.getScene().getWindow();
+        stage.close();
     }
     
     @FXML

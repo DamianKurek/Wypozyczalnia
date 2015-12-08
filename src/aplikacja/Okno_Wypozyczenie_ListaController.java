@@ -16,6 +16,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -56,6 +57,12 @@ public class Okno_Wypozyczenie_ListaController implements Initializable {
     TextField text_nazwisko_szukaj;
     @FXML
     TextField text_id_szukaj;
+    @FXML
+    TextField text_marka_szukaj;
+    @FXML
+    TextField text_model_szukaj;
+    @FXML
+    CheckBox check_wypozyczone;
     public final ObservableList<zwrotTabela> dane = FXCollections.observableArrayList();
 
     @FXML
@@ -118,6 +125,66 @@ public class Okno_Wypozyczenie_ListaController implements Initializable {
             w.setData_wypozyczenia_dk_3i((Date) wynik.getData_wypozyczenia_dk_3i());
             w.setData_zwrotu_dk_3i((Date) wynik.getData_zwrotu_dk_3i());
             dane.add(w);
+        }
+        if (!text_model_szukaj.getText().isEmpty()) {
+            dane.clear();
+            session = sesia.openSession();
+            Query query = session.createQuery("from wypozyczenie_dk_3i as w JOIN fetch w.id_auta_wypozyczenie_dk_3i where w.id_auta_wypozyczenie_dk_3i.model_dk_3i is '" + text_model_szukaj.getText() + "'");
+            List<wypozyczenie_dk_3i> list = query.list();
+
+            for (int x = 0; x < list.size(); x++) {
+                zwrotTabela w = new zwrotTabela();
+                w.setId_wypozyczenie_dk_3i(list.get(x).getId_wypozyczenie_dk_3i());
+                w.setImie_dk_3i(list.get(x).getId_klient_wypozyczenie_dk_3i().getImie_dk_3i());
+                w.setNazwisko_dk_3i(list.get(x).getId_klient_wypozyczenie_dk_3i().getNazwisko_dk_3i());
+                w.setMarka_dk_3i(list.get(x).getId_auta_wypozyczenie_dk_3i().getMarka_dk_3i());
+                w.setModel_dk_3i(list.get(x).getId_auta_wypozyczenie_dk_3i().getModel_dk_3i());
+                w.setData_wypozyczenia_dk_3i((Date) list.get(x).getData_wypozyczenia_dk_3i());
+                w.setData_zwrotu_dk_3i((Date) list.get(x).getData_zwrotu_dk_3i());
+                dane.add(w);
+
+            }
+            
+        }
+        if (!text_marka_szukaj.getText().isEmpty()) {
+            dane.clear();
+            session = sesia.openSession();
+            Query query = session.createQuery("from wypozyczenie_dk_3i as w JOIN fetch w.id_auta_wypozyczenie_dk_3i where w.id_auta_wypozyczenie_dk_3i.marka_dk_3i is '" + text_marka_szukaj.getText() + "'");
+            List<wypozyczenie_dk_3i> list = query.list();
+
+            for (int x = 0; x < list.size(); x++) {
+                zwrotTabela w = new zwrotTabela();
+                w.setId_wypozyczenie_dk_3i(list.get(x).getId_wypozyczenie_dk_3i());
+                w.setImie_dk_3i(list.get(x).getId_klient_wypozyczenie_dk_3i().getImie_dk_3i());
+                w.setNazwisko_dk_3i(list.get(x).getId_klient_wypozyczenie_dk_3i().getNazwisko_dk_3i());
+                w.setMarka_dk_3i(list.get(x).getId_auta_wypozyczenie_dk_3i().getMarka_dk_3i());
+                w.setModel_dk_3i(list.get(x).getId_auta_wypozyczenie_dk_3i().getModel_dk_3i());
+                w.setData_wypozyczenia_dk_3i((Date) list.get(x).getData_wypozyczenia_dk_3i());
+                w.setData_zwrotu_dk_3i((Date) list.get(x).getData_zwrotu_dk_3i());
+                dane.add(w);
+
+            }
+            
+        }
+        if (check_wypozyczone.isSelected()) {
+            dane.clear();
+            session = sesia.openSession();
+            Query query = session.createQuery("from wypozyczenie_dk_3i as w where w.id_zwrot_dk_3i is null");
+            List<wypozyczenie_dk_3i> list = query.list();
+
+            for (int x = 0; x < list.size(); x++) {
+                zwrotTabela w = new zwrotTabela();
+                w.setId_wypozyczenie_dk_3i(list.get(x).getId_wypozyczenie_dk_3i());
+                w.setImie_dk_3i(list.get(x).getId_klient_wypozyczenie_dk_3i().getImie_dk_3i());
+                w.setNazwisko_dk_3i(list.get(x).getId_klient_wypozyczenie_dk_3i().getNazwisko_dk_3i());
+                w.setMarka_dk_3i(list.get(x).getId_auta_wypozyczenie_dk_3i().getMarka_dk_3i());
+                w.setModel_dk_3i(list.get(x).getId_auta_wypozyczenie_dk_3i().getModel_dk_3i());
+                w.setData_wypozyczenia_dk_3i((Date) list.get(x).getData_wypozyczenia_dk_3i());
+                w.setData_zwrotu_dk_3i((Date) list.get(x).getData_zwrotu_dk_3i());
+                dane.add(w);
+
+            }
+            
         }
     }
 

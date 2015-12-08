@@ -8,14 +8,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="850.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="aplikacja.Okno_Wypozyczenie_ListaController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplikacja.Okno_Wypozyczenie_ListaController">
    <children>
       <HBox prefHeight="400.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane prefHeight="371.0" prefWidth="650.0">
                <children>
-                  <TableView fx:id="tabela" prefHeight="371.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tabela" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columns>
                         <TableColumn fx:id="TableColumn1" prefWidth="29.0" text="Id" />
                         <TableColumn fx:id="TableColumn2" prefWidth="90.0" text="Imie Klienta" />
@@ -28,52 +27,82 @@
                   </TableView>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="200.0">
                <children>
                   <VBox prefHeight="371.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#Wczytaj" prefHeight="46.0" prefWidth="207.0" text="Wczytaj" />
+                              <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Wczytaj" prefHeight="30.0" prefWidth="200.0" text="Wczytaj wszystkie" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="54.0" prefWidth="201.0" text="Wyszukiwanie" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" text="Wyszukiwanie" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font size="19.0" />
                                  </font>
                               </Label>
+                              <Line endX="200.0" layoutY="40.0" />
+                           </children></AnchorPane>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Id" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="45.0" prefWidth="201.0" text="Id" AnchorPane.bottomAnchor="-14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0" />
-                              <Line endX="100.0" layoutX="104.0" startX="-100.0" />
+                              <TextField fx:id="text_id_szukaj" alignment="CENTER" layoutX="35.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="130.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0" />
+                              <Line endX="200.0" layoutY="30.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0">
                            <children>
-                              <TextField fx:id="text_id_szukaj" alignment="CENTER" layoutY="10.0" prefHeight="26.0" prefWidth="208.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                              <Label alignment="CENTER" prefHeight="45.0" prefWidth="201.0" text="Nazwisko klienta" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="45.0" prefWidth="201.0" text="Nazwisko" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                              <Line endX="100.0" layoutX="107.0" startX="-100.0" />
+                              <TextField fx:id="text_nazwisko_szukaj" layoutX="24.0" prefHeight="25.0" prefWidth="149.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="0.0" />
+                              <Line endX="200.0" layoutY="30.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0">
                            <children>
-                              <Line endX="100.0" layoutX="101.0" layoutY="45.0" startX="-100.0" />
-                              <TextField fx:id="text_nazwisko_szukaj" layoutX="1.0" layoutY="11.0" prefHeight="25.0" prefWidth="201.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="11.0" />
-                              <Line endX="100.0" layoutX="103.0" startX="-100.0" />
+                              <Label alignment="CENTER" layoutX="89.0" layoutY="7.0" prefHeight="30.0" prefWidth="200.0" text="Marka auta" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="61.0" layoutY="11.0" mnemonicParsing="false" onAction="#Szukaj" prefHeight="46.0" prefWidth="201.0" text="Szukaj" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <TextField fx:id="text_marka_szukaj" layoutX="26.0" layoutY="2.0" AnchorPane.bottomAnchor="5.0" />
+                              <Line endX="200.0" layoutY="30.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="86.0" layoutY="6.0" prefHeight="30.0" prefWidth="200.0" text="Model auta" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="text_model_szukaj" layoutX="26.0" layoutY="2.0" AnchorPane.bottomAnchor="5.0" />
+                              <Line endX="200.0" layoutY="30.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="86.0" layoutY="6.0" prefHeight="30.0" prefWidth="200.0" text="Aktualnie wypożyczone" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0">
+                           <children>
+                              <CheckBox fx:id="check_wypozyczone" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="6.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="112.0" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Line endX="200.0" layoutY="30.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="208.0">
+                           <children>
+                              <Button layoutX="61.0" layoutY="19.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Szukaj" prefHeight="30.0" prefWidth="200.0" text="Szukaj" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                      </children>

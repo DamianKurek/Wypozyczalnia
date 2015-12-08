@@ -171,12 +171,12 @@ public class Okno_Auta_Controller implements Initializable {
             alert.showAndWait();
         } else {
             auta_dk_3i auto = new auta_dk_3i();
-            naprawa_dk_3i naprawa = new naprawa_dk_3i();
+            //naprawa_dk_3i naprawa = new naprawa_dk_3i();
 
-            naprawa.setId_auto_dk_3i(auto);
-            naprawa.setCena_naprawa_dk_3i(999);
-            naprawa.setOpis_naprawa_3i("fesfs");
-            auto.setId_naprawy_dk_3i(naprawa);
+            //naprawa.setId_auto_dk_3i(auto);
+            //naprawa.setCena_naprawa_dk_3i(999);
+           // naprawa.setOpis_naprawa_3i("fesfs");
+           // auto.setId_naprawy_dk_3i(naprawa);
             //auto.setId_naprawy_dk_3i(1);
             auto.setUszkodzony_dk_3i(false);
             auto.setMarka_dk_3i(text_marka.getText());
@@ -187,7 +187,7 @@ public class Okno_Auta_Controller implements Initializable {
             session = sesia.openSession();
             //zapisane do bazy
             session.beginTransaction();
-            session.save(naprawa);
+           // session.save(naprawa);
             session.save(auto);
             session.getTransaction().commit();
             session.close();
@@ -689,20 +689,7 @@ public class Okno_Auta_Controller implements Initializable {
                 }
             }
 
-        });
-        text_model.lengthProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-
-                if (newValue.intValue() > oldValue.intValue()) {
-                    char ch = text_model.getText().charAt(oldValue.intValue());
-                    if (ch >= '0' && ch <= '9') {
-                        text_model.setText(text_model.getText().substring(0, text_model.getText().length() - 1));
-                    }
-                }
-            }
-
-        });
+        });       
         text_cena.lengthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {

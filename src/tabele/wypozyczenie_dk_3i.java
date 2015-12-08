@@ -106,4 +106,12 @@ public class wypozyczenie_dk_3i {
         this.koszt_dk_3i = koszt_dk_3i;
     }
 
+    public zwrot_dk_3i getId_zwrot_dk_3i() {
+        return id_zwrot_dk_3i;
+    }
+
+    public void setId_zwrot_dk_3i(zwrot_dk_3i id_zwrot_dk_3i) {
+        this.id_zwrot_dk_3i = id_zwrot_dk_3i;
+    }
+
 }

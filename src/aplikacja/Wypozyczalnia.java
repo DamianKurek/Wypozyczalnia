@@ -43,6 +43,9 @@ public class Wypozyczalnia extends Application {
     static public int zamowienie;
     static public autoLista auto_naprawa;
     static public pracownik_dk_3i zalogowany_pracownik;
+    static public Date data_raport_od;
+    static public Date data_raport_do;
+    
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -52,7 +55,7 @@ public class Wypozyczalnia extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-       
+       // stage.setResizable(false);
 
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override

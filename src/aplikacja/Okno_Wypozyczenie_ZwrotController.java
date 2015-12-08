@@ -169,11 +169,16 @@ public class Okno_Wypozyczenie_ZwrotController implements Initializable {
         crit.add(id);
         wypozyczenie_dk_3i wynik = (wypozyczenie_dk_3i) crit.uniqueResult();
 
+        
+        
         zwrot_dk_3i zwrot = new zwrot_dk_3i();
         zwrot.setId_wypozyczenie_dk_3i(wynik);
         zwrot.setKara_dk_3i(Integer.parseInt(text_kara.getText()));
         zwrot.setKoszt_dk_3i(Integer.parseInt(text_do_zaplaty.getText()));
         zwrot.setData_zwrotu_dk_3i(Date.valueOf(data_zwrotu.getValue()));
+        
+        wynik.setId_zwrot_dk_3i(zwrot);
+        
         if (check_uszkodzony.isSelected()) {
 
             id = Expression.eq("id_dk_3i", Integer.parseInt(id_auto.getText()));
@@ -184,6 +189,7 @@ public class Okno_Wypozyczenie_ZwrotController implements Initializable {
             auto.setUszkodzony_dk_3i(true);
             session.update(auto);
         }
+        session.update(wynik);
         session.save(zwrot);
         session.getTransaction().commit();
         session.close();
