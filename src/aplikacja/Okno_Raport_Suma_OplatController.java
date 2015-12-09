@@ -18,7 +18,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Data;
+import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Expression;
@@ -67,8 +70,11 @@ public class Okno_Raport_Suma_OplatController implements Initializable {
         int miesiac10_suma = 0;
         List<zwrot_dk_3i> miesiac11 = new ArrayList();
         int miesiac11_suma = 0;
+        int miesiac_alone_suma = 0;
         int suma = 0;
         int suma_kar = 0;
+        int liczba_miesiecy = 0;
+        List<zwrot_dk_3i> miesiac_alone = null;
 
 //wykres
         XYChart.Series series1 = new XYChart.Series();
@@ -106,6 +112,8 @@ public class Okno_Raport_Suma_OplatController implements Initializable {
 
         XYChart.Series series12 = new XYChart.Series();
         series12.setName("Grudzień");
+
+        XYChart.Series sesies_alone = new XYChart.Series();
         /////////////////////
         session = sesia.openSession();
 
@@ -114,6 +122,7 @@ public class Okno_Raport_Suma_OplatController implements Initializable {
         crit.add(id);
         List<zwrot_dk_3i> wynik = crit.list();
         session.close();
+        wykres.setLegendVisible(true);
         for (int x = 0; x < wynik.size(); x++) {
             if (wynik.get(x).getData_zwrotu_dk_3i().getMonth() == 0) {
                 miesiac0.add(wynik.get(x));
@@ -143,17 +152,21 @@ public class Okno_Raport_Suma_OplatController implements Initializable {
 
             }
 
-        }if (miesiac0.size() > 0) {
+        }
+        if (miesiac0.size() > 0) {
+            liczba_miesiecy += 1;
+            miesiac_alone = miesiac0;
             for (int x = 0; x < miesiac0.size(); x++) {
                 miesiac0_suma += miesiac0.get(x).getKoszt_dk_3i();
                 suma_kar += miesiac0.get(x).getKara_dk_3i();
             }
             suma += miesiac0_suma;
-
             series1.getData().add(new XYChart.Data("styczeń", miesiac0_suma));
             wykres.getData().add(series1);
         }
         if (miesiac1.size() > 0) {
+            liczba_miesiecy += 1;
+            miesiac_alone = miesiac1;
             for (int x = 0; x < miesiac1.size(); x++) {
                 miesiac1_suma += miesiac1.get(x).getKoszt_dk_3i();
                 suma_kar += miesiac1.get(x).getKara_dk_3i();
@@ -164,6 +177,8 @@ public class Okno_Raport_Suma_OplatController implements Initializable {
             wykres.getData().add(series2);
         }
         if (miesiac2.size() > 0) {
+            liczba_miesiecy += 1;
+            miesiac_alone = miesiac2;
             for (int x = 0; x < miesiac2.size(); x++) {
                 miesiac2_suma += miesiac2.get(x).getKoszt_dk_3i();
                 suma_kar += miesiac2.get(x).getKara_dk_3i();
@@ -174,6 +189,8 @@ public class Okno_Raport_Suma_OplatController implements Initializable {
             wykres.getData().add(series3);
         }
         if (miesiac3.size() > 0) {
+            liczba_miesiecy += 1;
+            miesiac_alone = miesiac3;
             for (int x = 0; x < miesiac3.size(); x++) {
                 miesiac3_suma += miesiac3.get(x).getKoszt_dk_3i();
                 suma_kar += miesiac3.get(x).getKara_dk_3i();
@@ -182,7 +199,10 @@ public class Okno_Raport_Suma_OplatController implements Initializable {
 
             series4.getData().add(new XYChart.Data("kwiecień", miesiac3_suma));
             wykres.getData().add(series4);
-        }if (miesiac4.size() > 0) {
+        }
+        if (miesiac4.size() > 0) {
+            liczba_miesiecy += 1;
+            miesiac_alone = miesiac4;
             for (int x = 0; x < miesiac4.size(); x++) {
                 miesiac4_suma += miesiac4.get(x).getKoszt_dk_3i();
                 suma_kar += miesiac4.get(x).getKara_dk_3i();
@@ -193,6 +213,8 @@ public class Okno_Raport_Suma_OplatController implements Initializable {
             wykres.getData().add(series5);
         }
         if (miesiac5.size() > 0) {
+            liczba_miesiecy += 1;
+            miesiac_alone = miesiac5;
             for (int x = 0; x < miesiac5.size(); x++) {
                 miesiac5_suma += miesiac5.get(x).getKoszt_dk_3i();
                 suma_kar += miesiac5.get(x).getKara_dk_3i();
@@ -203,6 +225,8 @@ public class Okno_Raport_Suma_OplatController implements Initializable {
             wykres.getData().add(series6);
         }
         if (miesiac6.size() > 0) {
+            liczba_miesiecy += 1;
+            miesiac_alone = miesiac6;
             for (int x = 0; x < miesiac6.size(); x++) {
                 miesiac6_suma += miesiac6.get(x).getKoszt_dk_3i();
                 suma_kar += miesiac6.get(x).getKara_dk_3i();
@@ -213,6 +237,8 @@ public class Okno_Raport_Suma_OplatController implements Initializable {
             wykres.getData().add(series7);
         }
         if (miesiac7.size() > 0) {
+            miesiac_alone = miesiac7;
+            liczba_miesiecy += 1;
             for (int x = 0; x < miesiac7.size(); x++) {
                 miesiac8_suma += miesiac7.get(x).getKoszt_dk_3i();
                 suma_kar += miesiac7.get(x).getKara_dk_3i();
@@ -222,7 +248,9 @@ public class Okno_Raport_Suma_OplatController implements Initializable {
             series8.getData().add(new XYChart.Data("sierpien", miesiac7_suma));
             wykres.getData().add(series8);
         }
-         if (miesiac8.size() > 0) {
+        if (miesiac8.size() > 0) {
+            liczba_miesiecy += 1;
+            miesiac_alone = miesiac8;
             for (int x = 0; x < miesiac8.size(); x++) {
                 miesiac8_suma += miesiac8.get(x).getKoszt_dk_3i();
                 suma_kar += miesiac8.get(x).getKara_dk_3i();
@@ -233,6 +261,8 @@ public class Okno_Raport_Suma_OplatController implements Initializable {
             wykres.getData().add(series9);
         }
         if (miesiac9.size() > 0) {
+            liczba_miesiecy += 1;
+            miesiac_alone = miesiac9;
             for (int x = 0; x < miesiac9.size(); x++) {
                 miesiac9_suma += miesiac9.get(x).getKoszt_dk_3i();
                 suma_kar += miesiac9.get(x).getKara_dk_3i();
@@ -243,6 +273,8 @@ public class Okno_Raport_Suma_OplatController implements Initializable {
             wykres.getData().add(series10);
         }
         if (miesiac10.size() > 0) {
+            liczba_miesiecy += 1;
+            miesiac_alone = miesiac10;
             for (int x = 0; x < miesiac10.size(); x++) {
                 miesiac10_suma += miesiac10.get(x).getKoszt_dk_3i();
                 suma_kar += miesiac10.get(x).getKara_dk_3i();
@@ -253,6 +285,8 @@ public class Okno_Raport_Suma_OplatController implements Initializable {
             wykres.getData().add(series11);
         }
         if (miesiac11.size() > 0) {
+            liczba_miesiecy += 1;
+            miesiac_alone = miesiac11;
             for (int x = 0; x < miesiac11.size(); x++) {
                 miesiac11_suma += miesiac11.get(x).getKoszt_dk_3i();
                 suma_kar += miesiac11.get(x).getKara_dk_3i();
@@ -261,9 +295,32 @@ public class Okno_Raport_Suma_OplatController implements Initializable {
             series12.getData().add(new XYChart.Data("grudzien", miesiac11_suma));
             wykres.getData().add(series12);
         }
+
+        //jeśli zakres z jednego miesiaca
+        if (liczba_miesiecy == 1) {
+            wykres.getData().clear();
+            suma_kar = 0;
+            suma = 0;
+            for (int x = 0; x < miesiac_alone.size(); x++) {
+                sesies_alone.getData().add(new XYChart.Data(miesiac_alone.get(x).getData_zwrotu_dk_3i().toString(), miesiac_alone.get(x).getKoszt_dk_3i()));
+                suma += miesiac_alone.get(x).getKoszt_dk_3i();
+                suma_kar += miesiac_alone.get(x).getKara_dk_3i();
+            }
+            wykres.getData().add(sesies_alone);
+            wykres.setLegendVisible(false);
+        }
+//wykres.setBarGap(0);
+//wykres.setCategoryGap(0);
+        wykres.setVerticalGridLinesVisible(false);
         text_kary.setText(String.valueOf(suma_kar));
         text_suma.setText(String.valueOf(suma));
-
+        for (final Series<String, Number> series : wykres.getData()) {
+            for (final Data<String, Number> data : series.getData()) {
+                Tooltip tooltip = new Tooltip();
+                tooltip.setText(data.getYValue().toString());
+                Tooltip.install(data.getNode(), tooltip);
+            }
+        }
         //wykres.getData().addAll(series12);
     }
 

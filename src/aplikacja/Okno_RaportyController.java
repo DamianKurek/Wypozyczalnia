@@ -39,7 +39,7 @@ public class Okno_RaportyController implements Initializable {
     DatePicker data_od;
 
     @FXML
-    void Suma_Oplat()throws IOException  {
+    void Suma_Oplat() throws IOException {
         LocalDate localDate = data_od.getValue();
         Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
         data_raport_od = Date.from(instant);
@@ -50,6 +50,17 @@ public class Okno_RaportyController implements Initializable {
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Suma Opłat");
+        Scene scenaWykres = new Scene(root1);
+        stage.setScene(scenaWykres);
+        stage.show();
+    }
+
+    @FXML
+    void Suma_Awarii() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Raport_Suma_Awarii.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Awarie");
         Scene scenaWykres = new Scene(root1);
         stage.setScene(scenaWykres);
         stage.show();
