@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="453.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplikacja.Okno_Raport_AutaBezawaryjneController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="721.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="400.0" prefWidth="721.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane prefHeight="400.0" prefWidth="466.0">
+                     <children>
+                        <TableView fx:id="tabela" layoutX="69.0" layoutY="71.0" prefHeight="371.0" prefWidth="622.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <columns>
+                              <TableColumn fx:id="TableColumn1" prefWidth="31.0" text="Id" />
+                              <TableColumn fx:id="TableColumn3" prefWidth="102.0" text="Marka" />
+                              <TableColumn fx:id="TableColumn4" prefWidth="85.0" text="Model" />
+                              <TableColumn fx:id="TableColumn5" prefWidth="79.0" text="Rocznik" />
+                              <TableColumn fx:id="TableColumn6" prefWidth="83.0" text="Skrzynia" />
+                              <TableColumn fx:id="TableColumn7" prefWidth="67.0" text="Cena" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

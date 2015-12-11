@@ -79,12 +79,12 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="74.0" layoutY="10.0" mnemonicParsing="false" text="Button" />
+                  <Button layoutX="45.0" layoutY="10.0" mnemonicParsing="false" onAction="#Auto_Bezawaryjne" text="Auta bezawaryjne" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="74.0" layoutY="10.0" mnemonicParsing="false" text="Button" />
+                  <Button layoutX="74.0" layoutY="10.0" mnemonicParsing="false" onAction="#Popularne" text="Button" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
