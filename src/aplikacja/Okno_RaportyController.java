@@ -99,6 +99,23 @@ public class Okno_RaportyController implements Initializable {
         stage.show();
     }
 
+    @FXML
+    void Wypozyczenia_okres() throws IOException {
+        LocalDate localDate = data_od.getValue();
+        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+        data_raport_od = Date.from(instant);
+        localDate = data_do.getValue();
+        instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+        data_raport_do = Date.from(instant);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Raport_Wypozyczenia_Okres.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Wypożyczenia za okres");
+        Scene scenaWykres = new Scene(root1);
+        stage.setScene(scenaWykres);
+        stage.show();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

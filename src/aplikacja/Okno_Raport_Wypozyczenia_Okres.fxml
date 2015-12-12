@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="435.0" prefWidth="637.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="aplikacja.Okno_Raport_Wypozyczenia_OkresController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="637.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="406.0" prefWidth="637.0">
+               <children>
+                  <TableView fx:id="tabela" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="TableColumn1" prefWidth="29.0" text="Id" />
+                        <TableColumn fx:id="TableColumn2" prefWidth="90.0" text="Imie Klienta" />
+                        <TableColumn fx:id="TableColumn3" prefWidth="120.0" text="Nazwisko Klienta" />
+                        <TableColumn fx:id="TableColumn4" minWidth="4.0" prefWidth="107.0" text="Marka Auta" />
+                        <TableColumn fx:id="TableColumn5" prefWidth="85.0" text="Model Auta" />
+                        <TableColumn fx:id="TableColumn6" prefWidth="106.0" text="Wypożyczenie" />
+                        <TableColumn fx:id="TableColumn7" prefWidth="114.0" text="Zwrot" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="66.0" prefWidth="637.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="637.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="33.0" layoutY="9.0" prefHeight="35.0" prefWidth="163.0" text="Łączna ilość wypożyczeń" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="text_ilosc" layoutX="5.0" layoutY="5.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="66.0" layoutY="9.0" prefHeight="35.0" prefWidth="200.0" text="Łączny koszt wypożyczeń" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="text_koszt" layoutX="6.0" layoutY="5.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
