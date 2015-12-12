@@ -21,7 +21,8 @@ import javax.persistence.OneToOne;
 public class naprawa_dk_3i {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_naprawa_dk_3i;
+    @Column(name = "id_naprawa_dk_3i")
+    public int id_naprawa_dk_3i;
     @OneToOne
     @JoinColumn(name="id_auto_dk_3i")
     private auta_dk_3i id_auto_dk_3i;

@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
@@ -28,7 +29,8 @@ public class auta_dk_3i {
     private int id_dk_3i;
     //id naprawy //referencja
     @OneToOne
-    private naprawa_dk_3i id_naprawy_dk_3i;
+    @JoinColumn(name="id_naprawy_dk_3i")
+    public  naprawa_dk_3i id_naprawy_dk_3i;
     private String model_dk_3i;
     private String marka_dk_3i;
     private int rocznik_dk_3i;

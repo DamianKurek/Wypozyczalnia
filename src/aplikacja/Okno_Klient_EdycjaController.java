@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -107,6 +108,15 @@ public class Okno_Klient_EdycjaController implements Initializable {
             session.update(klient);
             session.getTransaction().commit();
             session.close();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Zapis");
+            alert.setHeaderText("Edycja");
+            alert.setContentText("Poprawnia zmieniono dane");
+            alert.showAndWait();
+
+            Stage stage = new Stage();
+            stage = (Stage) text_imie.getScene().getWindow();
+            stage.close();
 
         }
 
@@ -131,6 +141,9 @@ public class Okno_Klient_EdycjaController implements Initializable {
                     char ch = text_imie.getText().charAt(oldValue.intValue());
                     if ((ch >= '0' && ch <= '9')) {
                         text_imie.setText(text_imie.getText().substring(0, text_imie.getText().length() - 1));
+                    }
+                    if(text_telefon.getText().length()>9){
+                        text_telefon.setText(text_telefon.getText().substring(0, text_telefon.getText().length() - 1));
                     }
                 }
             }
@@ -162,19 +175,7 @@ public class Okno_Klient_EdycjaController implements Initializable {
             }
 
         });
-        text_ulica.lengthProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 
-                if (newValue.intValue() > oldValue.intValue()) {
-                    char ch = text_ulica.getText().charAt(oldValue.intValue());
-                    if ((ch >= '0' && ch <= '9')) {
-                        text_ulica.setText(text_ulica.getText().substring(0, text_ulica.getText().length() - 1));
-                    }
-                }
-            }
-
-        });
         text_nr_domu.lengthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {

@@ -98,7 +98,7 @@ public class Okno_KlientController implements Initializable {
         tabela.setContextMenu(menu);
         item1.setOnAction(event -> {
             edycja_klient = tabela.getSelectionModel().getSelectedItem();
-            if (edycja_klient.getId_dk_3i()==0) {
+            if (edycja_klient.getId_dk_3i() == 0) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Błąd");
                 //alert.setHeaderText("Błąd");
@@ -119,7 +119,7 @@ public class Okno_KlientController implements Initializable {
 
                 }
             }
-         });
+        });
     }
 
     @FXML
@@ -136,23 +136,61 @@ public class Okno_KlientController implements Initializable {
     @FXML
     void Zapisz() {
         klient_dk_3i klient = new klient_dk_3i();
-        klient.setImie_dk_3i(text_imie.getText());
-        klient.setNazwisko_dk_3i(text_nazwisko.getText());
-        klient.setAdres_miasto_dk_3i(text_miasto.getText());
-        klient.setAdres_ulica_dk_3i(text_ulica.getText());
-        klient.setAdres_nr_dom_dk_3i(Integer.parseInt(text_nr_domu.getText()));
-        if (!text_telefon.getText().isEmpty()) {
-            klient.setNr_tel_dk_3i(Integer.parseInt(text_telefon.getText()));
+        if (text_imie.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Błąd danych");
+            alert.setContentText("pole imie nie możę być puste");
+            alert.showAndWait();
+        } else if (text_nazwisko.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Błąd danych");
+            alert.setContentText("pole nazwisko nie możę być puste");
+            alert.showAndWait();
+        } else if (text_miasto.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Błąd danych");
+            alert.setContentText("pole miasto nie możę być puste");
+            alert.showAndWait();
+        } else if (text_ulica.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Błąd danych");
+            alert.setContentText("pole ulica nie możę być puste");
+            alert.showAndWait();
+        } else if (text_nr_domu.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Błąd danych");
+            alert.setContentText("pole numer domu nie możę być puste");
+            alert.showAndWait();
+        } else {
+            klient.setImie_dk_3i(text_imie.getText());
+            klient.setNazwisko_dk_3i(text_nazwisko.getText());
+            klient.setAdres_miasto_dk_3i(text_miasto.getText());
+            klient.setAdres_ulica_dk_3i(text_ulica.getText());
+            klient.setAdres_nr_dom_dk_3i(Integer.parseInt(text_nr_domu.getText()));
+            if (!text_telefon.getText().isEmpty()) {
+                klient.setNr_tel_dk_3i(Integer.parseInt(text_telefon.getText()));
+            }
+            //zapisane do bazy
+            session = sesia.openSession();
+            session.beginTransaction();
+            session.save(klient);
+            session.getTransaction().commit();
+            session.close();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Zapis");
+            alert.setHeaderText("Zapis danych");
+            alert.setContentText("Poprawnia dodano nowego klienta");
+            alert.showAndWait();
+
+            Stage stage = new Stage();
+            stage = (Stage) text_imie.getScene().getWindow();
+            stage.close();
         }
-
-        SessionFactory sesia = new Configuration().configure().buildSessionFactory();
-        Session session = sesia.openSession();
-        //zapisane do bazy
-        session.beginTransaction();
-        session.save(klient);
-        session.getTransaction().commit();
-        session.close();
-
     }
 
     @FXML
@@ -342,19 +380,6 @@ public class Okno_KlientController implements Initializable {
             }
 
         });
-        text_ulica.lengthProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-
-                if (newValue.intValue() > oldValue.intValue()) {
-                    char ch = text_ulica.getText().charAt(oldValue.intValue());
-                    if ((ch >= '0' && ch <= '9')) {
-                        text_ulica.setText(text_ulica.getText().substring(0, text_ulica.getText().length() - 1));
-                    }
-                }
-            }
-
-        });
         text_nr_domu.lengthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -376,6 +401,48 @@ public class Okno_KlientController implements Initializable {
                     char ch = text_telefon.getText().charAt(oldValue.intValue());
                     if (!(ch >= '0' && ch <= '9')) {
                         text_telefon.setText(text_telefon.getText().substring(0, text_telefon.getText().length() - 1));
+                    }
+                    if(text_telefon.getText().length()>9){
+                        text_telefon.setText(text_telefon.getText().substring(0, text_telefon.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        text_id_szukaj.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_id_szukaj.getText().charAt(oldValue.intValue());
+                    if (!(ch >= '0' && ch <= '9')) {
+                        text_id_szukaj.setText(text_id_szukaj.getText().substring(0, text_id_szukaj.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        text_nazwisko_szukaj.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_nazwisko_szukaj.getText().charAt(oldValue.intValue());
+                    if ((ch >= '0' && ch <= '9')) {
+                        text_nazwisko_szukaj.setText(text_nazwisko_szukaj.getText().substring(0, text_nazwisko_szukaj.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        text_miasto_szukaj.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_miasto_szukaj.getText().charAt(oldValue.intValue());
+                    if ((ch >= '0' && ch <= '9')) {
+                        text_miasto_szukaj.setText(text_miasto_szukaj.getText().substring(0, text_miasto_szukaj.getText().length() - 1));
                     }
                 }
             }

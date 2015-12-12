@@ -65,6 +65,7 @@ public class Okno_RaportyController implements Initializable {
         stage.setScene(scenaWykres);
         stage.show();
     }
+
     @FXML
     void Auto_Bezawaryjne() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Raport_AutaBezawaryjne.fxml"));
@@ -75,12 +76,24 @@ public class Okno_RaportyController implements Initializable {
         stage.setScene(scenaWykres);
         stage.show();
     }
-     @FXML
+
+    @FXML
     void Popularne() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Raport_PopularneAuta.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Awarie");
+        stage.setTitle("Najcześciej Wypożyczane");
+        Scene scenaWykres = new Scene(root1);
+        stage.setScene(scenaWykres);
+        stage.show();
+    }
+
+    @FXML
+    void Najdluzej() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Raport_Najdluzej.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Najdluzej");
         Scene scenaWykres = new Scene(root1);
         stage.setScene(scenaWykres);
         stage.show();

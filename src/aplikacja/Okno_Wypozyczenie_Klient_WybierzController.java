@@ -21,6 +21,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import static aplikacja.Wypozyczalnia.*;
+
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import org.hibernate.Criteria;
@@ -30,6 +31,9 @@ import tabele.klient_dk_3i;
 
 import tabele.pracownik_dk_3i;
 import aplikacja.Okno_Wypozyczenie_NoweController.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import org.hibernate.criterion.Projections;
 
 /**
  * FXML Controller class
@@ -84,9 +88,12 @@ public class Okno_Wypozyczenie_Klient_WybierzController implements Initializable
         zamowienie_klient = tabela.getSelectionModel().getSelectedItem();
         //System.out.println(k.getNazwisko_dk_3i());
         // get a handle to the stage
-        Stage stage = (Stage) tabela.getScene().getWindow();
+        //Stage stage = (Stage) tabela.getScene().getWindow();
+        Stage stage = (Stage) tabela.getParent().getScene().getWindow();
+        
         // do what you have to do
         stage.close();
+       
     }
 
     @FXML
@@ -103,24 +110,61 @@ public class Okno_Wypozyczenie_Klient_WybierzController implements Initializable
     @FXML
     void Zapisz() {
         klient_dk_3i klient = new klient_dk_3i();
-        klient.setImie_dk_3i(text_imie.getText());
-        klient.setNazwisko_dk_3i(text_nazwisko.getText());
-        klient.setAdres_miasto_dk_3i(text_miasto.getText());
-        klient.setAdres_ulica_dk_3i(text_ulica.getText());
-        klient.setAdres_nr_dom_dk_3i(Integer.parseInt(text_nr_domu.getText()));
-        if (!text_telefon.getText().isEmpty()) {
-            klient.setNr_tel_dk_3i(Integer.parseInt(text_telefon.getText()));
+        if (text_imie.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Błąd danych");
+            alert.setContentText("pole imie nie możę być puste");
+            alert.showAndWait();
+        } else if (text_nazwisko.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Błąd danych");
+            alert.setContentText("pole nazwisko nie możę być puste");
+            alert.showAndWait();
+        } else if (text_miasto.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Błąd danych");
+            alert.setContentText("pole miasto nie możę być puste");
+            alert.showAndWait();
+        } else if (text_ulica.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Błąd danych");
+            alert.setContentText("pole ulica nie możę być puste");
+            alert.showAndWait();
+        } else if (text_nr_domu.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Błąd danych");
+            alert.setContentText("pole numer domu nie możę być puste");
+            alert.showAndWait();
+        } else {
+            klient.setImie_dk_3i(text_imie.getText());
+            klient.setNazwisko_dk_3i(text_nazwisko.getText());
+            klient.setAdres_miasto_dk_3i(text_miasto.getText());
+            klient.setAdres_ulica_dk_3i(text_ulica.getText());
+            klient.setAdres_nr_dom_dk_3i(Integer.parseInt(text_nr_domu.getText()));
+            if (!text_telefon.getText().isEmpty()) {
+                klient.setNr_tel_dk_3i(Integer.parseInt(text_telefon.getText()));
+            }
+            //zapisane do bazy
+            session = sesia.openSession();
+            session.beginTransaction();
+            session.save(klient);
+            session.getTransaction().commit();
+            session.close();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Zapis");
+            alert.setHeaderText("Zapis danych");
+            alert.setContentText("Poprawnia dodano nowego klienta");
+            alert.showAndWait();
+            Czysc();
+          
         }
-
-        SessionFactory sesia = new Configuration().configure().buildSessionFactory();
-        Session session = sesia.openSession();
-        //zapisane do bazy
-        session.beginTransaction();
-        session.save(klient);
-        session.getTransaction().commit();
-        session.close();
-
     }
+
 
     @FXML
     void Wczytaj() {
@@ -267,6 +311,78 @@ public class Okno_Wypozyczenie_Klient_WybierzController implements Initializable
         TableColumn7.setCellValueFactory(new PropertyValueFactory<klient_dk_3i, Integer>("adres_nr_dom_dk_3i")//nazwa pola w klasie
         );
         Wczytaj();
+        session = sesia.openSession();
+        Long f = (Long) session.createCriteria("tabele.klient_dk_3i").setProjection(Projections.rowCount()).uniqueResult();
+        text_id.setText(String.valueOf(f + 1));
+        session.close();
+        text_imie.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_imie.getText().charAt(oldValue.intValue());
+                    if ((ch >= '0' && ch <= '9')) {
+                        text_imie.setText(text_imie.getText().substring(0, text_imie.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        text_nazwisko.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_nazwisko.getText().charAt(oldValue.intValue());
+                    if ((ch >= '0' && ch <= '9')) {
+                        text_nazwisko.setText(text_nazwisko.getText().substring(0, text_nazwisko.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        text_miasto.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_miasto.getText().charAt(oldValue.intValue());
+                    if ((ch >= '0' && ch <= '9')) {
+                        text_miasto.setText(text_miasto.getText().substring(0, text_miasto.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        text_nr_domu.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_nr_domu.getText().charAt(oldValue.intValue());
+                    if (!(ch >= '0' && ch <= '9')) {
+                        text_nr_domu.setText(text_nr_domu.getText().substring(0, text_nr_domu.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        text_telefon.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_telefon.getText().charAt(oldValue.intValue());
+                    if (!(ch >= '0' && ch <= '9')) {
+                        text_telefon.setText(text_telefon.getText().substring(0, text_telefon.getText().length() - 1));
+                    }
+                    if(text_telefon.getText().length()>9){
+                        text_telefon.setText(text_telefon.getText().substring(0, text_telefon.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
     }
 
 }

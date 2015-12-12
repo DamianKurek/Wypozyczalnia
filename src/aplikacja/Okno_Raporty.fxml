@@ -84,12 +84,12 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="74.0" layoutY="10.0" mnemonicParsing="false" onAction="#Popularne" text="Button" />
+                  <Button layoutX="37.0" layoutY="10.0" mnemonicParsing="false" onAction="#Popularne" text="Najczęściej wypożyczane" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="74.0" layoutY="10.0" mnemonicParsing="false" text="Button" />
+                  <Button layoutX="74.0" layoutY="10.0" mnemonicParsing="false" onAction="#Najdluzej" text="Button" />
                </children>
             </AnchorPane>
          </children>

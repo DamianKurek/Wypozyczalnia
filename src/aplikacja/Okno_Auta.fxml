@@ -237,7 +237,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Naprawy">
+            <Tab fx:id="tab_naprawy" onSelectionChanged="#Wczytaj_Naprawy" text="Naprawy">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -245,177 +245,17 @@
                            <children>
                               <AnchorPane prefHeight="371.0" prefWidth="513.0">
                                  <children>
-                                    <TableView fx:id="tabela2" layoutX="69.0" layoutY="71.0" onContextMenuRequested="#RightClick" onMouseMoved="#Pokaz_opis" prefHeight="371.0" prefWidth="622.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <TableView fx:id="tabela2" layoutX="69.0" layoutY="71.0" onContextMenuRequested="#RightClick" onMouseMoved="#Pokaz_opis" prefHeight="371.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-287.0" AnchorPane.topAnchor="0.0">
                                        <columns>
-                                          <TableColumn fx:id="TableColumn11" prefWidth="75.0" text="Id Naprawy" />
-                                          <TableColumn fx:id="TableColumn21" minWidth="4.0" prefWidth="54.0" text="Id Auta" />
-                                          <TableColumn fx:id="TableColumn31" prefWidth="65.0" text="Marka" />
-                                          <TableColumn fx:id="TableColumn41" prefWidth="66.0" text="Model" />
-                                          <TableColumn fx:id="TableColumn51" prefWidth="63.0" text="Rocznik" />
-                                          <TableColumn fx:id="TableColumn61" prefWidth="56.0" text="Koszt" />
-                                          <TableColumn fx:id="TableColumn71" prefWidth="131.0" text="Opis" />
+                                          <TableColumn fx:id="TableColumn11" prefWidth="91.0" text="Id Naprawy" />
+                                          <TableColumn fx:id="TableColumn21" minWidth="4.0" prefWidth="70.0" text="Id Auta" />
+                                          <TableColumn fx:id="TableColumn31" prefWidth="92.0" text="Marka" />
+                                          <TableColumn fx:id="TableColumn41" prefWidth="98.0" text="Model" />
+                                          <TableColumn fx:id="TableColumn51" prefWidth="93.0" text="Rocznik" />
+                                          <TableColumn fx:id="TableColumn61" prefWidth="82.0" text="Koszt" />
+                                          <TableColumn fx:id="TableColumn71" prefWidth="273.0" text="Opis" />
                                        </columns>
                                     </TableView>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane prefHeight="371.0" prefWidth="291.0">
-                                 <children>
-                                    <VBox prefHeight="371.0" prefWidth="289.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <children>
-                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                             <children>
-                                                <Button mnemonicParsing="false" onAction="#Wczytaj_Naprawy" prefHeight="53.0" prefWidth="289.0" text="Wczytaj Wszystkie" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="TOP" layoutX="28.0" layoutY="4.0" prefHeight="17.0" prefWidth="233.0" text="Szukaj">
-                                                   <font>
-                                                      <Font size="26.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                             <children>
-                                                <HBox prefHeight="100.0" prefWidth="289.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="145.0" text="Marka" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                               <font>
-                                                                  <Font size="19.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                         <children>
-                                                            <TextField fx:id="text_szukaj_marka1" layoutX="-2.0" layoutY="11.0" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </children>
-                                                </HBox>
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                             <children>
-                                                <HBox prefHeight="100.0" prefWidth="289.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="145.0" text="Model" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                               <font>
-                                                                  <Font size="19.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                         <children>
-                                                            <TextField fx:id="text_szukaj_model1" layoutX="-2.0" layoutY="11.0" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </children>
-                                                </HBox>
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                             <children>
-                                                <HBox prefHeight="100.0" prefWidth="289.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="145.0" text="Skrzynia" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                               <font>
-                                                                  <Font size="19.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                         <children>
-                                                            <ChoiceBox fx:id="szukaj_skrzynia1" layoutX="-2.0" layoutY="11.0" prefWidth="150.0" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </children>
-                                                </HBox>
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                             <children>
-                                                <HBox prefHeight="100.0" prefWidth="289.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="47.0" prefWidth="56.0" text="Cena" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                               <font>
-                                                                  <Font size="19.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <AnchorPane prefHeight="47.0" prefWidth="208.0">
-                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="47.0" prefWidth="64.0" text="od:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                               <font>
-                                                                  <Font size="19.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                         <children>
-                                                            <TextField fx:id="text_szukaj_cena_start1" layoutY="8.0" prefHeight="25.0" prefWidth="56.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="47.0" prefWidth="56.0" text="do:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                               <font>
-                                                                  <Font size="19.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                         <children>
-                                                            <TextField fx:id="text_szukaj_cena_stop1" layoutY="9.0" prefHeight="25.0" prefWidth="57.0" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="9.0" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </children>
-                                                </HBox>
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                             <children>
-                                                <HBox prefHeight="100.0" prefWidth="289.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="47.0" prefWidth="145.0" text="Uszkodzone" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                               <font>
-                                                                  <Font size="19.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                         <children>
-                                                            <CheckBox fx:id="check_szukaj_uszkodzone1" layoutX="36.0" layoutY="15.0" mnemonicParsing="false" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </children>
-                                                </HBox>
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                             <children>
-                                                <Button mnemonicParsing="false" onAction="#Szukaj_Naprawy" prefHeight="53.0" prefWidth="289.0" text="Szukaj" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                             </children>
-                                          </AnchorPane>
-                                       </children>
-                                    </VBox>
                                  </children>
                               </AnchorPane>
                            </children>

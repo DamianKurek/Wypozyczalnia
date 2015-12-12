@@ -36,6 +36,7 @@ import tabele.pracownik_dk_3i;
 import static aplikacja.Wypozyczalnia.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.stage.Stage;
 import org.hibernate.criterion.Projections;
 import tabele.auta_dk_3i;
 import tabele.klient_dk_3i;
@@ -101,6 +102,15 @@ public class Okno_PracownikController implements Initializable {
             session.save(pracownik);
             session.getTransaction().commit();
             session.close();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Zapis");
+            alert.setHeaderText("Zapis danych");
+            alert.setContentText("Poprawnia dodano nowego klienta");
+            alert.showAndWait();
+
+            Stage stage = new Stage();
+            stage = (Stage) text_imie.getScene().getWindow();
+            stage.close();
         }
     }
 
@@ -162,6 +172,11 @@ public class Okno_PracownikController implements Initializable {
         }
     }
 
+    @FXML 
+    void Wyczysc(){
+    text_nazwisko.clear();
+    text_imie.clear();
+    }
     @FXML
     void Wczytaj() {
         dane.clear();
@@ -223,6 +238,34 @@ public class Okno_PracownikController implements Initializable {
             }
 
         });
+        text_nazwisko_szukaj.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_nazwisko_szukaj.getText().charAt(oldValue.intValue());
+                    if ((ch >= '0' && ch <= '9')) {
+                        text_nazwisko_szukaj.setText(text_nazwisko_szukaj.getText().substring(0, text_nazwisko_szukaj.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+        text_id_szukaj.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = text_id_szukaj.getText().charAt(oldValue.intValue());
+                    if (!(ch >= '0' && ch <= '9')) {
+                        text_id_szukaj.setText(text_id_szukaj.getText().substring(0, text_id_szukaj.getText().length() - 1));
+                    }
+                }
+            }
+
+        });
+    
+        
         session = sesia.openSession();
         Long f = (Long) session.createCriteria("tabele.pracownik_dk_3i").setProjection(Projections.rowCount()).uniqueResult();
         text_id.setText(String.valueOf(f + 1));
