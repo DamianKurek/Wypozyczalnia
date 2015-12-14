@@ -27,7 +27,6 @@ public class auta_dk_3i {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_dk_3i;
-    //id naprawy //referencja
     @OneToOne
     @JoinColumn(name="id_naprawy_dk_3i")
     public  naprawa_dk_3i id_naprawy_dk_3i;

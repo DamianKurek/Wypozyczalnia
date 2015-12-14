@@ -8,6 +8,8 @@ package aplikacja;
 import static aplikacja.Wypozyczalnia.*;
 import java.net.URL;
 import java.time.LocalDate;
+import static java.util.Collections.list;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -22,9 +24,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Expression;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Property;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.Subqueries;
 import tabele.auta_dk_3i;
+import tabele.naprawa_dk_3i;
 import tabele.pracownik_dk_3i;
+import tabele.wypozyczenie_dk_3i;
 
 /**
  * FXML Controller class
@@ -85,17 +94,37 @@ public class Okno_Wypozyczenie_Auto_WybierzController implements Initializable {
     void Wczytaj() {
         dane.clear();
         session = sesia.openSession();
-        session.beginTransaction();
-        Criterion imie = Expression.eq("uszkodzony_dk_3i", false);
-        Criteria crit = session.createCriteria(auta_dk_3i.class);
-        crit.add(imie);
-        
-        List<auta_dk_3i> wynik = crit.list();
-        session.close();
-        for (int x = 0; x < wynik.size(); x++) {
 
-            dane.add(wynik.get(x));
+        /////////////////zawraca auta uszkodzone
+        Criteria criteria = session.createCriteria(auta_dk_3i.class)
+                        .add(Restrictions.eq("uszkodzony_dk_3i", false));
+        List<auta_dk_3i> wynik1 = criteria.list();
+        for (int x = 0; x < wynik1.size(); x++) {
+        
         }
+        ///////////////////////////////////////////
+        ///////zwraca wypozyczone juz auta/////////////
+        Criteria criteria1 = session.createCriteria(wypozyczenie_dk_3i.class)
+                        .add(Restrictions.isNull("id_zwrot_dk_3i"));
+        List<wypozyczenie_dk_3i> wynik2 = criteria1.list();
+        //////////////////////////////////////////////
+        ///////////////wszystkie auta//////////////////////
+        List<auta_dk_3i> wszystkie = session.createQuery("from auta_dk_3i").list();
+        boolean jest=false;
+        for (int x = 0; x < wynik1.size(); x++) {
+           // System.out.println(wszystkie.get(x).getId_dk_3i());
+            for (int y = 0; y < wynik2.size(); y++){
+                
+                if(wynik1.get(x).getId_dk_3i()==wynik2.get(y).getId_auta_wypozyczenie_dk_3i().getId_dk_3i())
+                {
+                jest=true;
+                }   
+            }
+            if(!jest)
+                dane.add(wynik1.get(x));
+            jest=false;
+        }
+
     }
 
     @FXML
