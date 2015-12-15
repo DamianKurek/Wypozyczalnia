@@ -14,7 +14,7 @@
 
    <!-- Assume test is the database name -->
    <property name="hibernate.connection.url">
-      jdbc:mysql://localhost:3306/daa3
+      jdbc:mysql://localhost:3306/kurek_3i
    </property>
    <property name="hibernate.connection.username">
       root
@@ -26,7 +26,6 @@
         <property name="hibernate.connection.characterEncoding">utf8</property>
         <property name="hibernate.connection.useUnicode">true</property>
    <!-- List of XML mapping files -->
-   <mapping class="tabele.test"/>
    <mapping class="tabele.klient_dk_3i"/>
    <mapping class="tabele.pracownik_dk_3i"/>
    <mapping class="tabele.wypozyczenie_dk_3i"/>

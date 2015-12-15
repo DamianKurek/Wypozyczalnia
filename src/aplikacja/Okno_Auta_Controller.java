@@ -200,6 +200,12 @@ public class Okno_Auta_Controller implements Initializable {
             session.save(auto);
             session.getTransaction().commit();
             session.close();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText("Potwierdzenie");
+            alert.setContentText("Poprawnie dodano auto do bazy");
+            alert.showAndWait();
+            Wyczysc();
         }
 
     }
@@ -405,7 +411,14 @@ public class Okno_Auta_Controller implements Initializable {
             tooltip2.setText(tabela2.getFocusModel().getFocusedItem().getOpis_naprawal());
         }
     }
-
+@FXML
+    void Wyczysc(){
+    text_marka.setText("");
+     text_model.setText("");
+    text_rocznik.setText("");
+    text_skrzynia_biegow.setText("");
+    text_cena.setText("");
+    }
     @FXML
     void Szukaj_Naprawy() {
 //        if (!text_szukaj_marka1.getText().isEmpty()) {

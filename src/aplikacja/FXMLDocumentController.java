@@ -6,6 +6,8 @@ package aplikacja;
  * and open the template in the editor.
  */
 import static aplikacja.Wypozyczalnia.zalogowany_pracownik;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -93,6 +95,25 @@ public class FXMLDocumentController implements Initializable {
         Scene scenaWykres = new Scene(root1);
         stage.setScene(scenaWykres);
         stage.show();
+       
+    }
+    @FXML
+    private void OknoInfo(ActionEvent event) throws IOException {
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Info.fxml"));
+//        Parent root1 = (Parent) fxmlLoader.load();
+//        Stage stage = new Stage();
+//        stage.setTitle("Informacja");
+//        Scene scenaWykres = new Scene(root1);
+//        stage.setScene(scenaWykres);
+//        stage.show();
+        if (Desktop.isDesktopSupported()) {
+            try {
+                File myFile = new File("src/Wypożyczalnia.pdf");
+                Desktop.getDesktop().open(myFile);
+            } catch (IOException ex) {
+                // no application registered for PDFs
+            }
+        }
        
     }
     

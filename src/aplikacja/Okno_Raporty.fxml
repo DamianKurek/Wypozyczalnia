@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -69,32 +70,32 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="37.0" layoutY="12.0" mnemonicParsing="false" onAction="#Suma_Oplat" text="Suma opłat w okresie" />
+                  <Button layoutX="37.0" layoutY="12.0" mnemonicParsing="false" onAction="#Suma_Oplat" prefHeight="0.0" prefWidth="150.0" text="Suma opłat w okresie" AnchorPane.leftAnchor="25.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="74.0" layoutY="10.0" mnemonicParsing="false" onAction="#Suma_Awarii" text="Awarie Aut" />
+                  <Button layoutX="38.0" layoutY="10.0" mnemonicParsing="false" onAction="#Suma_Awarii" prefHeight="0.0" prefWidth="150.0" text="Awarie Aut" AnchorPane.leftAnchor="25.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="45.0" layoutY="10.0" mnemonicParsing="false" onAction="#Auto_Bezawaryjne" text="Auta bezawaryjne" />
+                  <Button layoutX="39.0" layoutY="10.0" mnemonicParsing="false" onAction="#Auto_Bezawaryjne" prefHeight="0.0" prefWidth="150.0" text="Auta bezawaryjne" AnchorPane.leftAnchor="25.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="37.0" layoutY="10.0" mnemonicParsing="false" onAction="#Popularne" text="Najczęściej wypożyczane" />
+                  <Button layoutX="25.0" layoutY="7.0" mnemonicParsing="false" onAction="#Popularne" prefHeight="0.0" prefWidth="150.0" text="Najczęściej wypożyczane" AnchorPane.leftAnchor="25.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="37.0" layoutY="7.0" mnemonicParsing="false" onAction="#Wypozyczenia_okres" text="Wypozyczenia w okresie" />
+                  <Button layoutX="37.0" layoutY="7.0" mnemonicParsing="false" onAction="#Wypozyczenia_okres" prefHeight="0.0" prefWidth="150.0" text="Wypozyczenia w okresie" AnchorPane.leftAnchor="25.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="74.0" layoutY="10.0" mnemonicParsing="false" onAction="#Najdluzej" text="Button" />
+                  <Button layoutX="40.0" layoutY="10.0" mnemonicParsing="false" onAction="#Najdluzej" prefHeight="0.0" prefWidth="150.0" text="Czas wypożyczenia" AnchorPane.leftAnchor="25.0" />
                </children>
             </AnchorPane>
          </children>

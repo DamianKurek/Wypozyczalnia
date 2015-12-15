@@ -43,7 +43,7 @@
                               <TextField fx:id="text_rocznik" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <TextField fx:id="text_skrzynia_biegow" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                               <TextField fx:id="text_cena" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                              <Button mnemonicParsing="false" prefHeight="164.0" prefWidth="506.0" text="Wyczyść" GridPane.rowIndex="6" />
+                              <Button mnemonicParsing="false" onAction="#Wyczysc" prefHeight="164.0" prefWidth="506.0" text="Wyczyść" GridPane.rowIndex="6" />
                               <Button mnemonicParsing="false" onAction="#Zapisz" prefHeight="179.0" prefWidth="461.0" text="Zapisz" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                            </children>
                         </GridPane>

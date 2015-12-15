@@ -78,9 +78,9 @@ public class wypozyczenie_dk_3i {
         return id_wypozyczenie_dk_3i;
     }
 
-//    public void setId_wypozyczenie_dk_3i(int id_wypozyczenie_dk_3i) {
-//        this.id_wypozyczenie_dk_3i = id_wypozyczenie_dk_3i;
-//    }
+    public void setId_wypozyczenie_dk_3i(int id_wypozyczenie_dk_3i) {
+        this.id_wypozyczenie_dk_3i = id_wypozyczenie_dk_3i;
+    }
 
     public Date getData_wypozyczenia_dk_3i() {
         return data_wypozyczenia_dk_3i;

@@ -7,7 +7,6 @@ package aplikacja;
  */
 import java.util.Calendar;
 import java.util.Date;
-import tabele.test;
 import tabele.klient_dk_3i;
 import javafx.application.Application;
 import javafx.application.Platform;

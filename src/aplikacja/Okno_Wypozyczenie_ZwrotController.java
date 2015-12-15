@@ -169,18 +169,20 @@ public class Okno_Wypozyczenie_ZwrotController implements Initializable {
         crit.add(id);
         wypozyczenie_dk_3i wynik = (wypozyczenie_dk_3i) crit.uniqueResult();
 
-        
-        
         zwrot_dk_3i zwrot = new zwrot_dk_3i();
         zwrot.setId_wypozyczenie_dk_3i(wynik);
         zwrot.setKara_dk_3i(Integer.parseInt(text_kara.getText()));
         zwrot.setKoszt_dk_3i(Integer.parseInt(text_do_zaplaty.getText()));
         zwrot.setData_zwrotu_dk_3i(Date.valueOf(data_zwrotu.getValue()));
-        
-        wynik.setId_zwrot_dk_3i(zwrot);
-        
-        if (check_uszkodzony.isSelected()) {
 
+        wynik.setId_zwrot_dk_3i(zwrot);
+        session.update(wynik);
+        session.save(zwrot);
+        session.getTransaction().commit();
+        session.close();
+        if (check_uszkodzony.isSelected()) {
+            session = sesia.openSession();
+            session.beginTransaction();
             id = Expression.eq("id_dk_3i", Integer.parseInt(id_auto.getText()));
             //Criterion id = Expression.eq("id_dk_3i", 9);
             crit = session.createCriteria(auta_dk_3i.class);
@@ -188,11 +190,9 @@ public class Okno_Wypozyczenie_ZwrotController implements Initializable {
             auta_dk_3i auto = (auta_dk_3i) crit.uniqueResult();
             auto.setUszkodzony_dk_3i(true);
             session.update(auto);
+            session.getTransaction().commit();
+            session.close();
         }
-        session.update(wynik);
-        session.save(zwrot);
-        session.getTransaction().commit();
-        session.close();
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Informacja");

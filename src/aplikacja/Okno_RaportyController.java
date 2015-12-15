@@ -29,6 +29,7 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 public class Okno_RaportyController implements Initializable {
@@ -40,19 +41,27 @@ public class Okno_RaportyController implements Initializable {
 
     @FXML
     void Suma_Oplat() throws IOException {
-        LocalDate localDate = data_od.getValue();
-        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
-        data_raport_od = Date.from(instant);
-        localDate = data_do.getValue();
-        instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
-        data_raport_do = Date.from(instant);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Raport_Suma_Oplat.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Suma Opłat");
-        Scene scenaWykres = new Scene(root1);
-        stage.setScene(scenaWykres);
-        stage.show();
+        if (data_od.getValue() == null || data_do.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Błąd danych");
+            alert.setContentText("Wybierz daty do raportu");
+            alert.showAndWait();
+        } else {
+            LocalDate localDate = data_od.getValue();
+            Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+            data_raport_od = Date.from(instant);
+            localDate = data_do.getValue();
+            instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+            data_raport_do = Date.from(instant);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Raport_Suma_Oplat.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Suma Opłat");
+            Scene scenaWykres = new Scene(root1);
+            stage.setScene(scenaWykres);
+            stage.show();
+        }
     }
 
     @FXML
@@ -101,19 +110,28 @@ public class Okno_RaportyController implements Initializable {
 
     @FXML
     void Wypozyczenia_okres() throws IOException {
-        LocalDate localDate = data_od.getValue();
-        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
-        data_raport_od = Date.from(instant);
-        localDate = data_do.getValue();
-        instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
-        data_raport_do = Date.from(instant);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Raport_Wypozyczenia_Okres.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Wypożyczenia za okres");
-        Scene scenaWykres = new Scene(root1);
-        stage.setScene(scenaWykres);
-        stage.show();
+        if (data_od.getValue() == null || data_do.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Błąd danych");
+            alert.setContentText("Wybierz daty do raportu");
+            alert.showAndWait();
+
+        } else {
+            LocalDate localDate = data_od.getValue();
+            Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+            data_raport_od = Date.from(instant);
+            localDate = data_do.getValue();
+            instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+            data_raport_do = Date.from(instant);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Okno_Raport_Wypozyczenia_Okres.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Wypożyczenia za okres");
+            Scene scenaWykres = new Scene(root1);
+            stage.setScene(scenaWykres);
+            stage.show();
+        }
     }
 
     @Override
