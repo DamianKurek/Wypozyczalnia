@@ -72,7 +72,10 @@ public class Okno_Raport_Suma_AwariiController implements Initializable {
         int x = 0;
         for (x = 0; x < result.size(); x++) {
         }
-        System.out.print(x);
+        System.out.print(result.get(0)[0]+"     "); //ilosc napraw
+         System.out.println(result.get(0)[1]); //id auta
+         System.out.print(result.get(1)[0]+"     ");
+         System.out.println(result.get(1)[1]);
         if (x == 1) {
             Criterion id = Expression.eq("id_dk_3i", result.get(0)[1]);
             Criteria crit = session.createCriteria(auta_dk_3i.class);
@@ -88,13 +91,19 @@ public class Okno_Raport_Suma_AwariiController implements Initializable {
             crit.add(id);
             auto = (auta_dk_3i) crit.uniqueResult();
 
+           
+            series1.getData().add(new XYChart.Data(auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i(), result.get(0)[0]));
+            wykres.getData().add(series1);
+            series1.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
+            ////
+            
             id = Expression.eq("id_dk_3i", result.get(1)[1]);
             crit = session.createCriteria(auta_dk_3i.class);
             crit.add(id);
             auto = (auta_dk_3i) crit.uniqueResult();
+
+           
             series2.getData().add(new XYChart.Data(auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i(), result.get(1)[0]));
-            wykres.getData().add(series1);
-            series1.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
             wykres.getData().add(series2);
             series2.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
         }
@@ -103,23 +112,30 @@ public class Okno_Raport_Suma_AwariiController implements Initializable {
             Criteria crit = session.createCriteria(auta_dk_3i.class);
             crit.add(id);
             auto = (auta_dk_3i) crit.uniqueResult();
-            series1.getData().add(new XYChart.Data(auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i(), result.get(0)[0]));
 
+           
+            series1.getData().add(new XYChart.Data(auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i(), result.get(0)[0]));
+            wykres.getData().add(series1);
+            series1.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
+            ////
+            
             id = Expression.eq("id_dk_3i", result.get(1)[1]);
             crit = session.createCriteria(auta_dk_3i.class);
             crit.add(id);
             auto = (auta_dk_3i) crit.uniqueResult();
-            series2.getData().add(new XYChart.Data(auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i(), result.get(1)[0]));
 
+           
+            series2.getData().add(new XYChart.Data(auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i(), result.get(1)[0]));
+            wykres.getData().add(series2);
+            series2.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
+            
             id = Expression.eq("id_dk_3i", result.get(2)[1]);
             crit = session.createCriteria(auta_dk_3i.class);
             crit.add(id);
             auto = (auta_dk_3i) crit.uniqueResult();
+
+           
             series3.getData().add(new XYChart.Data(auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i(), result.get(2)[0]));
-            wykres.getData().add(series1);
-            series1.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
-            wykres.getData().add(series2);
-            series2.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
             wykres.getData().add(series3);
             series3.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
         }
@@ -128,33 +144,42 @@ public class Okno_Raport_Suma_AwariiController implements Initializable {
             Criteria crit = session.createCriteria(auta_dk_3i.class);
             crit.add(id);
             auto = (auta_dk_3i) crit.uniqueResult();
-            series1.getData().add(new XYChart.Data(auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i(), result.get(0)[0]));
-            series1.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
 
+           
+            series1.getData().add(new XYChart.Data(auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i(), result.get(0)[0]));
+            wykres.getData().add(series1);
+            series1.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
+            ////
+            
             id = Expression.eq("id_dk_3i", result.get(1)[1]);
             crit = session.createCriteria(auta_dk_3i.class);
             crit.add(id);
             auto = (auta_dk_3i) crit.uniqueResult();
-            series2.getData().add(new XYChart.Data(auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i(), result.get(1)[0]));
-            series2.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
 
+           
+            series2.getData().add(new XYChart.Data(auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i(), result.get(1)[0]));
+            wykres.getData().add(series2);
+            series2.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
+            
             id = Expression.eq("id_dk_3i", result.get(2)[1]);
             crit = session.createCriteria(auta_dk_3i.class);
             crit.add(id);
             auto = (auta_dk_3i) crit.uniqueResult();
-            series3.getData().add(new XYChart.Data(auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i(), result.get(2)[0]));
-            series3.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
 
+           
+            series3.getData().add(new XYChart.Data(auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i(), result.get(2)[0]));
+            wykres.getData().add(series3);
+            series3.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
+            
             id = Expression.eq("id_dk_3i", result.get(3)[1]);
             crit = session.createCriteria(auta_dk_3i.class);
             crit.add(id);
             auto = (auta_dk_3i) crit.uniqueResult();
+
+           
             series4.getData().add(new XYChart.Data(auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i(), result.get(3)[0]));
-            series4.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
-            wykres.getData().add(series1);
-            wykres.getData().add(series2);
-            wykres.getData().add(series3);
             wykres.getData().add(series4);
+            series4.setName("[" + auto.getId_dk_3i() + "] " + auto.getMarka_dk_3i() + " " + auto.getModel_dk_3i() + " " + auto.getRocznik_dk_3i());
         }
 
 //        
